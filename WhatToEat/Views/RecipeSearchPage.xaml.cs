@@ -18,13 +18,11 @@ namespace Recipes.Views
             _restService = new RestService();
         }
 
-        void OnButtonClicked(object sender, EventArgs e)
+        async void OnButtonClicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(searchEntry.Text))
             {
-                var recipeDataTask = _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint));
-                recipeDataTask.Wait();
-                RecipeData recipeData = recipeDataTask.Result;
+                RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint));
                 BindingContext = recipeData;
             }
         }
