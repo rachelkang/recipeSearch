@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Recipes.Views.NewItemPage" Shell.PresentationMode="ModalAnimated" Title="New Item">
+    <ContentPage.Content>
+        <StackLayout Spacing="3" Padding="15">
+            <Label Text="Recipe Title" FontSize="Medium" />
+            <Entry Text="{Binding RecipeName, Mode=TwoWay}" FontSize="Large" />
+            <Label Text="Ingredients" FontSize="Medium" />
+            <Editor Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Recipe" FontSize="Medium" />
+            <Editor Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand">
+                </Button>
+                <Button Text="Create" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
