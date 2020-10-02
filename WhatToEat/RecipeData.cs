@@ -21,6 +21,8 @@ namespace Recipes
     {
         [JsonProperty("recipe")]
         public Recipe Recipe { get; set; }
+
+        public int Id { get; set; }
     }
 
     public class Recipe
