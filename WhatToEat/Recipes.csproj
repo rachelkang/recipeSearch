@@ -15,6 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\RecipeSearchPage %28copy%29.xaml.cs" />
+    <Compile Remove="Views\ItemDetailPage %28copy%29.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\RecipeSearch.xaml.cs">

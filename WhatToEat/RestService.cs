@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Recipes
 {
@@ -21,8 +18,6 @@ namespace Recipes
 
         public async Task<RecipeData> GetRecipeDataAsync(string uri)
         {
-
-            //List<RecipeData> recipes = new List<RecipeData>();
             RecipeData recipeData = null;
 
             try
@@ -39,7 +34,6 @@ namespace Recipes
                 Debug.WriteLine("\tERROR {0}", ex.Message);
             }
 
-            Debug.WriteLine(recipeData);
             return recipeData;
         }
     }
