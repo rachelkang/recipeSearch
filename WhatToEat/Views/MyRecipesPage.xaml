@@ -17,14 +17,27 @@
             <Color x:Key="Accent">#E3307D</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+    <StackLayout Margin="20">
+        <!--<RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CarouselView BackgroundColor="Aqua" ItemsSource="{Binding Items}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding RecipeName}" />
+                            <CollectionView ItemsSource="{Binding Ingredients}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>    
+        </RefreshView>-->
     <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="ItemsListView" ItemsSource="{Binding Items}" SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" x:DataType="model:Item">
+                    <StackLayout Padding="0,5" x:DataType="model:Item">
                         <Label Text="{Binding RecipeName}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
                         <Label Text="{Binding Ingredients}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="12" />
-                        <Label Text="{Binding RecipeBody}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="12" />
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
@@ -34,4 +47,5 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </RefreshView>
+    </StackLayout>
 </ContentPage>
