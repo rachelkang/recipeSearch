@@ -1,10 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Recipes.Views.ItemDetailPage" Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Command="{Binding EditItemCommand}" />
+    </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding RecipeName}" FontSize="Large" />
-        <Label Text="Ingredients" FontSize="Medium" />
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Label VerticalOptions="Center" HorizontalOptions="Center"
+                Text="{Binding RecipeName}"
+                FontSize="Large"
+                FontAttributes="Bold" />
+            <Image Source="{Binding ImageUrl}" />
+         </StackLayout>
+        <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
         <Label Text="{Binding Ingredients}" FontSize="Small" />
-        <Label Text="Recipe" FontSize="Medium" />
+        <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" />
         <Label Text="{Binding RecipeBody}" FontSize="Small" />
     </StackLayout>
 </ContentPage>
