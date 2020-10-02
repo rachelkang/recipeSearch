@@ -14,9 +14,9 @@ namespace Recipes.Services
         {
             items = new List<Item>()
             {
-                new Item { Id = Guid.NewGuid().ToString(), RecipeName = "Recipe 1", Ingredients = "Ingredient 1\nIngredient 2\nIngredient 3", RecipeBody = "This is a recipe body." },
-                new Item { Id = Guid.NewGuid().ToString(), RecipeName = "Recipe 2", Ingredients = "Ingredient 1\nIngredient 2\nIngredient 3", RecipeBody = "This is a recipe body." },
-                new Item { Id = Guid.NewGuid().ToString(), RecipeName = "Recipe 3", Ingredients = "Ingredient 1\nIngredient 2\nIngredient 3", RecipeBody = "This is a recipe body." }
+                new Item { Id = Guid.NewGuid().ToString(), RecipeName = "Recipe 1", Ingredients = "Ingredient 1\nIngredient 2\nIngredient 3"},
+                new Item { Id = Guid.NewGuid().ToString(), RecipeName = "Recipe 2", Ingredients = "Ingredient 1\nIngredient 2\nIngredient 3"},
+                new Item { Id = Guid.NewGuid().ToString(), RecipeName = "Recipe 3", Ingredients = "Ingredient 1\nIngredient 2\nIngredient 3"}
             };
         }
 
