@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Recipes.Views.NewItemPage" Shell.PresentationMode="ModalAnimated" Title="New Item">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Recipes.Views.NewItemPage" Shell.PresentationMode="ModalAnimated" Title="New Recipe">
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
-            <Label Text="Recipe Title" FontSize="Medium" />
-            <Entry Text="{Binding RecipeName, Mode=TwoWay}" FontSize="Large" />
-            <Label Text="Ingredients" FontSize="Medium" />
+            <Label Text="Recipe Name:" FontSize="Medium" />
+            <Entry Text="{Binding RecipeName, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Image URL:" FontSize="Medium" />
+            <Entry Text="{Binding ImageUrl, Mode=TwoWay}" FontSize="Small" />
+            <Label Text="Ingredients:" FontSize="Medium" />
             <Editor Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
-            <Label Text="Recipe" FontSize="Medium" />
+            <Label Text="Recipe:" FontSize="Medium" />
             <Editor Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand">
