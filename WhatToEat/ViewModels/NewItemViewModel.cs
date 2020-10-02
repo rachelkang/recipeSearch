@@ -10,6 +10,7 @@ namespace Recipes.ViewModels
     public class NewItemViewModel : BaseViewModel
     {
         private string recipeName;
+        private string imageUrl;
         private string ingredients;
         private string recipeBody;
 
@@ -23,15 +24,19 @@ namespace Recipes.ViewModels
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(recipeName)
-                && !String.IsNullOrWhiteSpace(ingredients)
-                && !String.IsNullOrWhiteSpace(recipeBody);
+            return !String.IsNullOrWhiteSpace(recipeName);
         }
 
         public string RecipeName
         {
             get => recipeName;
             set => SetProperty(ref recipeName, value);
+        }
+
+        public string ImageUrl
+        {
+            get => imageUrl;
+            set => SetProperty(ref imageUrl, value);
         }
 
         public string Ingredients
@@ -61,6 +66,7 @@ namespace Recipes.ViewModels
             {
                 Id = Guid.NewGuid().ToString(),
                 RecipeName = RecipeName,
+                ImageUrl = ImageUrl,
                 Ingredients = Ingredients,
                 RecipeBody = RecipeBody
             };
