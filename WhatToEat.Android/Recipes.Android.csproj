@@ -88,7 +88,7 @@
     <AndroidResource Include="Resources\drawable\tab_feed.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WhatToEat\Recipes.csproj">
+    <ProjectReference Include="..\ Recipes\Recipes.csproj">
       <Project>{A2021E63-BCCF-411E-B0AE-DF2EABB8EB34}</Project>
       <Name>Recipes</Name>
     </ProjectReference>
