@@ -11,10 +11,8 @@
             <Label Text="Recipe:" FontSize="Medium" />
             <Editor Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <StackLayout Orientation="Horizontal">
-                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand">
-                </Button>
-                <Button Text="Create" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand">
-                </Button>
+                <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Create" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

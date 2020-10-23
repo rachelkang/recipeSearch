@@ -62,13 +62,16 @@ namespace Recipes.ViewModels
 
         private async void OnSave()
         {
+            var recipeBodyFormattedString = new FormattedString();
+            recipeBodyFormattedString.Spans.Add(new Span { Text = RecipeBody });
+
             Item newItem = new Item()
             {
                 Id = Guid.NewGuid().ToString(),
                 RecipeName = RecipeName,
                 ImageUrl = ImageUrl,
                 Ingredients = Ingredients,
-                RecipeBody = RecipeBody
+                RecipeBody = recipeBodyFormattedString
             };
 
             await DataStore.AddItemAsync(newItem);
