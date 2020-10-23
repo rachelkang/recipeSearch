@@ -16,7 +16,7 @@ namespace Recipes.ViewModels
         private string recipeName;
         private string imageUrl;
         private string ingredients;
-        private string recipeBody;
+        private FormattedString recipeBody;
 
         public string Id { get; set; }
 
@@ -44,7 +44,7 @@ namespace Recipes.ViewModels
             set => SetProperty(ref ingredients, value);
         }
 
-        public string RecipeBody
+        public FormattedString RecipeBody
         {
             get => recipeBody;
             set => SetProperty(ref recipeBody, value);

@@ -5,11 +5,8 @@
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="15">
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label VerticalOptions="Center" HorizontalOptions="Center"
-                Text="{Binding RecipeName}"
-                FontSize="Large"
-                FontAttributes="Bold" />
-            <Image Source="{Binding ImageUrl}" />
+            <Label HorizontalTextAlignment="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" />
+            <Image Source="{Binding ImageUrl}" WidthRequest="300" HeightRequest="150" Aspect="AspectFill"/>
          </StackLayout>
         <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
         <Label Text="{Binding Ingredients}" FontSize="Small" />
