@@ -16,18 +16,17 @@ namespace Recipes.ViewModels
 
         public ObservableCollection<Item> Items { get; }
         public Command LoadItemsCommand { get; }
-        public Command AddItemCommand { get; }
+        public Command NewItemCommand { get; }
         public Command<Item> ItemTapped { get; }
 
         public ItemsViewModel()
         {
-            Title = "Recipes";
+            Title = "My Recipes";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             ItemTapped = new Command<Item>(OnItemSelected);
-
-            AddItemCommand = new Command(OnAddItem);
+            NewItemCommand = new Command(OnNewItem);
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -57,6 +56,9 @@ namespace Recipes.ViewModels
         {
             IsBusy = true;
             SelectedItem = null;
+
+            //await ExecuteLoadItemsCommand();
+            LoadItemsCommand.Execute(null);
         }
 
         public Item SelectedItem
@@ -69,7 +71,7 @@ namespace Recipes.ViewModels
             }
         }
 
-        private async void OnAddItem(object obj)
+        private async void OnNewItem(object obj)
         {
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }

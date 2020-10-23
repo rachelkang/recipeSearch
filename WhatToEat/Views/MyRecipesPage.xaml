@@ -7,45 +7,32 @@
              xmlns:local="clr-namespace:Recipes.ViewModels"
              xmlns:model="clr-namespace:Recipes.Models">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding AddItemCommand}" />
+        <ToolbarItem Text="Create" Command="{Binding NewItemCommand}" />
     </ContentPage.ToolbarItems>
-    <ContentPage.BindingContext>
-        <vm:MyRecipesViewModel />
-    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#E3307D</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout Margin="20">
-        <!--<RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-            <CarouselView BackgroundColor="Aqua" ItemsSource="{Binding Items}">
-                <CarouselView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <Label Text="{Binding RecipeName}" />
-                            <CollectionView ItemsSource="{Binding Ingredients}" />
-                        </StackLayout>
-                    </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>    
-        </RefreshView>-->
-    <RefreshView x:DataType="local:ItemsViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <CollectionView x:Name="ItemsListView" ItemsSource="{Binding Items}" SelectionMode="None">
-            <CollectionView.ItemTemplate>
+    <StackLayout>
+        <CarouselView ItemsSource="{Binding Items}" Loop="False" Margin="20">
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal"/>
+            </CarouselView.ItemsLayout>
+            <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="0,5" x:DataType="model:Item">
-                        <Label Text="{Binding RecipeName}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                        <Label Text="{Binding Ingredients}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="12" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                    <Frame BorderColor="{StaticResource Primary}" CornerRadius="40" HasShadow="False">
+                        <StackLayout x:DataType="model:Item" VerticalOptions="Center" HorizontalOptions="Center" Padding="5">
+                            <Label Text="{Binding RecipeName}" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" />
+                            <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Frame>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
     </StackLayout>
 </ContentPage>
