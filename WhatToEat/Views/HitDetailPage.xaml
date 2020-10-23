@@ -1,42 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Recipes.Views.HitDetailPage" Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add to My Recipes" Command="{Binding AddItemCommand}"/>
+    </ContentPage.ToolbarItems>
     <StackLayout Spacing="15" Padding="20">        
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label
-                Text="{Binding Hit.Recipe.RecipeName}"
-                FontSize="Large"
-                FontAttributes="Bold" />
-            <Image Source="{Binding Hit.Recipe.ImageUrl}" />
-         </StackLayout>
-        <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
-        <CollectionView ItemsSource="{Binding Hit.Recipe.Ingredients}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding .}"
-                           LineBreakMode="WordWrap"
-                           Style="{DynamicResource ListItemTextStyle}"
-                           FontSize="Small"
-                           HeightRequest="20"
-                           VerticalTextAlignment="Center"/>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium"/>
-        <Label FontSize="Small">
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="Click " />
-                    <Span Text="here"
-                          TextColor="Blue"
-                          TextDecorations="Underline">
-                        <Span.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding TapCommand}"
-                                                  CommandParameter="{Binding Hit.Recipe.RecipeUrl}" />
-                        </Span.GestureRecognizers>
-                    </Span>
-                    <Span Text=" to view full recipe." />
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+            <Label Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Image Source="{Binding ImageUrl}" />
+        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
+                <Label Text="{Binding Ingredients}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="Small" VerticalTextAlignment="Center"/>
+                <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium"/>
+                <Label FontSize="Small" FormattedText="{Binding RecipeBody}"/>
+            </StackLayout>
+        </ScrollView>
     </StackLayout>
 </ContentPage>
