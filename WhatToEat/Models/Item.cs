@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms;
 
 namespace Recipes.Models
 {
@@ -8,6 +9,7 @@ namespace Recipes.Models
         public string RecipeName { get; set; }
         public string ImageUrl { get; set; }
         public string Ingredients { get; set; }
-        public string RecipeBody { get; set; }
+        // public string RecipeBody { get; set; }
+        public FormattedString RecipeBody { get; set; }
     }
 }
