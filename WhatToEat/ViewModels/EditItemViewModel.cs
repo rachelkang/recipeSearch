@@ -12,10 +12,10 @@ namespace Recipes.ViewModels
     [QueryProperty(nameof(Id), nameof(Id))] // query string - using property names directly and avoiding magic strings
     public class EditItemViewModel : BaseViewModel
     {
-        // need to get selected item's stuff
         private string recipeName;
         private string ingredients;
-        private string recipeBody;
+        private string imageUrl;
+        private FormattedString recipeBody;
         private string id;
 
         public EditItemViewModel()
@@ -46,7 +46,13 @@ namespace Recipes.ViewModels
             set => SetProperty(ref ingredients, value);
         }
 
-        public string RecipeBody
+        public string ImageUrl
+        {
+            get => imageUrl;
+            set => SetProperty(ref imageUrl, value);
+        }
+
+        public FormattedString RecipeBody
         {
             get => recipeBody;
             set => SetProperty(ref recipeBody, value);
@@ -72,6 +78,7 @@ namespace Recipes.ViewModels
                 var item = await DataStore.GetItemAsync(itemId);
                 RecipeName = item.RecipeName;
                 Ingredients = item.Ingredients;
+                ImageUrl = item.ImageUrl;
                 RecipeBody = item.RecipeBody;
             }
             catch (Exception)
@@ -104,9 +111,10 @@ namespace Recipes.ViewModels
         {
             Item newItem = new Item()
             {
-                Id = id, // need to pass in ID of selected item somehow
+                Id = id,
                 RecipeName = RecipeName,
                 Ingredients = Ingredients,
+                ImageUrl = ImageUrl,
                 RecipeBody = RecipeBody
             };
 

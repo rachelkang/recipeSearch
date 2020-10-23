@@ -3,20 +3,17 @@
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
             <Label Text="Recipe Name:" FontSize="Medium" />
-            <Entry x:Name="recipeNameEntry" Text="{Binding RecipeName, Mode=TwoWay}" FontSize="Medium" />
+            <Entry Text="{Binding RecipeName, Mode=TwoWay}" FontSize="Medium" />
             <Label Text="Image URL:" FontSize="Medium" />
             <Entry Text="{Binding ImageUrl, Mode=TwoWay}" FontSize="Small" />
             <Label Text="Ingredients:" FontSize="Medium" />
-            <Editor x:Name="recipeIngredientsEditor" Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Editor Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <Label Text="Recipe:" FontSize="Medium" />
-            <Editor x:Name="recipeBodyEditor" Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Editor Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <StackLayout Orientation="Horizontal">
-                <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="Gray" HorizontalOptions="FillAndExpand">
-                </Button>
-                <Button Text="Delete" Command="{Binding DeleteCommand}" BackgroundColor="#AB1700" HorizontalOptions="FillAndExpand">
-                </Button>
-                <Button Text="Update" Command="{Binding UpdateCommand}" HorizontalOptions="FillAndExpand">
-                </Button>
+                <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Delete" Command="{Binding DeleteCommand}" BackgroundColor="#BF2E2E" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Update" Command="{Binding UpdateCommand}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

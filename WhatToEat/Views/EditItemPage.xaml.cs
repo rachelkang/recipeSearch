@@ -7,12 +7,13 @@ namespace Recipes.Views
 {
     public partial class EditItemPage : ContentPage
     {
-        public Item Item { get; set; }
+
+        EditItemViewModel _viewModel;
 
         public EditItemPage()
         {
             InitializeComponent();
-            BindingContext = new EditItemViewModel();
+            BindingContext = _viewModel = new EditItemViewModel();
         }
     }
 }
