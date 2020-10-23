@@ -4,13 +4,9 @@
              x:Class="Recipes.Views.RecipeSearchPage"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
              Title="{Binding Title}"
-             xmlns:local="clr-namespace:Recipes.Views"
+             xmlns:local="clr-namespace:Recipes.ViewModels"
              xmlns:model="clr-namespace:Recipes.Models">
-    <ContentPage.BindingContext>
-        <vm:RecipeSearchViewModel />
-    </ContentPage.BindingContext>
     <StackLayout Margin="20">
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.7*" />
@@ -19,64 +15,33 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
-            <Entry x:Name="searchEntry"
-                   TextColor="DarkOrange"
-                   Text="{Binding SearchQuery}" />
-            <Button Grid.Column="1"
-                    BackgroundColor="DarkOrange"
-                    Text="{Binding ButtonText}"
-                    Clicked="OnButtonClicked" />
+            <Entry TextColor="{StaticResource Primary}" Text="{Binding SearchQuery}" />
+            <Button Grid.Column="1" BackgroundColor="{StaticResource Primary}" Text="{Binding ButtonText}" Command="{Binding SearchCommand}" />
         </Grid>
-
-        <!--<CarouselView BackgroundColor="Aqua"
-                      ItemsSource="{Binding Hits}">
-            <CarouselView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Label Text="{Binding Recipe.RecipeName}" />
-                        <Label Text="{Binding Recipe.RecipeBody}" />
-                        <CollectionView ItemsSource="{Binding Recipe.Ingredients}" />
-                    </StackLayout>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>-->
-
-        <Label x:Name="NoResultsLabel"
-               IsVisible="False"
-               Padding="20"
-               HorizontalTextAlignment="Center"
-               FontAttributes="Italic"
-               TextColor="Gray"/>
-
-        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None">
-            <CollectionView.ItemTemplate>
+        <Label Text="{Binding NoResultsLabel}" IsVisible="False" Padding="20" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="Gray"/>
+        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" AutomationProperties.IsInAccessibleTree="true" AutomationProperties.Name="Search results list" AutomationProperties.HelpText="Select one of the search results to see recipe details">
+            <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="true" AutomationProperties.LabeledBy="{x:Reference recipeName}">
                 <DataTemplate>
                     <StackLayout Padding="0,5,2,10">
-                        <Frame BorderColor="Orange"
-                                HasShadow="False"
-                                BackgroundColor="LightYellow">
-                            <Label Text="{Binding Recipe.RecipeName}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemTextStyle}"
-                                FontSize="16"
-                                FontAttributes="Italic"
-                                HeightRequest="20"
-                                VerticalTextAlignment="Center"/>
+                        <Frame BorderColor="{StaticResource Primary}" CornerRadius="10" HasShadow="False">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.25*" />
+                                    <ColumnDefinition Width="0.75*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Recipe.ImageUrl}" />
+                                <Label x:Name="recipeName" Grid.Column="1" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center"/>
+                            </Grid>
                         </Frame>
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:RecipeSearchPage}}, Path=ItemTapped}" CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <!--<Label
-            Text="{Binding Hits[0].Recipe.RecipeName}"
-            FontSize="Large"
-            FontAttributes="Bold" />            
-        <Label Text="Ingredients:" TextDecorations="Underline"/>
-        <CollectionView ItemsSource="{Binding Hits[0].Recipe.Ingredients}" />-->
     </StackLayout>
 </ContentPage>
