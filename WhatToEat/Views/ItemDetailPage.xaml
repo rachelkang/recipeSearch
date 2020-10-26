@@ -7,10 +7,14 @@
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
             <Label HorizontalTextAlignment="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" />
             <Image Source="{Binding ImageUrl}" WidthRequest="300" HeightRequest="150" Aspect="AspectFill"/>
-         </StackLayout>
-        <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
-        <Label Text="{Binding Ingredients}" FontSize="Small" />
-        <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" />
-        <Label Text="{Binding RecipeBody}" FontSize="Small" />
+        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
+                <Label Text="{Binding Ingredients}" FontSize="Small" />
+                <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" />
+                <Label FontSize="Small" FormattedText="{Binding RecipeBody}"/>
+            </StackLayout>
+        </ScrollView>
     </StackLayout>
 </ContentPage>
