@@ -9,13 +9,14 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1558-pre3" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Resizetizer.NT" Version="0.2.0" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\RecipeSearch.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Views\RecipeSearchPage %28copy%29.xaml.cs" />
     <Compile Remove="Views\ItemDetailPage %28copy%29.xaml.cs" />
+    <Compile Remove="Views\RecipeSearchPage %28copy%29.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\RecipeSearch.xaml.cs">
@@ -24,5 +25,32 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\RecipeSearchPage.xaml.cs">
       <DependentUpon>RecipeSearchPage.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\cookbook_blue.png" />
+    <None Remove="Resources\cookbook_gray.png" />
+    <None Remove="Resources\search_blue.png" />
+    <None Remove="Resources\search_gray.png" />
+    <None Remove="Resources\fork-knife.png" />
+    <None Remove="Resources\meat.png" />
+    <None Remove="Resources\apple.png" />
+    <None Remove="Resources\avocado.png" />
+    <None Remove="Resources\salad.png" />
+    <None Remove="Resources\tomato-milk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <SharedImage Include="Resources\fork-knife.png" />
+    <SharedImage Include="Resources\meat.png" />
+    <SharedImage Include="Resources\apple.png" />
+    <SharedImage Include="Resources\avocado.png" />
+    <SharedImage Include="Resources\cookbook_blue.png" />
+    <SharedImage Include="Resources\cookbook_gray.png" />
+    <SharedImage Include="Resources\salad.png" />
+    <SharedImage Include="Resources\search_blue.png" />
+    <SharedImage Include="Resources\search_gray.png" />
+    <SharedImage Include="Resources\tomato-milk.png" />
   </ItemGroup>
 </Project>
