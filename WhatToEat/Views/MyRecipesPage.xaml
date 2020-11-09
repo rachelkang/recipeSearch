@@ -9,27 +9,39 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Create" Command="{Binding NewItemCommand}" />
     </ContentPage.ToolbarItems>
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="Accent">#E3307D</Color>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <StackLayout>
+        <Label Text="Your recipes" FontSize="Large" FontAttributes="Bold" Margin="20,20,0,0"/>
         <CarouselView ItemsSource="{Binding Items}" Loop="False" Margin="20">
             <CarouselView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal"/>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal" />
             </CarouselView.ItemsLayout>
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <Frame BorderColor="{StaticResource Primary}" CornerRadius="40" HasShadow="False">
+                    <!--<Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Rectangle WidthRequest="400" HeightRequest="750" Stroke="#2BB0ED" StrokeThickness="3" RadiusX="40" RadiusY="40" />
                         <StackLayout x:DataType="model:Item" VerticalOptions="Center" HorizontalOptions="Center" Padding="5">
-                            <Label Text="{Binding RecipeName}" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" />
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" />
                             <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" />
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
+                    </Grid>-->
+                    <Frame x:DataType="model:Item" BorderColor="{StaticResource Primary}" CornerRadius="40" HasShadow="False">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="5">
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" />
+                            <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" />
+                            <!--<StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
+                            </StackLayout.GestureRecognizers>-->
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
                     </Frame>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
