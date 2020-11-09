@@ -12,6 +12,7 @@ namespace Recipes
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(RecipeSearchPage), typeof(RecipeSearchPage));
             Routing.RegisterRoute(nameof(HitDetailPage), typeof(HitDetailPage));
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));

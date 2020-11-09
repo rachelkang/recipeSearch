@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Recipes.Views.StartingPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:vm="clr-namespace:Recipes.ViewModels"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Recipes.Views">
+    <StackLayout Margin="5">
+        <Label Text="Find the recipe for you." FontSize="45" FontAttributes="Bold" Margin="15,15,15,0" />
+        <SearchBar x:Name="searchBar"
+                   ios:SearchBar.SearchBarStyle="Default"
+                   BackgroundColor="White"
+                   Placeholder="Search recipes..."
+                   CancelButtonColor="{StaticResource Primary}"
+                   Text="{Binding SearchQuery}"
+                   PlaceholderColor="Gray"
+                   TextColor="{StaticResource Primary}"
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+        <Grid x:Name="recipeTypeButtons" IsVisible="{Binding RecipeTypeButtonsVisible}" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.33*" />
+                <ColumnDefinition Width="0.33*" />
+                <ColumnDefinition Width="0.33*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="75" />
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Column="0" Grid.Row="0" ImageSource="fork-knife.png" Text="Balanced" FontSize="14" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Grid.Column="1" Grid.Row="0" ImageSource="meat.png" Text="High protein" FontSize="14" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Grid.Column="2" Grid.Row="0" ImageSource="avocado.png" Text="Low carb" FontSize="14" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Grid.Column="0" Grid.Row="1" ImageSource="tomato-milk.png" Text="Vegetarian" FontSize="14" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Grid.Column="1" Grid.Row="1" ImageSource="salad.png" Text="Vegan" FontSize="14" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center"/>
+            <Button Grid.Column="2" Grid.Row="1" ImageSource="apple.png" Text="Low fat" FontSize="14" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </Grid>
+        <!--<Button ImageSource="fork-knife.png" Text="Balanced meals" BackgroundColor="Transparent" ContentLayout="Top,0"/>-->
+        <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="Gray"/>
+    </StackLayout>
+</ContentPage>
