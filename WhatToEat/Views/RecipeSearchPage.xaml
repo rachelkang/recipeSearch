@@ -2,28 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.RecipeSearchPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
              Title="{Binding Title}"
-             xmlns:local="clr-namespace:Recipes.ViewModels"
-             xmlns:model="clr-namespace:Recipes.Models">
-    <StackLayout Margin="20">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.7*" />
-                <ColumnDefinition Width="0.3*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
-            <Entry TextColor="{StaticResource Primary}" Text="{Binding SearchQuery}" />
-            <Button Grid.Column="1" BackgroundColor="{StaticResource Primary}" Text="{Binding ButtonText}" Command="{Binding SearchCommand}" />
-        </Grid>
-        <Label Text="{Binding NoResultsLabel}" IsVisible="False" Padding="20" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="Gray"/>
-        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" AutomationProperties.IsInAccessibleTree="true" AutomationProperties.Name="Search results list" AutomationProperties.HelpText="Select one of the search results to see recipe details">
+             xmlns:local="clr-namespace:Recipes.Views">
+    <StackLayout Margin="5">
+        <SearchBar x:Name="searchBar"
+                   ios:SearchBar.SearchBarStyle="Default"
+                   BackgroundColor="White"
+                   Placeholder="Search recipes..."
+                   CancelButtonColor="{StaticResource Primary}"
+                   Text="{Binding SearchQuery}"
+                   PlaceholderColor="Gray"
+                   TextColor="{StaticResource Primary}"
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+        <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="Gray"/>
+        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="10,0,10,10" AutomationProperties.IsInAccessibleTree="true" AutomationProperties.Name="Search results list" AutomationProperties.HelpText="Select one of the search results to see recipe details">
             <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="true" AutomationProperties.LabeledBy="{x:Reference recipeName}">
                 <DataTemplate>
                     <StackLayout Padding="0,5,2,10">
-                        <Frame BorderColor="{StaticResource Primary}" CornerRadius="10" HasShadow="False">
+                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="White" CornerRadius="10" HasShadow="False">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="0.25*" />
@@ -37,7 +36,8 @@
                             </Grid>
                         </Frame>
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </DataTemplate>
