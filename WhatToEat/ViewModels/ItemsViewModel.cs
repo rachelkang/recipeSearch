@@ -21,7 +21,7 @@ namespace Recipes.ViewModels
 
         public ItemsViewModel()
         {
-            Title = "My Recipes";
+            Title = "Recipes";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
