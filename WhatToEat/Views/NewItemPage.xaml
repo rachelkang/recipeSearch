@@ -10,6 +10,7 @@
             <Editor Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <Label Text="Recipe:" FontSize="Medium" />
             <Editor Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" />
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"/>
                 <Button Text="Create" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"/>

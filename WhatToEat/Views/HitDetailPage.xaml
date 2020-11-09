@@ -13,7 +13,7 @@
                 <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
                 <Label Text="{Binding Ingredients}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="Small" VerticalTextAlignment="Center"/>
                 <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium"/>
-                <Label FontSize="Small" FormattedText="{Binding RecipeBody}"/>
+                <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" />
             </StackLayout>
         </ScrollView>
     </StackLayout>

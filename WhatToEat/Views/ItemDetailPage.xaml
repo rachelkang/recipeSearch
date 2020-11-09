@@ -5,15 +5,16 @@
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="15">
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label HorizontalTextAlignment="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" />
-            <Image Source="{Binding ImageUrl}" WidthRequest="300" HeightRequest="150" Aspect="AspectFill"/>
-        </StackLayout>
+            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}"/>
+            <Image Source="{Binding ImageUrl}" WidthRequest="300" HeightRequest="150" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" />
+         </StackLayout>
         <ScrollView>
             <StackLayout>
                 <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
-                <Label Text="{Binding Ingredients}" FontSize="Small" />
+                <Label Text="{Binding Ingredients}" FontSize="Small" IsVisible="{Binding IngredientsVisible}"/>
                 <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" />
-                <Label FontSize="Small" FormattedText="{Binding RecipeBody}"/>
+                <Label Text="{Binding RecipeBody}" FontSize="Small" IsVisible="{Binding RecipeBodyVisible}"/>
+                <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}"/>
             </StackLayout>
         </ScrollView>
     </StackLayout>

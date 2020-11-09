@@ -23,7 +23,9 @@ namespace Recipes.ViewModels
         private string recipeName;
         private string imageUrl;
         private string ingredients;
-        private FormattedString recipeBody;
+        private string recipeBody;
+        private FormattedString recipeUrl;
+        //private bool isMyRecipe;
 
         public ICommand TapCommand { get; }
         public Command AddItemCommand { get; }
@@ -53,11 +55,23 @@ namespace Recipes.ViewModels
             set => SetProperty(ref ingredients, value);
         }
 
-        public FormattedString RecipeBody
+        public string RecipeBody
         {
             get => recipeBody;
             set => SetProperty(ref recipeBody, value);
         }
+
+        public FormattedString RecipeUrl
+        {
+            get => recipeUrl;
+            set => SetProperty(ref recipeUrl, value);
+        }
+
+        //public bool IsMyRecipe
+        //{
+        //    get => isMyRecipe;
+        //    set => SetProperty(ref isMyRecipe, value);
+        //}
 
         private void OnAddItem()
         {
@@ -67,7 +81,9 @@ namespace Recipes.ViewModels
                 RecipeName = RecipeName,
                 ImageUrl = ImageUrl,
                 Ingredients = Ingredients,
-                RecipeBody = RecipeBody
+                RecipeBody = RecipeBody,
+                RecipeUrl = RecipeUrl
+                //IsMyRecipe = false
             };
 
             DataStore.AddItemAsync(newItem);
@@ -122,7 +138,7 @@ namespace Recipes.ViewModels
             recipeBodyFormattedString.Spans.Add(recipeUrlFormattedString);
 
             recipeBodyFormattedString.Spans.Add(new Span { Text = " to view full recipe." });
-            RecipeBody = recipeBodyFormattedString;
+            RecipeUrl = recipeBodyFormattedString;
         }
     }
 }

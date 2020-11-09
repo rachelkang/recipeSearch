@@ -16,7 +16,15 @@ namespace Recipes.ViewModels
         private string recipeName;
         private string imageUrl;
         private string ingredients;
-        private FormattedString recipeBody;
+        private string recipeBody;
+        private FormattedString recipeUrl;
+        //private bool isMyRecipe;
+
+        private bool recipeNameVisible;
+        private bool imageUrlVisible;
+        private bool ingredientsVisible;
+        private bool recipeBodyVisible;
+        private bool recipeUrlVisible;
 
         public string Id { get; set; }
 
@@ -24,6 +32,33 @@ namespace Recipes.ViewModels
         {
             Title = $"{recipeName}";
             EditItemCommand = new Command(OnEditItem);
+
+            RecipeNameVisible = true;
+            ImageUrlVisible = true;
+            IngredientsVisible = true;
+            RecipeBodyVisible = true;
+            RecipeUrlVisible = true;
+        }
+
+        //private bool canEditRecipe(object arg)
+        //{
+        //    return IsMyRecipe;
+        //}
+
+        public string ItemId
+        {
+            get
+            {
+                return itemId;
+            }
+            set
+            {
+                if (value == null)
+                    return;
+
+                itemId = value;
+                LoadItemId(value);
+            }
         }
 
         public string RecipeName
@@ -44,26 +79,52 @@ namespace Recipes.ViewModels
             set => SetProperty(ref ingredients, value);
         }
 
-        public FormattedString RecipeBody
+        public string RecipeBody
         {
             get => recipeBody;
             set => SetProperty(ref recipeBody, value);
         }
 
-        public string ItemId
+        public FormattedString RecipeUrl
         {
-            get
-            {
-                return itemId;
-            }
-            set
-            {
-                if (value == null)
-                    return;
+            get => recipeUrl;
+            set => SetProperty(ref recipeUrl, value);
+        }
 
-                itemId = value;
-                LoadItemId(value);
-            }
+        //public bool IsMyRecipe
+        //{
+        //    get => isMyRecipe;
+        //    set => SetProperty(ref isMyRecipe, value);
+        //}
+
+        public bool RecipeNameVisible
+        {
+            get => recipeNameVisible;
+            set => SetProperty(ref recipeNameVisible, value);
+        }
+
+        public bool ImageUrlVisible
+        {
+            get => imageUrlVisible;
+            set => SetProperty(ref imageUrlVisible, value);
+        }
+
+        public bool IngredientsVisible
+        {
+            get => ingredientsVisible;
+            set => SetProperty(ref ingredientsVisible, value);
+        }
+
+        public bool RecipeBodyVisible
+        {
+            get => recipeBodyVisible;
+            set => SetProperty(ref recipeBodyVisible, value);
+        }
+
+        public bool RecipeUrlVisible
+        {
+            get => recipeUrlVisible;
+            set => SetProperty(ref recipeUrlVisible, value);
         }
 
         public async void LoadItemId(string itemId)
@@ -76,8 +137,20 @@ namespace Recipes.ViewModels
                 ImageUrl = item.ImageUrl;
                 Ingredients = item.Ingredients;
                 RecipeBody = item.RecipeBody;
+                RecipeUrl = item.RecipeUrl;
+                //IsMyRecipe = item.IsMyRecipe;
+
+                var emptyFormattedString = new FormattedString();
+                emptyFormattedString.Spans.Add(new Span { Text = "" });
+
+                RecipeNameVisible = !String.IsNullOrEmpty(RecipeName);
+                ImageUrlVisible = !String.IsNullOrEmpty(ImageUrl);
+                IngredientsVisible = !String.IsNullOrEmpty(Ingredients);
+                RecipeBodyVisible = !String.IsNullOrEmpty(RecipeBody);
+                RecipeUrlVisible = !(RecipeUrl == null || FormattedString.Equals(RecipeUrl, emptyFormattedString));
+                
             }
-            catch (Exception)
+            catch (Exception) 
             {
                 Debug.WriteLine("Failed to Load Item");
             }

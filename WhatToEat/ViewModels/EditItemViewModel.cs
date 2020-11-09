@@ -12,11 +12,13 @@ namespace Recipes.ViewModels
     [QueryProperty(nameof(Id), nameof(Id))] // query string - using property names directly and avoiding magic strings
     public class EditItemViewModel : BaseViewModel
     {
+        private string id;
         private string recipeName;
         private string ingredients;
         private string imageUrl;
-        private FormattedString recipeBody;
-        private string id;
+        private string recipeBody;
+        private FormattedString recipeUrl;
+        //private bool isMyRecipe;
 
         public EditItemViewModel()
         {
@@ -32,6 +34,19 @@ namespace Recipes.ViewModels
         private bool ValidateUpdate()
         {
             return !String.IsNullOrWhiteSpace(recipeName);
+        }
+
+        public string Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+                LoadItemId(value);
+            }
         }
 
         public string RecipeName
@@ -52,24 +67,23 @@ namespace Recipes.ViewModels
             set => SetProperty(ref imageUrl, value);
         }
 
-        public FormattedString RecipeBody
+        public string RecipeBody
         {
             get => recipeBody;
             set => SetProperty(ref recipeBody, value);
         }
 
-        public string Id
+        public FormattedString RecipeUrl
         {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                id = value;
-                LoadItemId(value);
-            }
+            get => recipeUrl;
+            set => SetProperty(ref recipeUrl, value);
         }
+
+        //public bool IsMyRecipe
+        //{
+        //    get => isMyRecipe;
+        //    set => SetProperty(ref isMyRecipe, value);
+        //}
 
         public async void LoadItemId(string itemId)
         {
@@ -80,6 +94,8 @@ namespace Recipes.ViewModels
                 Ingredients = item.Ingredients;
                 ImageUrl = item.ImageUrl;
                 RecipeBody = item.RecipeBody;
+                RecipeUrl = item.RecipeUrl;
+                //IsMyRecipe = item.IsMyRecipe;
             }
             catch (Exception)
             {
@@ -115,7 +131,9 @@ namespace Recipes.ViewModels
                 RecipeName = RecipeName,
                 Ingredients = Ingredients,
                 ImageUrl = ImageUrl,
-                RecipeBody = RecipeBody
+                RecipeBody = RecipeBody,
+                RecipeUrl = RecipeUrl
+                //IsMyRecipe = IsMyRecipe
             };
 
             await DataStore.UpdateItemAsync(newItem);
