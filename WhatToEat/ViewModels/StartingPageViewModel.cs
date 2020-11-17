@@ -15,6 +15,7 @@ namespace Recipes.ViewModels
         private bool noResultsVisible;
 
         public Command SearchCommand { get; }
+        public Command FilteredSearchCommand { get; }
         public Command<Hit> BalancedMealsTapped { get; }
 
         public StartingPageViewModel()
@@ -24,7 +25,8 @@ namespace Recipes.ViewModels
             NoResultsVisible = false;
             RecipeTypeButtonsVisible = true;
 
-            SearchCommand = new Command(async () => await OnSearch());
+            SearchCommand = new Command(async () => await OnSearch(false));
+            FilteredSearchCommand = new Command(async () => await OnSearch(true));
             BalancedMealsTapped = new Command<Hit>(OnBalancedMealsSelected);
         }
 
@@ -50,13 +52,13 @@ namespace Recipes.ViewModels
             set => SetProperty(ref noResultsVisible, value);
         }
 
-        async Task OnSearch()
+        async Task OnSearch(bool filtered)
         {
             NoResultsVisible = false;
 
             if (!string.IsNullOrWhiteSpace(SearchQuery))
             {
-                RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint));
+                RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint, filtered));
 
                 if (recipeData == null || recipeData.Hits.Length == 0)
                 {
@@ -72,13 +74,24 @@ namespace Recipes.ViewModels
             }
         }
 
-        string GenerateRequestUri(string endpoint)
+        string GenerateRequestUri(string endpoint, bool filtered)
         {
             string requestUri = endpoint;
             requestUri += $"?q={SearchQuery}";
+
+   //         if (filtered)
+   //         {
+   //             requestUri += $"?q=Vegetarian {SearchQuery}";
+   //         }
+   //         else
+			//{
+   //             requestUri += $"?q={SearchQuery}";
+   //         }
+
+            // requestUri += $"?q={Keyword} {SearchQuery}";
             requestUri += $"&app_id={Constants.EdamamAppId}";
             requestUri += $"&app_key={Constants.EdamamAppKey}";
-            //requestUri += $"&from=0&to=1";
+
             return requestUri;
         }
 
