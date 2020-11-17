@@ -6,6 +6,7 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Recipes.ViewModels"
              xmlns:model="clr-namespace:Recipes.Models">
+             xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation"
              xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Create" Command="{Binding NewItemCommand}" />
@@ -50,5 +51,8 @@
             </CarouselView.ItemTemplate>
         </CarouselView>
         </sh:Shadows>
+        <StackLayout.Behaviors>
+            <anim:EntranceTransition Duration="200"/>
+        </StackLayout.Behaviors>
     </StackLayout>
 </ContentPage>
