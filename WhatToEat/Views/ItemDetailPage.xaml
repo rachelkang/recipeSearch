@@ -5,16 +5,16 @@
     </ContentPage.ToolbarItems>
     <StackLayout Spacing="20" Padding="15">
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}"/>
-            <Image Source="{Binding ImageUrl}" WidthRequest="300" HeightRequest="150" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" />
-         </StackLayout>
+            <Image Source="{Binding ImageUrl}" WidthRequest="500" HeightRequest="200" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" />
+            <Label Text="{Binding RecipeName}" FontSize="25" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" TextColor="Black" Margin="10,10,0,-10"/>
+        </StackLayout>
         <ScrollView>
-            <StackLayout>
-                <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
-                <Label Text="{Binding Ingredients}" FontSize="Small" IsVisible="{Binding IngredientsVisible}"/>
-                <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" />
-                <Label Text="{Binding RecipeBody}" FontSize="Small" IsVisible="{Binding RecipeBodyVisible}"/>
-                <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}"/>
+            <StackLayout Margin="10,0,0,0">
+                <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+                <Label Text="{Binding Ingredients}" FontSize="Small" IsVisible="{Binding IngredientsVisible}" TextColor="Black"/>
+                <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+                <Label Text="{Binding RecipeBody}" FontSize="Small" IsVisible="{Binding RecipeBodyVisible}" TextColor="Black"/>
+                <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" TextColor="Black"/>
             </StackLayout>
         </ScrollView>
     </StackLayout>
