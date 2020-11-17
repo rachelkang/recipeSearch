@@ -23,7 +23,7 @@ namespace Recipes.ViewModels
 
         public RecipeSearchViewModel()
         {
-            Title = "Search Results";
+            Title = "Search results";
             _restService = new RestService();
             NoResultsVisible = false;
 

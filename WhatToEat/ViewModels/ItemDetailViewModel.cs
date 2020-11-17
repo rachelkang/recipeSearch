@@ -30,7 +30,6 @@ namespace Recipes.ViewModels
 
         public ItemDetailViewModel()
         {
-            Title = $"{recipeName}";
             EditItemCommand = new Command(OnEditItem);
 
             RecipeNameVisible = true;
@@ -139,6 +138,8 @@ namespace Recipes.ViewModels
                 RecipeBody = item.RecipeBody;
                 RecipeUrl = item.RecipeUrl;
                 //IsMyRecipe = item.IsMyRecipe;
+
+                Title = RecipeName;
 
                 var emptyFormattedString = new FormattedString();
                 emptyFormattedString.Spans.Add(new Span { Text = "" });
