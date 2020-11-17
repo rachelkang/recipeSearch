@@ -6,6 +6,7 @@
              xmlns:vm="clr-namespace:Recipes.ViewModels"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Recipes.Views">
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
     <StackLayout Margin="5">
         <SearchBar x:Name="searchBar"
                    ios:SearchBar.SearchBarStyle="Default"
@@ -35,6 +36,9 @@
                                 <Label x:Name="recipeName" Grid.Column="1" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center"/>
                             </Grid>
                         </Frame>
+                        <sh:Shadows CornerRadius="15"
+                                    Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.20, Color='Black'}">
+                        </sh:Shadows>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}">
                             </TapGestureRecognizer>

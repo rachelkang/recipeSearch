@@ -6,6 +6,7 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Recipes.ViewModels"
              xmlns:model="clr-namespace:Recipes.Models">
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Create" Command="{Binding NewItemCommand}" />
     </ContentPage.ToolbarItems>
@@ -27,6 +28,8 @@
                             <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" />
                             <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" />
                             <StackLayout.GestureRecognizers>
+        <sh:Shadows CornerRadius="30"
+                    Shades="{sh:SingleShade Offset='0,5', BlurRadius=15, Opacity=0.20, Color='Black'}">
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
@@ -46,5 +49,6 @@
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
+        </sh:Shadows>
     </StackLayout>
 </ContentPage>
