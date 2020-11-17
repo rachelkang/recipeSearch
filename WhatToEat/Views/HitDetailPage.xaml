@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Recipes.Views.HitDetailPage" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:xct="http://xamarin.com/schemas/2020/toolkit" x:Class="Recipes.Views.HitDetailPage" Title="{Binding Title}" Visual="Material">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add to My Recipes" Command="{Binding AddItemCommand}"/>
+        <ToolbarItem Text="Add to My Recipes" Command="{Binding AddItemCommand}" Clicked="AddItem_Clicked"/>
     </ContentPage.ToolbarItems>
-    <StackLayout Spacing="15" Padding="20">        
+    <StackLayout Spacing="20" Padding="15">
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-            <Image Source="{Binding ImageUrl}" />
+            <Image Source="{Binding ImageUrl}" WidthRequest="500" HeightRequest="200" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" />
+            <Label Text="{Binding RecipeName}" FontSize="25" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" TextColor="Black" Margin="10,10,0,-10"/>
         </StackLayout>
         <ScrollView>
-            <StackLayout>
-                <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium"/>
-                <Label Text="{Binding Ingredients}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="Small" VerticalTextAlignment="Center"/>
-                <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium"/>
-                <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" />
+            <StackLayout Margin="10,0,0,0">
+                <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+                <Label Text="{Binding Ingredients}" FontSize="Small" IsVisible="{Binding IngredientsVisible}" TextColor="Black" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}"/>
+                <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+                <Label Text="{Binding RecipeBody}" FontSize="Small" IsVisible="{Binding RecipeBodyVisible}" TextColor="Black"/>
+                <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" TextColor="Black"/>
             </StackLayout>
         </ScrollView>
     </StackLayout>
