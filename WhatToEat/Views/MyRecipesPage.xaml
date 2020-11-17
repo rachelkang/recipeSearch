@@ -5,51 +5,34 @@
              xmlns:vm="clr-namespace:Recipes.ViewModels"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Recipes.ViewModels"
-             xmlns:model="clr-namespace:Recipes.Models">
+             xmlns:model="clr-namespace:Recipes.Models"
              xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation"
              xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Create" Command="{Binding NewItemCommand}" />
+        <ToolbarItem Text="New" Command="{Binding NewItemCommand}" />
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <Label Text="Your recipes" FontSize="Large" FontAttributes="Bold" Margin="20,20,0,0"/>
-        <CarouselView ItemsSource="{Binding Items}" Loop="False" Margin="20">
-            <CarouselView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="20" Orientation="Horizontal" />
-            </CarouselView.ItemsLayout>
-            <CarouselView.ItemTemplate>
-                <DataTemplate>
-                    <!--<Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Rectangle WidthRequest="400" HeightRequest="750" Stroke="#2BB0ED" StrokeThickness="3" RadiusX="40" RadiusY="40" />
-                        <StackLayout x:DataType="model:Item" VerticalOptions="Center" HorizontalOptions="Center" Padding="5">
-                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" />
-                            <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" />
-                            <StackLayout.GestureRecognizers>
+        <Label Text="Your recipes" FontSize="30" FontAttributes="Bold" Margin="20,20,0,0" TextColor="Black"/>
         <sh:Shadows CornerRadius="30"
                     Shades="{sh:SingleShade Offset='0,5', BlurRadius=15, Opacity=0.20, Color='Black'}">
+            <CarouselView ItemsSource="{Binding Items}" Loop="False" Margin="20">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="30" Orientation="Horizontal" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame x:DataType="model:Item" CornerRadius="40" HasShadow="False">
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="-50">
+                                <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="700" WidthRequest="400" Margin="0,-100,0,-400"/>
+                                <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" BackgroundColor="White" FontSize="30" FontAttributes="Bold" Padding="50,10" TextColor="Black"/>
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                    </Grid>-->
-                    <Frame x:DataType="model:Item" BorderColor="{StaticResource Primary}" CornerRadius="40" HasShadow="False">
-                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="5">
-                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding RecipeName}" FontSize="Large" FontAttributes="Bold" />
-                            <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" />
-                            <!--<StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
-                            </StackLayout.GestureRecognizers>-->
-                        </StackLayout>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                </DataTemplate>
-            </CarouselView.ItemTemplate>
-        </CarouselView>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
         </sh:Shadows>
         <StackLayout.Behaviors>
             <anim:EntranceTransition Duration="200"/>
