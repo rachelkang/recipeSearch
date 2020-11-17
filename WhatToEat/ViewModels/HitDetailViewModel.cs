@@ -87,8 +87,6 @@ namespace Recipes.ViewModels
             };
 
             DataStore.AddItemAsync(newItem);
-
-            // add Toast that says "Added to your recipes!"
         }
 
         public string HitId

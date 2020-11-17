@@ -1,12 +1,11 @@
-﻿using System.ComponentModel;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Recipes.ViewModels;
-using System;
-using System.Linq;
-using System.Diagnostics;
-using System.Windows.Input;
-using Xamarin.Essentials;
-using Recipes.Models;
+using Xamarin.CommunityToolkit.Extensions;
+using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.UI.Views.Options;
+using System.Collections.Generic;
+using System.Drawing;
+using Color = Xamarin.Forms.Color;
 
 namespace Recipes.Views
 {
@@ -14,11 +13,35 @@ namespace Recipes.Views
     {
 
         HitDetailViewModel _viewModel;
+		Color primary = Color.FromHex("#2BB0ED");
+		string alertMessage = "This recipe has been added to your personal recipe collection! Go to the 'My Recipes' tab to view and modify this recipe from there :)";
 
-        public HitDetailPage()
+		public HitDetailPage()
         {
             InitializeComponent();
             BindingContext = _viewModel = new HitDetailViewModel();
         }
-    }
+
+		async void AddItem_Clicked(System.Object sender, System.EventArgs e)
+		{
+			var messageOptions = new MessageOptions
+			{
+				Foreground = primary,
+				FontSize = 7,
+				Message = alertMessage
+			};
+
+			var actionOptions = new List<SnackBarActionOptions>
+			{
+				new SnackBarActionOptions
+				{
+					ForegroundColor = Color.White,
+					BackgroundColor = primary,
+					FontSize = 7
+				}
+			};
+			var options = new SnackBarOptions(messageOptions, 5000, primary, false, actionOptions);
+			await this.DisplaySnackBarAsync(options);
+		}
+	}
 }
