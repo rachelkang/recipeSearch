@@ -5,7 +5,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
              Title="{Binding Title}"
-             xmlns:local="clr-namespace:Recipes.Views">
+             xmlns:local="clr-namespace:Recipes.Views"
              xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
              xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation">
     <StackLayout Margin="5">
@@ -16,29 +16,22 @@
                    CancelButtonColor="{StaticResource Primary}"
                    Text="{Binding SearchQuery}"
                    PlaceholderColor="Gray"
-                   TextColor="{StaticResource Primary}"
+                   TextColor="Black"
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
         <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="Gray"/>
-        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="10,0,10,10" AutomationProperties.IsInAccessibleTree="true" AutomationProperties.Name="Search results list" AutomationProperties.HelpText="Select one of the search results to see recipe details">
+        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="5,5,10,0" AutomationProperties.IsInAccessibleTree="true" AutomationProperties.Name="Search results list" AutomationProperties.HelpText="Select one of the search results to see recipe details">
             <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="true" AutomationProperties.LabeledBy="{x:Reference recipeName}">
                 <DataTemplate>
-                    <StackLayout Padding="0,5,2,10">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="White" CornerRadius="10" HasShadow="False">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.25*" />
-                                    <ColumnDefinition Width="0.75*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="50" />
-                                </Grid.RowDefinitions>
-                                <Image Source="{Binding Recipe.ImageUrl}" />
-                                <Label x:Name="recipeName" Grid.Column="1" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center"/>
-                            </Grid>
-                        </Frame>
+                    <StackLayout Padding="10,5,10,10">
                         <sh:Shadows CornerRadius="15"
                                     Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.20, Color='Black'}">
+                            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="False">
+                                <StackLayout Orientation="Horizontal" HeightRequest="50">
+                                    <Image Source="{Binding Recipe.ImageUrl}" />
+                                    <Label x:Name="recipeName" Margin="5,0,0,0" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black"/>
+                                </StackLayout>
+                            </Frame>
                         </sh:Shadows>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}">
@@ -47,6 +40,9 @@
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            <!--<CollectionView.Behaviors>
+                <anim:EntranceTransition Duration="200"/>
+            </CollectionView.Behaviors>-->
         </CollectionView>
         <StackLayout.Behaviors>
             <anim:EntranceTransition Duration="500"/>
