@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using UIKit;
-using Recipes.iOS;
-using Recipes;
 
 namespace Recipes.iOS
 {
