@@ -7,6 +7,7 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Recipes.Views">
              xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+             xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation">
     <StackLayout Margin="5">
         <SearchBar x:Name="searchBar"
                    ios:SearchBar.SearchBarStyle="Default"
@@ -47,5 +48,8 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <StackLayout.Behaviors>
+            <anim:EntranceTransition Duration="500"/>
+        </StackLayout.Behaviors>
     </StackLayout>
 </ContentPage>
