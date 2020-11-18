@@ -3,24 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.StartingPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation"
-             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
-             sharedTransitions:SharedTransitionNavigationPage.BackgroundAnimation="Fade"
-             Title="{Binding Title}">
+             xmlns:vm="clr-namespace:Recipes.ViewModels"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:Recipes.Views"
+             xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation">
     <StackLayout Margin="5">
         <Label Text="Find the recipe for you." FontSize="40" FontAttributes="Bold" TextColor="Black" Margin="15,15,15,0" />
         <SearchBar x:Name="searchBar"
-                    ios:SearchBar.SearchBarStyle="Default"
-                    sharedTransitions:Transition.Name="searchBarTransition"
-                    BackgroundColor="White"
-                    Placeholder="Search recipes..."
-                    CancelButtonColor="{StaticResource Primary}"
-                    Text="{Binding SearchQuery}"
-                    PlaceholderColor="Gray"
-                    TextColor="Black"
-                    Margin="0,5,0,5"
-                    SearchCommand="{Binding SearchCommand}"
-                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+                   ios:SearchBar.SearchBarStyle="Default"
+                   BackgroundColor="White"
+                   Placeholder="Search recipes..."
+                   CancelButtonColor="{StaticResource Primary}"
+                   Text="{Binding SearchQuery}"
+                   PlaceholderColor="Gray"
+                   TextColor="Black"
+                   Margin="0,5,0,5"
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
         <!--<StackLayout Orientation="Horizontal">
             <Button ImageSource="fork-knife.png" Text="Balanced" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black" />
             <Button ImageSource="meat.png" Text="High protein" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
@@ -42,28 +41,28 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackLayout Grid.Column="0" Grid.Row="0">
-                <ImageButton Source="fork-knife.png" BackgroundColor="Transparent" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=balanced"/>
+                <ImageButton Source="fork-knife.png" BackgroundColor="Transparent" Command="{Binding FilteredSearchCommand}"/>
                 <Label Text="Balanced" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
             </StackLayout>
             <StackLayout Grid.Column="1" Grid.Row="0">
-                <ImageButton Source="meat.png" BackgroundColor="Transparent" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=high-protein"/>
-                <Label Text="High-protein" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
+                <ImageButton Source="meat.png" BackgroundColor="Transparent" />
+                <Label Text="High protein" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
             </StackLayout>
             <StackLayout Grid.Column="2" Grid.Row="0">
-                <ImageButton Source="avocado.png" BackgroundColor="Transparent" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=low-carb"/>
-                <Label Text="Low-carb" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
+                <ImageButton Source="avocado.png" BackgroundColor="Transparent" />
+                <Label Text="Low carb" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
             </StackLayout>
             <StackLayout Grid.Column="0" Grid.Row="1">
-                <ImageButton Source="tomato-milk.png" BackgroundColor="Transparent" Margin="0,5,0,0" Command="{Binding FilteredSearchCommand}" CommandParameter="health=vegetarian"/>
+                <ImageButton Source="tomato-milk.png" BackgroundColor="Transparent" Margin="0,5,0,0"/>
                 <Label Text="Vegetarian" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
             </StackLayout>
             <StackLayout Grid.Column="1" Grid.Row="1">
-                <ImageButton Source="salad.png" BackgroundColor="Transparent" Margin="0,5,0,0" Command="{Binding FilteredSearchCommand}" CommandParameter="health=vegan"/>
+                <ImageButton Source="salad.png" BackgroundColor="Transparent" Margin="0,5,0,0"/>
                 <Label Text="Vegan" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
             </StackLayout>
             <StackLayout Grid.Column="2" Grid.Row="1">
-                <ImageButton Source="apple.png" BackgroundColor="Transparent" Margin="0,5,0,0" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=low-fat"/>
-                <Label Text="Low-fat" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
+                <ImageButton Source="apple.png" BackgroundColor="Transparent" Margin="0,5,0,0"/>
+                <Label Text="Low fat" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
             </StackLayout>
             
             <!--<Button Grid.Column="0" Grid.Row="0" ImageSource="fork-knife.png" Text="Balanced" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black" />
@@ -73,7 +72,7 @@
             <Button Grid.Column="1" Grid.Row="1" ImageSource="salad.png" Text="Vegan" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
             <Button Grid.Column="2" Grid.Row="1" ImageSource="apple.png" Text="Low fat" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>-->
         </Grid>
-        <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
+        <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="Gray"/>
         <StackLayout.Behaviors>
             <anim:EntranceTransition Duration="200"/>
         </StackLayout.Behaviors>

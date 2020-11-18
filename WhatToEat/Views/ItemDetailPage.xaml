@@ -3,34 +3,19 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit" Command="{Binding EditItemCommand}" />
     </ContentPage.ToolbarItems>
-    <Grid Margin="15">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3.5*" />
-            <RowDefinition Height="6.5*" />
-        </Grid.RowDefinitions>
-        <StackLayout Grid.Column="0" Grid.Row="0" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="0,0,0,10" BackgroundColor="White">
-            <Image Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" Margin="0,0,0,-150" />
-            <Label Text="{Binding RecipeName}" FontSize="25" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" TextColor="Black" Padding="15,10" BackgroundColor="White"/>
+    <StackLayout Spacing="20" Padding="15">
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Image Source="{Binding ImageUrl}" WidthRequest="500" HeightRequest="200" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" />
+            <Label Text="{Binding RecipeName}" FontSize="25" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" TextColor="Black" Margin="10,10,0,-10"/>
         </StackLayout>
-        <ScrollView Grid.Column="0" Grid.Row="1" Padding="0,5,0,0" BackgroundColor="White">
-            <StackLayout>
-                <Frame Background="{StaticResource BlueGradient}" CornerRadius="10" HasShadow="False" Margin="0,5">
-                    <StackLayout Margin="2">
-                        <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
-                        <Label Text="{Binding Ingredients}" FontSize="Small" IsVisible="{Binding IngredientsVisible}" TextColor="Black"/>
-                    </StackLayout>
-                </Frame>
-                <Frame Background="{StaticResource BlueGradient}" CornerRadius="10" HasShadow="False">
-                    <StackLayout Margin="2">
-                        <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
-                        <Label Text="{Binding RecipeBody}" FontSize="Small" IsVisible="{Binding RecipeBodyVisible}" TextColor="Black"/>
-                        <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" TextColor="Black"/>
-                    </StackLayout>
-                </Frame>
+        <ScrollView>
+            <StackLayout Margin="10,0,0,0">
+                <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+                <Label Text="{Binding Ingredients}" FontSize="Small" IsVisible="{Binding IngredientsVisible}" TextColor="Black"/>
+                <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+                <Label Text="{Binding RecipeBody}" FontSize="Small" IsVisible="{Binding RecipeBodyVisible}" TextColor="Black"/>
+                <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" TextColor="Black"/>
             </StackLayout>
         </ScrollView>
-    </Grid>
+    </StackLayout>
 </ContentPage>

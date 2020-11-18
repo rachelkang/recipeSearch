@@ -10,13 +10,12 @@ namespace Recipes.ViewModels
     {
         RestService _restService;
 
-        string _searchQuery; // private by default, _name
-        bool recipeTypeButtonsVisible;
-        string noResultsLabel;
-        bool noResultsVisible;
+        private bool recipeTypeButtonsVisible;
+        private string noResultsLabel;
+        private bool noResultsVisible;
 
         public Command SearchCommand { get; }
-        public Command<string> FilteredSearchCommand { get; }
+        public Command FilteredSearchCommand { get; }
         public Command<Hit> BalancedMealsTapped { get; }
 
         public StartingPageViewModel()
@@ -26,8 +25,8 @@ namespace Recipes.ViewModels
             NoResultsVisible = false;
             RecipeTypeButtonsVisible = true;
 
-            SearchCommand = new Command(async () => await OnSearch());
-            FilteredSearchCommand = new Command<string>(async (filter) => await OnSearch(filter));
+            SearchCommand = new Command(async () => await OnSearch(false));
+            FilteredSearchCommand = new Command(async () => await OnSearch(true));
             BalancedMealsTapped = new Command<Hit>(OnBalancedMealsSelected);
         }
 
@@ -39,17 +38,7 @@ namespace Recipes.ViewModels
 
         public RecipeData RecipeData { get; set; }
 
-        public string SearchQuery
-        {
-            get
-            {
-                return _searchQuery;
-            }
-            set
-            {
-                SetProperty(ref _searchQuery, value);
-            }
-        }
+        public string SearchQuery { get; set; }
 
         public string NoResultsLabel
         {
@@ -63,13 +52,13 @@ namespace Recipes.ViewModels
             set => SetProperty(ref noResultsVisible, value);
         }
 
-		async Task OnSearch(string filter = null)
+        async Task OnSearch(bool filtered)
         {
             NoResultsVisible = false;
 
             if (!string.IsNullOrWhiteSpace(SearchQuery))
             {
-                RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint));
+                RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint, filtered));
 
                 if (recipeData == null || recipeData.Hits.Length == 0)
                 {
@@ -80,21 +69,27 @@ namespace Recipes.ViewModels
                 else
                 {
                     NoResultsVisible = false;
-
-                    string urlEncodedFilter = System.Net.WebUtility.UrlEncode(filter);
-                    await Shell.Current.GoToAsync($"{nameof(RecipeSearchPage)}?SearchQuery={SearchQuery}&SearchFilter={urlEncodedFilter}");
-
-                    SearchQuery = string.Empty;
-                    RecipeTypeButtonsVisible = true;
+                    await Shell.Current.GoToAsync($"{nameof(RecipeSearchPage)}?SearchQuery={SearchQuery}");
                 }
             }
         }
 
-        string GenerateRequestUri(string endpoint)
+        string GenerateRequestUri(string endpoint, bool filtered)
         {
             string requestUri = endpoint;
-			requestUri += $"?q={SearchQuery}";
-			requestUri += $"&app_id={Constants.EdamamAppId}";
+            requestUri += $"?q={SearchQuery}";
+
+   //         if (filtered)
+   //         {
+   //             requestUri += $"?q=Vegetarian {SearchQuery}";
+   //         }
+   //         else
+			//{
+   //             requestUri += $"?q={SearchQuery}";
+   //         }
+
+            // requestUri += $"?q={Keyword} {SearchQuery}";
+            requestUri += $"&app_id={Constants.EdamamAppId}";
             requestUri += $"&app_key={Constants.EdamamAppKey}";
 
             return requestUri;

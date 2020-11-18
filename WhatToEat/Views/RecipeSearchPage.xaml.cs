@@ -16,14 +16,5 @@ namespace Recipes.Views
             BindingContext = _viewModel = new RecipeSearchViewModel();
         }
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-
-   //         if (!string.IsNullOrEmpty(searchBar.Text.ToString()))
-			//{
-             _viewModel.SearchCommand.Execute(null);
-            //}
-		}
-	}
+    }
 }

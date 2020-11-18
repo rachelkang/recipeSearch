@@ -15,18 +15,17 @@
                 <RowDefinition Height="1.5*" />
                 <RowDefinition Height="1.5*" />
                 <RowDefinition Height="3*" />
-                <RowDefinition Height="4.5*" />
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" FontSize="25" FontAttributes="Bold" Text="New recipe" TextColor="Black"/>
             <Entry Grid.Column="0" Grid.Row="1" Placeholder="Recipe Name" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" FontSize="Medium" VerticalTextAlignment="Start" />
             <Entry Grid.Column="0" Grid.Row="2" Placeholder="Image URL" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" FontSize="Medium" VerticalTextAlignment="Start" />
             <Editor Grid.Column="0" Grid.Row="3" Placeholder="Ingredients" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding Ingredients, Mode=TwoWay}" IsSpellCheckEnabled="false" FontSize="Medium" Margin="0" />
-            <StackLayout Grid.Column="0" Grid.Row="4" >
-                <Editor Placeholder="Recipe" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding RecipeBody, Mode=TwoWay}" IsSpellCheckEnabled="false" FontSize="Medium" Margin="0" />
-                <Label FontSize="Small" FormattedText="{Binding RecipeUrl}" FontAttributes="Italic" TextColor="Gray" HorizontalTextAlignment="End"/>
-            </StackLayout>
-            <StackLayout Grid.Column="0" Grid.Row="5" Orientation="Horizontal">
+            <Editor Grid.Column="0" Grid.Row="4" Placeholder="Recipe" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding RecipeBody, Mode=TwoWay}" IsSpellCheckEnabled="false" FontSize="Medium" Margin="0" />
+            <Label Grid.Column="0" Grid.Row="5" FontSize="Small" FormattedText="{Binding RecipeUrl}" TextColor="Gray"/>
+            <StackLayout Grid.Column="0" Grid.Row="6" Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"/>
                 <Button Text="Delete" Command="{Binding DeleteCommand}" BackgroundColor="#BF2E2E" HorizontalOptions="FillAndExpand"/>
                 <Button Text="Update" Command="{Binding UpdateCommand}" HorizontalOptions="FillAndExpand"/>

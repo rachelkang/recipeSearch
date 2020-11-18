@@ -3,15 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.RecipeSearchPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
              Title="{Binding Title}"
+             xmlns:local="clr-namespace:Recipes.Views"
              xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
              xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation">
-    <StackLayout Margin="5,5,5,0">
+    <StackLayout Margin="5">
         <SearchBar x:Name="searchBar"
                    ios:SearchBar.SearchBarStyle="Default"
-                   sharedTransitions:Transition.Name="searchBarTransition"
                    BackgroundColor="White"
                    Placeholder="Search recipes..."
                    CancelButtonColor="{StaticResource Primary}"
@@ -20,14 +19,14 @@
                    TextColor="Black"
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
-        <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
-        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="5,0" IsVisible="{Binding SearchResultsVisible}" AutomationProperties.IsInAccessibleTree="true" AutomationProperties.Name="Search results list" AutomationProperties.HelpText="Select one of the search results to see recipe details">
+        <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="Gray"/>
+        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="5,5,10,0" AutomationProperties.IsInAccessibleTree="true" AutomationProperties.Name="Search results list" AutomationProperties.HelpText="Select one of the search results to see recipe details">
             <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="true" AutomationProperties.LabeledBy="{x:Reference recipeName}">
                 <DataTemplate>
-                    <StackLayout Padding="10,0,10,15">
+                    <StackLayout Padding="10,5,10,10">
                         <sh:Shadows CornerRadius="15"
-                                    Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.2, Color='Black'}">
-                            <Frame Background="{StaticResource BlueGradient}" CornerRadius="10" HasShadow="False">
+                                    Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.20, Color='Black'}">
+                            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="False">
                                 <StackLayout Orientation="Horizontal" HeightRequest="50">
                                     <Image Source="{Binding Recipe.ImageUrl}" />
                                     <Label x:Name="recipeName" Margin="5,0,0,0" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black"/>

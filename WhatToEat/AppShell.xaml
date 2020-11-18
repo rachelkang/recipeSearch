@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sharedTransitions:SharedTransitionShell xmlns="http://xamarin.com/schemas/2014/forms"
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:Recipes.Views"
-       xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
        Title="Recipes"
        x:Class="Recipes.AppShell">
     <!--
@@ -10,7 +9,7 @@
     
         https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
     -->
-    <sharedTransitions:SharedTransitionShell.Resources>
+    <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="White" />
@@ -27,7 +26,7 @@
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
-    </sharedTransitions:SharedTransitionShell.Resources>
+    </Shell.Resources>
     <TabBar>
         <ShellContent Title="Recipe Search" Icon="//search_blue.png" Route="StartingPage" ContentTemplate="{DataTemplate local:StartingPage}" />
         <ShellContent Title="My Recipes" Icon="//cookbook_gray.png" Route="MyRecipesPage" ContentTemplate="{DataTemplate local:MyRecipesPage}" />
@@ -37,4 +36,4 @@
         await Shell.Current.GoToAsync("//LoginPage");
     -->
     <ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:LoginPage}" />
-</sharedTransitions:SharedTransitionShell>
+</Shell>
