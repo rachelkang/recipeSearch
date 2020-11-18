@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Plugin.SharedTransitions;
 using Recipes.Models;
 using Recipes.ViewModels;
 using Recipes.Views;
@@ -7,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Recipes
 {
-    public partial class AppShell : Xamarin.Forms.Shell
+    public partial class AppShell : SharedTransitionShell
     {
         public AppShell()
         {
