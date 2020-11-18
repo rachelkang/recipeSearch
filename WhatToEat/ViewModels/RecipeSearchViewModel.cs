@@ -7,48 +7,43 @@ using Xamarin.Forms;
 namespace Recipes.ViewModels
 {
     [QueryProperty(nameof(SearchQuery), nameof(SearchQuery))]
-    [QueryProperty(nameof(DietSearchFilter), nameof(DietSearchFilter))]
-    [QueryProperty(nameof(HealthSearchFilter), nameof(HealthSearchFilter))]
+    [QueryProperty(nameof(SearchFilter), nameof(SearchFilter))]
     public class RecipeSearchViewModel : BaseViewModel
     {
         RestService _restService;
 
+        RecipeData _recipeData;
         private string searchQuery;
-        //private string dietSearchFilter;
-        //private string healthSearchFilter;
         private string noResultsLabel;
-        private bool noResultsVisible;
+        private bool noResultsLabelVisible;
+        bool _searchResultsVisible;
         public Command<Hit> ItemTapped { get; }
         public Command SearchCommand { get; }
 
         public RecipeSearchViewModel()
         {
-            Title = "Search results";
+            Title = "Search all recipes";
             _restService = new RestService();
-            NoResultsVisible = false;
+            NoResultsLabelVisible = false;
+            SearchResultsVisible = true;
 
             ItemTapped = new Command<Hit>(OnItemSelected);
             SearchCommand = new Command(async () => await OnSearch());
         }
 
-        public RecipeData RecipeData { get; set; }
+        public RecipeData RecipeData
+        {
+            get => _recipeData;
+            set => SetProperty(ref _recipeData, value);
+        }
 
         public string SearchQuery
         {
-            get
-            {
-                return searchQuery;
-            }
-            set
-            {
-                searchQuery = value;
-                _ = OnSearch();
-            }
+            get => searchQuery;
+            set => SetProperty(ref searchQuery, value);
         }
 
-        public string DietSearchFilter { get; set; }
-
-        public string HealthSearchFilter { get; set; }
+        public string SearchFilter { get; set; }
 
         public string NoResultsLabel
         {
@@ -56,15 +51,21 @@ namespace Recipes.ViewModels
             set => SetProperty(ref noResultsLabel, value);
         }
 
-        public bool NoResultsVisible
+        public bool NoResultsLabelVisible
         {
-            get => noResultsVisible;
-            set => SetProperty(ref noResultsVisible, value);
+            get => noResultsLabelVisible;
+            set => SetProperty(ref noResultsLabelVisible, value);
+        }
+
+        public bool SearchResultsVisible
+        {
+            get => _searchResultsVisible;
+            set => SetProperty(ref _searchResultsVisible, value);
         }
 
         async Task OnSearch()
         {
-            NoResultsVisible = false;
+            NoResultsLabelVisible = false;
 
             if (!string.IsNullOrWhiteSpace(SearchQuery))
             {
@@ -73,11 +74,13 @@ namespace Recipes.ViewModels
                 if (recipeData == null || recipeData.Hits.Length == 0)
                 {
                     NoResultsLabel = $"Sorry - we couldn't find any recipes for {SearchQuery} :(";
-                    NoResultsVisible = true;
+                    NoResultsLabelVisible = true;
+                    SearchResultsVisible = false;
                 }
                 else
                 {
-                    NoResultsVisible = false;
+                    NoResultsLabelVisible = false;
+                    SearchResultsVisible = true;
 
                     for (int i = 0; i < recipeData.Hits.Length; i++)
                     {
@@ -86,20 +89,33 @@ namespace Recipes.ViewModels
 
                     RecipeData = recipeData;
                     AppShell.Data = RecipeData;
-                    OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
                 }
+
+                //OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
             }
         }
 
         string GenerateRequestUri(string endpoint)
         {
+            
+            string searchFilterName = SearchFilter.Substring(SearchFilter.IndexOf("=") + 1);
+
+            if (string.IsNullOrEmpty(SearchQuery))
+            {
+                SearchQuery = searchFilterName;
+            }
+
             string requestUri = endpoint;
             requestUri += $"?q={SearchQuery}";
             requestUri += $"&app_id={Constants.EdamamAppId}";
             requestUri += $"&app_key={Constants.EdamamAppKey}";
-            //requestUri += $"&diet={DietSearchFilter}";
-            //requestUri += $"&health={HealthSearchFilter}";
-            //requestUri += $"&from=0&to=1";
+
+            if (!string.IsNullOrEmpty(SearchFilter))
+            {
+                Title = $"Search {searchFilterName} recipes";
+                requestUri += $"&{SearchFilter}";
+            }
+
             return requestUri;
         }
 
