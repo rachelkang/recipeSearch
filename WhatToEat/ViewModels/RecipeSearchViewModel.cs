@@ -107,6 +107,7 @@ namespace Recipes.ViewModels
             requestUri += $"?q={SearchQuery}";
             requestUri += $"&app_id={Constants.EdamamAppId}";
             requestUri += $"&app_key={Constants.EdamamAppKey}";
+            requestUri += $"&to=100";
 
             if (!string.IsNullOrEmpty(SearchFilter))
             {
