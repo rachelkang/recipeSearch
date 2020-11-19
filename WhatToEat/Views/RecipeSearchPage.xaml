@@ -21,29 +21,28 @@
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
         <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
-        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="5,0" IsVisible="{Binding SearchResultsVisible}" AutomationProperties.IsInAccessibleTree="true" AutomationProperties.Name="Search results list" AutomationProperties.HelpText="Select one of the search results to see recipe details">
+        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="10" IsVisible="{Binding SearchResultsVisible}" AutomationProperties.IsInAccessibleTree="true" AutomationProperties.Name="Search results list" AutomationProperties.HelpText="Select one of the search results to see recipe details">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" />
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="true" AutomationProperties.LabeledBy="{x:Reference recipeName}">
                 <DataTemplate>
-                    <StackLayout Padding="10,0,10,15">
-                        <sh:Shadows CornerRadius="15"
-                                    Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.2, Color='Black'}">
-                            <Frame Background="{StaticResource BlueGradient}" CornerRadius="10" HasShadow="False">
-                                <StackLayout Orientation="Horizontal" HeightRequest="50">
-                                    <Image Source="{Binding Recipe.ImageUrl}" />
-                                    <Label x:Name="recipeName" Margin="5,0,0,0" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black"/>
-                                </StackLayout>
-                            </Frame>
-                        </sh:Shadows>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
+                    <sh:Shadows CornerRadius="15" Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.2, Color='Black'}">
+                        <Frame CornerRadius="20" HasShadow="False" Margin="10">
+                            <StackLayout HeightRequest="200" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-20">
+                                <Image Source="{Binding Recipe.ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" Margin="0,0,0,-100" />
+                                <Label x:Name="recipeName" Padding="10" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </sh:Shadows>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            <!--<CollectionView.Behaviors>
+            <CollectionView.Behaviors>
                 <anim:EntranceTransition Duration="200"/>
-            </CollectionView.Behaviors>-->
+            </CollectionView.Behaviors>
         </CollectionView>
         <StackLayout.Behaviors>
             <anim:EntranceTransition Duration="500"/>
