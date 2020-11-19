@@ -67,7 +67,7 @@ namespace Recipes.ViewModels
         {
             NoResultsLabelVisible = false;
 
-            if (!string.IsNullOrWhiteSpace(SearchQuery))
+            if (!string.IsNullOrWhiteSpace(SearchQuery) || !string.IsNullOrWhiteSpace(SearchFilter))
             {
                 RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint));
 
@@ -89,15 +89,14 @@ namespace Recipes.ViewModels
 
                     RecipeData = recipeData;
                     AppShell.Data = RecipeData;
-                }
 
-                //OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
+                    //OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
+                }
             }
         }
 
         string GenerateRequestUri(string endpoint)
         {
-            
             string searchFilterName = SearchFilter.Substring(SearchFilter.IndexOf("=") + 1);
 
             if (string.IsNullOrEmpty(SearchQuery))

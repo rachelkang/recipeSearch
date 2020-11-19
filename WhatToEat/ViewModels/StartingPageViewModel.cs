@@ -10,7 +10,7 @@ namespace Recipes.ViewModels
     {
         RestService _restService;
 
-        string _searchQuery; // private by default, _name
+        string _searchQuery; // private by default, _name convention
         bool recipeTypeButtonsVisible;
         string noResultsLabel;
         bool noResultsVisible;
@@ -28,7 +28,6 @@ namespace Recipes.ViewModels
 
             SearchCommand = new Command(async () => await OnSearch());
             FilteredSearchCommand = new Command<string>(async (filter) => await OnSearch(filter));
-            BalancedMealsTapped = new Command<Hit>(OnBalancedMealsSelected);
         }
 
         public bool RecipeTypeButtonsVisible
@@ -41,14 +40,8 @@ namespace Recipes.ViewModels
 
         public string SearchQuery
         {
-            get
-            {
-                return _searchQuery;
-            }
-            set
-            {
-                SetProperty(ref _searchQuery, value);
-            }
+            get => _searchQuery;
+            set => SetProperty(ref _searchQuery, value);
         }
 
         public string NoResultsLabel
@@ -67,9 +60,10 @@ namespace Recipes.ViewModels
         {
             NoResultsVisible = false;
 
-            if (!string.IsNullOrWhiteSpace(SearchQuery))
+            // Need query and/or filter to search
+            if (!string.IsNullOrWhiteSpace(SearchQuery) || !string.IsNullOrWhiteSpace(filter))
             {
-                RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint));
+                RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint, filter));
 
                 if (recipeData == null || recipeData.Hits.Length == 0)
                 {
@@ -90,22 +84,28 @@ namespace Recipes.ViewModels
             }
         }
 
-        string GenerateRequestUri(string endpoint)
+        string GenerateRequestUri(string endpoint, string filter)
         {
             string requestUri = endpoint;
-			requestUri += $"?q={SearchQuery}";
-			requestUri += $"&app_id={Constants.EdamamAppId}";
+
+            if (string.IsNullOrEmpty(SearchQuery) && !string.IsNullOrEmpty(filter))
+            {
+                requestUri += $"?q={filter.Substring(filter.IndexOf("=") + 1)}";
+            }
+            else
+            {
+                requestUri += $"?q={SearchQuery}";
+            }
+
+            requestUri += $"&app_id={Constants.EdamamAppId}";
             requestUri += $"&app_key={Constants.EdamamAppKey}";
 
+            if (!string.IsNullOrEmpty(filter))
+            {
+                requestUri += $"&{filter}";
+            }
+
             return requestUri;
-        }
-
-        async void OnBalancedMealsSelected(Hit hit)
-        {
-            //if (hit == null)
-            //    return;
-
-            await Shell.Current.GoToAsync($"{nameof(RecipeSearchPage)}?DietSearchFilter=balanced");
         }
     }
 }
