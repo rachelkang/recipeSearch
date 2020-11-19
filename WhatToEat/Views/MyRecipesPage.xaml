@@ -13,9 +13,8 @@
     </ContentPage.ToolbarItems>
     <StackLayout>
         <Label Text="Your recipes" FontSize="30" FontAttributes="Bold" Margin="20,20,0,0" TextColor="Black"/>
-        <sh:Shadows CornerRadius="30"
-                    Shades="{sh:SingleShade Offset='0,5', BlurRadius=15, Opacity=0.20, Color='Black'}">
-            <CarouselView ItemsSource="{Binding Items}" Loop="False" Margin="20">
+        <sh:Shadows CornerRadius="30" Shades="{sh:SingleShade Offset='0,5', BlurRadius=15, Opacity=0.20, Color='Black'}">
+            <CarouselView ItemsSource="{Binding Items}" Loop="False"  Margin="20">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="30" Orientation="Horizontal" />
                 </CarouselView.ItemsLayout>
