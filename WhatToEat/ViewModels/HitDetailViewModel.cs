@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-
-using Recipes.Models;
-using Recipes.Views;
 using System.Windows.Input;
-using Xamarin.Essentials;
+using System.Diagnostics;
 using System.Linq;
+using Xamarin.Forms;
+using Xamarin.Essentials;
+using Recipes.Models;
 
 namespace Recipes.ViewModels
 {
@@ -19,13 +14,12 @@ namespace Recipes.ViewModels
 
         public Hit Hit { get; set; }
 
-        private string hitId;
-        private string recipeName;
-        private string imageUrl;
-        private string ingredients;
-        private string recipeBody;
-        private FormattedString recipeUrl;
-        //private bool isMyRecipe;
+        string _hitId;
+        string _recipeName;
+        string _imageUrl;
+        string _ingredients;
+        string _recipeBody;
+        FormattedString _recipeUrl;
 
         public ICommand TapCommand { get; }
         public Command AddItemCommand { get; }
@@ -39,39 +33,33 @@ namespace Recipes.ViewModels
 
         public string RecipeName
         {
-            get => recipeName;
-            set => SetProperty(ref recipeName, value);
+            get => _recipeName;
+            set => SetProperty(ref _recipeName, value);
         }
 
         public string ImageUrl
         {
-            get => imageUrl;
-            set => SetProperty(ref imageUrl, value);
+            get => _imageUrl;
+            set => SetProperty(ref _imageUrl, value);
         }
 
         public string Ingredients
         {
-            get => ingredients;
-            set => SetProperty(ref ingredients, value);
+            get => _ingredients;
+            set => SetProperty(ref _ingredients, value);
         }
 
         public string RecipeBody
         {
-            get => recipeBody;
-            set => SetProperty(ref recipeBody, value);
+            get => _recipeBody;
+            set => SetProperty(ref _recipeBody, value);
         }
 
         public FormattedString RecipeUrl
         {
-            get => recipeUrl;
-            set => SetProperty(ref recipeUrl, value);
+            get => _recipeUrl;
+            set => SetProperty(ref _recipeUrl, value);
         }
-
-        //public bool IsMyRecipe
-        //{
-        //    get => isMyRecipe;
-        //    set => SetProperty(ref isMyRecipe, value);
-        //}
 
         private void OnAddItem()
         {
@@ -83,7 +71,6 @@ namespace Recipes.ViewModels
                 Ingredients = Ingredients,
                 RecipeBody = RecipeBody,
                 RecipeUrl = RecipeUrl
-                //IsMyRecipe = false
             };
 
             DataStore.AddItemAsync(newItem);
@@ -93,11 +80,11 @@ namespace Recipes.ViewModels
         {
             get
             {
-                return hitId;
+                return _hitId;
             }
             set
             {
-                hitId = value;
+                _hitId = value;
                 LoadHitId(value);
             }
         }

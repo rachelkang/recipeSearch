@@ -1,8 +1,6 @@
-﻿using System;
-using System.Globalization;
-using System.Threading.Tasks;
-using Recipes.Views;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
+using Recipes.Views;
 
 namespace Recipes.ViewModels
 {
@@ -11,9 +9,9 @@ namespace Recipes.ViewModels
         RestService _restService;
 
         string _searchQuery; // private by default, _name convention
-        bool recipeTypeButtonsVisible;
-        string noResultsLabel;
-        bool noResultsVisible;
+        bool _recipeTypeButtonsVisible;
+        string _noResultsLabel;
+        bool _noResultsVisible;
 
         public Command SearchCommand { get; }
         public Command<string> FilteredSearchCommand { get; }
@@ -32,8 +30,8 @@ namespace Recipes.ViewModels
 
         public bool RecipeTypeButtonsVisible
         {
-            get => recipeTypeButtonsVisible;
-            set => SetProperty(ref recipeTypeButtonsVisible, value);
+            get => _recipeTypeButtonsVisible;
+            set => SetProperty(ref _recipeTypeButtonsVisible, value);
         }
 
         public RecipeData RecipeData { get; set; }
@@ -46,21 +44,21 @@ namespace Recipes.ViewModels
 
         public string NoResultsLabel
         {
-            get => noResultsLabel;
-            set => SetProperty(ref noResultsLabel, value);
+            get => _noResultsLabel;
+            set => SetProperty(ref _noResultsLabel, value);
         }
 
         public bool NoResultsVisible
         {
-            get => noResultsVisible;
-            set => SetProperty(ref noResultsVisible, value);
+            get => _noResultsVisible;
+            set => SetProperty(ref _noResultsVisible, value);
         }
 
 		async Task OnSearch(string filter = null)
         {
             NoResultsVisible = false;
 
-            // Need query and/or filter to search
+            // Require query and/or filter to search
             if (!string.IsNullOrWhiteSpace(SearchQuery) || !string.IsNullOrWhiteSpace(filter))
             {
                 RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint, filter));

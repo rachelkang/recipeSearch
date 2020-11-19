@@ -1,5 +1,4 @@
 ﻿using Xamarin.Forms;
-
 using Recipes.Models;
 using Recipes.ViewModels;
 

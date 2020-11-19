@@ -1,8 +1,5 @@
-﻿using Recipes.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using Recipes.Views;
 
 namespace Recipes.ViewModels
 {

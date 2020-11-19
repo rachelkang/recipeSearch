@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
-using Recipes.Models;
 using Xamarin.Forms;
+using Recipes.Models;
 
 namespace Recipes.ViewModels
 {
     public class NewItemViewModel : BaseViewModel
     {
-        private string recipeName;
-        private string imageUrl;
-        private string ingredients;
-        private string recipeBody;
-        private FormattedString recipeUrl;
-        //private bool isMyRecipe;
+        string _recipeName;
+        string _imageUrl;
+        string _ingredients;
+        string _recipeBody;
+        FormattedString _recipeUrl;
 
         public NewItemViewModel()
         {
@@ -26,44 +22,38 @@ namespace Recipes.ViewModels
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(recipeName);
+            return !String.IsNullOrWhiteSpace(_recipeName);
         }
 
         public string RecipeName
         {
-            get => recipeName;
-            set => SetProperty(ref recipeName, value);
+            get => _recipeName;
+            set => SetProperty(ref _recipeName, value);
         }
 
         public string ImageUrl
         {
-            get => imageUrl;
-            set => SetProperty(ref imageUrl, value);
+            get => _imageUrl;
+            set => SetProperty(ref _imageUrl, value);
         }
 
         public string Ingredients
         {
-            get => ingredients;
-            set => SetProperty(ref ingredients, value);
+            get => _ingredients;
+            set => SetProperty(ref _ingredients, value);
         }
 
         public string RecipeBody
         {
-            get => recipeBody;
-            set => SetProperty(ref recipeBody, value);
+            get => _recipeBody;
+            set => SetProperty(ref _recipeBody, value);
         }
 
         public FormattedString RecipeUrl
         {
-            get => recipeUrl;
-            set => SetProperty(ref recipeUrl, value);
+            get => _recipeUrl;
+            set => SetProperty(ref _recipeUrl, value);
         }
-
-        //public bool IsMyRecipe
-        //{
-        //    get => isMyRecipe;
-        //    set => SetProperty(ref isMyRecipe, value);
-        //}
 
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
@@ -76,9 +66,6 @@ namespace Recipes.ViewModels
 
         private async void OnSave()
         {
-            //var recipeBodyFormattedString = new FormattedString();
-            //recipeBodyFormattedString.Spans.Add(new Span { Text = RecipeBody });
-
             Item newItem = new Item()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -87,7 +74,6 @@ namespace Recipes.ViewModels
                 Ingredients = Ingredients,
                 RecipeBody = RecipeBody,
                 RecipeUrl = RecipeUrl
-                //IsMyRecipe = true
             };
 
             await DataStore.AddItemAsync(newItem);

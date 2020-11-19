@@ -1,9 +1,5 @@
-﻿using System;
-using System.ComponentModel;
-using System.Reflection;
+﻿using Xamarin.Forms;
 using Recipes.ViewModels;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Recipes.Views
 {

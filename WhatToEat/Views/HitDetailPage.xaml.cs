@@ -1,10 +1,8 @@
-﻿using Xamarin.Forms;
-using Recipes.ViewModels;
+﻿using System.Collections.Generic;
+using Xamarin.Forms;
 using Xamarin.CommunityToolkit.Extensions;
-using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.UI.Views.Options;
-using System.Collections.Generic;
-using System.Drawing;
+using Recipes.ViewModels;
 using Color = Xamarin.Forms.Color;
 
 namespace Recipes.Views

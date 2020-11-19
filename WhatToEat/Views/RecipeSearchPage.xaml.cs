@@ -1,8 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using Xamarin.Forms;
 using Recipes.ViewModels;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Recipes.Views
 {
@@ -19,11 +16,7 @@ namespace Recipes.Views
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
-
-   //         if (!string.IsNullOrEmpty(searchBar.Text.ToString()))
-			//{
              _viewModel.SearchCommand.Execute(null);
-            //}
 		}
 	}
 }

@@ -1,24 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
-using System.Windows.Input;
-using Recipes.Models;
-using Recipes.Views;
 using Xamarin.Forms;
+using Recipes.Models;
 
 namespace Recipes.ViewModels
 {
     [QueryProperty(nameof(Id), nameof(Id))] // query string - using property names directly and avoiding magic strings
     public class EditItemViewModel : BaseViewModel
     {
-        private string id;
-        private string recipeName;
-        private string ingredients;
-        private string imageUrl;
-        private string recipeBody;
-        private FormattedString recipeUrl;
-        //private bool isMyRecipe;
+        string _id;
+        string _recipeName;
+        string _ingredients;
+        string _imageUrl;
+        string _recipeBody;
+        FormattedString _recipeUrl;
 
         public EditItemViewModel()
         {
@@ -33,57 +28,51 @@ namespace Recipes.ViewModels
 
         private bool ValidateUpdate()
         {
-            return !String.IsNullOrWhiteSpace(recipeName);
+            return !String.IsNullOrWhiteSpace(_recipeName);
         }
 
         public string Id
         {
             get
             {
-                return id;
+                return _id;
             }
             set
             {
-                id = value;
+                _id = value;
                 LoadItemId(value);
             }
         }
 
         public string RecipeName
         {
-            get => recipeName;
-            set => SetProperty(ref recipeName, value);
+            get => _recipeName;
+            set => SetProperty(ref _recipeName, value);
         }
 
         public string Ingredients
         {
-            get => ingredients;
-            set => SetProperty(ref ingredients, value);
+            get => _ingredients;
+            set => SetProperty(ref _ingredients, value);
         }
 
         public string ImageUrl
         {
-            get => imageUrl;
-            set => SetProperty(ref imageUrl, value);
+            get => _imageUrl;
+            set => SetProperty(ref _imageUrl, value);
         }
 
         public string RecipeBody
         {
-            get => recipeBody;
-            set => SetProperty(ref recipeBody, value);
+            get => _recipeBody;
+            set => SetProperty(ref _recipeBody, value);
         }
 
         public FormattedString RecipeUrl
         {
-            get => recipeUrl;
-            set => SetProperty(ref recipeUrl, value);
+            get => _recipeUrl;
+            set => SetProperty(ref _recipeUrl, value);
         }
-
-        //public bool IsMyRecipe
-        //{
-        //    get => isMyRecipe;
-        //    set => SetProperty(ref isMyRecipe, value);
-        //}
 
         public async void LoadItemId(string itemId)
         {
@@ -115,7 +104,7 @@ namespace Recipes.ViewModels
 
         private async void OnDelete()
         {
-            await DataStore.DeleteItemAsync(id); // need to pass in ID of selected item somehow
+            await DataStore.DeleteItemAsync(_id); // need to pass in ID of selected item somehow
 
             //Shell.Current.Navigation.RemovePage($"../../{id}");
 
@@ -127,13 +116,12 @@ namespace Recipes.ViewModels
         {
             Item newItem = new Item()
             {
-                Id = id,
+                Id = _id,
                 RecipeName = RecipeName,
                 Ingredients = Ingredients,
                 ImageUrl = ImageUrl,
                 RecipeBody = RecipeBody,
                 RecipeUrl = RecipeUrl
-                //IsMyRecipe = IsMyRecipe
             };
 
             await DataStore.UpdateItemAsync(newItem);

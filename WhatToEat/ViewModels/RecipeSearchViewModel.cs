@@ -1,8 +1,6 @@
-﻿using System;
-using System.Globalization;
-using System.Threading.Tasks;
-using Recipes.Views;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
+using Recipes.Views;
 
 namespace Recipes.ViewModels
 {
@@ -13,10 +11,11 @@ namespace Recipes.ViewModels
         RestService _restService;
 
         RecipeData _recipeData;
-        private string searchQuery;
-        private string noResultsLabel;
-        private bool noResultsLabelVisible;
+        string _searchQuery;
+        string _noResultsLabel;
+        bool _noResultsLabelVisible;
         bool _searchResultsVisible;
+
         public Command<Hit> ItemTapped { get; }
         public Command SearchCommand { get; }
 
@@ -39,22 +38,22 @@ namespace Recipes.ViewModels
 
         public string SearchQuery
         {
-            get => searchQuery;
-            set => SetProperty(ref searchQuery, value);
+            get => _searchQuery;
+            set => SetProperty(ref _searchQuery, value);
         }
 
         public string SearchFilter { get; set; }
 
         public string NoResultsLabel
         {
-            get => noResultsLabel;
-            set => SetProperty(ref noResultsLabel, value);
+            get => _noResultsLabel;
+            set => SetProperty(ref _noResultsLabel, value);
         }
 
         public bool NoResultsLabelVisible
         {
-            get => noResultsLabelVisible;
-            set => SetProperty(ref noResultsLabelVisible, value);
+            get => _noResultsLabelVisible;
+            set => SetProperty(ref _noResultsLabelVisible, value);
         }
 
         public bool SearchResultsVisible
