@@ -11,10 +11,10 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New" Command="{Binding NewItemCommand}" />
     </ContentPage.ToolbarItems>
-    <StackLayout Margin="20,0" >
+    <StackLayout Margin="20" >
         <Label Text="Your recipes" FontSize="30" FontAttributes="Bold" TextColor="Black"/>
-        <sh:Shadows CornerRadius="30" Shades="{sh:SingleShade Offset='0,5', BlurRadius=15, Opacity=0.20, Color='Black'}">
-            <CarouselView ItemsSource="{Binding Items}" Loop="False" Margin="0,20,0,0">
+        <sh:Shadows CornerRadius="30" Shades="{sh:SingleShade Offset='0,2', BlurRadius=10, Opacity=0.20, Color='Black'}">
+            <CarouselView ItemsSource="{Binding Items}" Loop="False" Margin="0,0,0,15">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="30" Orientation="Horizontal" />
                 </CarouselView.ItemsLayout>
