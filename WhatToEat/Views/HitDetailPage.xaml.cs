@@ -4,6 +4,7 @@ using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.CommunityToolkit.UI.Views.Options;
 using Recipes.ViewModels;
 using Color = Xamarin.Forms.Color;
+using System;
 
 namespace Recipes.Views
 {
@@ -38,7 +39,16 @@ namespace Recipes.Views
 					FontSize = 7
 				}
 			};
-			var options = new SnackBarOptions(messageOptions, 5000, primary, false, actionOptions);
+
+			var options = new SnackBarOptions
+			{
+				MessageOptions = messageOptions,
+				Duration = TimeSpan.FromMilliseconds(5000),
+				BackgroundColor = primary,
+				IsRtl = false,
+				Actions = actionOptions
+			};
+
 			await this.DisplaySnackBarAsync(options);
 		}
 	}
