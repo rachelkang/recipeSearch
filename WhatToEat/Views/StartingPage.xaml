@@ -36,84 +36,32 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="3*" />
+                <RowDefinition Height="4.5*" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="3*" />
+                <RowDefinition Height="4.5*" />
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" Text="Search by meal type" TextColor="Black" FontAttributes="Bold" FontSize="20"/>
             <ScrollView Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
-                <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Button Text="Breakfast" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=breakfast" Padding="15" Background="{StaticResource BlueGradient}"/>
-                    <Button Text="Lunch" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=lunch" Padding="15" Background="{StaticResource BlueGradient}"/>
-                    <Button Text="Dinner" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=dinner" Padding="15" Background="{StaticResource BlueGradient}"/>
-                    <Button Text="Snack" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=snack" Padding="15" Background="{StaticResource BlueGradient}"/>
-                    <Button Text="Dessert" Command="{Binding FilteredSearchCommand}" CommandParameter="dishType=dessert" Padding="15" Background="{StaticResource BlueGradient}"/>
+                <StackLayout Orientation="Horizontal" Spacing="10" Padding="0,5">
+                    <Button Text="Breakfast" ImageSource="breakfast.png" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=breakfast" FontSize="14" TextTransform="None" Background="{StaticResource BlueGradient}" ContentLayout="Top,0" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Lunch" ImageSource="lunch.png" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=lunch" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,5" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Dinner" ImageSource="dinner.png" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=dinner" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,5" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Snack" ImageSource="snack.png" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=snack" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,9" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Dessert" ImageSource="dessert.png" Command="{Binding FilteredSearchCommand}" CommandParameter="dishType=dessert" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,0" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Drinks" ImageSource="drinks.png" Command="{Binding FilteredSearchCommand}" CommandParameter="dishType=drinks" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,7" TextColor="White" FontAttributes="Bold" Padding="5"/>
                 </StackLayout>
             </ScrollView>
             <Label Grid.Column="0" Grid.Row="2" Text="Search by diet" TextColor="Black" FontAttributes="Bold" FontSize="20"/>
             <ScrollView Grid.Column="0" Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,10">
-                <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Button Text="Balanced" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=balanced" Padding="15" Background="{StaticResource BlueGradient}"/>
-                    <Button Text="Vegetarian" Command="{Binding FilteredSearchCommand}" CommandParameter="health=vegetarian" Padding="15" Background="{StaticResource BlueGradient}"/>
-                    <Button Text="Vegan" Command="{Binding FilteredSearchCommand}" CommandParameter="health=vegan" Padding="15" Background="{StaticResource BlueGradient}"/>
-                    <Button Text="Kosher" Command="{Binding FilteredSearchCommand}" CommandParameter="health=kosher" Padding="15" Background="{StaticResource BlueGradient}"/>
-                    <Button Text="Keto" Command="{Binding FilteredSearchCommand}" CommandParameter="health=keto-friendly" Padding="15" Background="{StaticResource BlueGradient}"/>
+                <StackLayout Orientation="Horizontal" Spacing="10" Padding="0,5">
+                    <Button Text="Balanced" ImageSource="balanced.png" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=balanced" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,4" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Vegetarian" ImageSource="vegetarian.png" Command="{Binding FilteredSearchCommand}" CommandParameter="health=vegetarian" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,10" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Vegan" ImageSource="vegan.png" Command="{Binding FilteredSearchCommand}" CommandParameter="health=vegan" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,2" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Kosher" ImageSource="kosher.png" Command="{Binding FilteredSearchCommand}" CommandParameter="health=kosher" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,3" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Gluten-free" ImageSource="gluten-free.png" Command="{Binding FilteredSearchCommand}" CommandParameter="health=gluten-free" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,9" TextColor="White" FontAttributes="Bold" Padding="5"/>
+                    <Button Text="Keto" ImageSource="keto.png" Command="{Binding FilteredSearchCommand}" CommandParameter="health=keto-friendly" Background="{StaticResource BlueGradient}" FontSize="14" TextTransform="None" ContentLayout="Top,7" TextColor="White" FontAttributes="Bold" Padding="5"/>
                 </StackLayout>
             </ScrollView>
         </Grid>
-
-
-        <!--<StackLayout Orientation="Horizontal">
-            <Button ImageSource="fork-knife.png" Text="Balanced" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black" />
-            <Button ImageSource="meat.png" Text="High protein" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-            <Button ImageSource="avocado.png" Text="Low carb" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Button ImageSource="tomato-milk.png" Text="Vegetarian" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-            <Button ImageSource="salad.png" Text="Vegan" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-            <Button ImageSource="apple.png" Text="Low fat" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-        </StackLayout>-->
-        <!--<Grid x:Name="recipeTypeButtons" IsVisible="{Binding RecipeTypeButtonsVisible}" Margin="0,-10,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <StackLayout Grid.Column="0" Grid.Row="0">
-                <ImageButton Source="fork-knife.png" BackgroundColor="Transparent" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=balanced"/>
-                <Label Text="Balanced" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
-            </StackLayout>
-            <StackLayout Grid.Column="1" Grid.Row="0">
-                <ImageButton Source="meat.png" BackgroundColor="Transparent" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=high-protein"/>
-                <Label Text="High-protein" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
-            </StackLayout>
-            <StackLayout Grid.Column="2" Grid.Row="0">
-                <ImageButton Source="avocado.png" BackgroundColor="Transparent" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=low-carb"/>
-                <Label Text="Low-carb" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
-            </StackLayout>
-            <StackLayout Grid.Column="0" Grid.Row="1">
-                <ImageButton Source="tomato-milk.png" BackgroundColor="Transparent" Margin="0,5,0,0" Command="{Binding FilteredSearchCommand}" CommandParameter="health=vegetarian"/>
-                <Label Text="Vegetarian" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
-            </StackLayout>
-            <StackLayout Grid.Column="1" Grid.Row="1">
-                <ImageButton Source="salad.png" BackgroundColor="Transparent" Margin="0,5,0,0" Command="{Binding FilteredSearchCommand}" CommandParameter="health=vegan"/>
-                <Label Text="Vegan" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
-            </StackLayout>
-            <StackLayout Grid.Column="2" Grid.Row="1">
-                <ImageButton Source="apple.png" BackgroundColor="Transparent" Margin="0,5,0,0" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=low-fat"/>
-                <Label Text="Low-fat" HorizontalTextAlignment="Center" Margin="0,-5,0,0" FontSize="16"/>
-            </StackLayout>
-            
-            <Button Grid.Column="0" Grid.Row="0" ImageSource="fork-knife.png" Text="Balanced" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black" />
-            <Button Grid.Column="1" Grid.Row="0" ImageSource="meat.png" Text="High protein" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-            <Button Grid.Column="2" Grid.Row="0" ImageSource="avocado.png" Text="Low carb" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-            <Button Grid.Column="0" Grid.Row="1" ImageSource="tomato-milk.png" Text="Vegetarian" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-            <Button Grid.Column="1" Grid.Row="1" ImageSource="salad.png" Text="Vegan" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-            <Button Grid.Column="2" Grid.Row="1" ImageSource="apple.png" Text="Low fat" FontSize="16" TextTransform="None" BackgroundColor="Transparent" ContentLayout="Top,0" TextColor="Black"/>
-        </Grid>-->
     </Grid>
 </ContentPage>
