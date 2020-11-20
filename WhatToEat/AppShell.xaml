@@ -29,8 +29,8 @@
         </ResourceDictionary>
     </sharedTransitions:SharedTransitionShell.Resources>
     <TabBar>
-        <ShellContent Title="Recipe Search" Icon="//search_blue.png" Route="StartingPage" ContentTemplate="{DataTemplate local:StartingPage}" />
-        <ShellContent Title="My Recipes" Icon="//cookbook_gray.png" Route="MyRecipesPage" ContentTemplate="{DataTemplate local:MyRecipesPage}" />
+        <ShellContent Title="Recipe Search" Icon="search.png" Route="StartingPage" ContentTemplate="{DataTemplate local:StartingPage}" />
+        <ShellContent Title="My Recipes" Icon="cookbook.png" Route="MyRecipesPage" ContentTemplate="{DataTemplate local:MyRecipesPage}" />
     </TabBar>
     <!--
         If you would like to navigate to this content you can do so by calling

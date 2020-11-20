@@ -36,19 +36,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\cookbook_blue.png" />
-    <None Remove="Resources\cookbook_gray.png" />
     <None Remove="Resources\search_blue.png" />
-    <None Remove="Resources\search_gray.png" />
+    <None Remove="Resources\balanced.png" />
+    <None Remove="Resources\dessert.png" />
+    <None Remove="Resources\dinner.png" />
+    <None Remove="Resources\drinks.png" />
+    <None Remove="Resources\gluten-free.png" />
+    <None Remove="Resources\keto.png" />
+    <None Remove="Resources\kosher.png" />
+    <None Remove="Resources\lunch.png" />
+    <None Remove="Resources\snack.png" />
+    <None Remove="Resources\vegan.png" />
+    <None Remove="Resources\vegetarian.png" />
+    <None Remove="Resources\breakfast.png" />
+    <None Remove="Resources\search.png" />
+    <None Remove="Resources\cookbook.png" />
   </ItemGroup>
   <ItemGroup>
-    <SharedImage Include="Resources\cookbook_blue.png" />
-    <SharedImage Include="Resources\cookbook_gray.png" />
-    <SharedImage Include="Resources\search_blue.png" />
-    <SharedImage Include="Resources\search_gray.png" />
+    <SharedImage Include="Resources\balanced.png" BaseSize="75,75" />
+    <SharedImage Include="Resources\dessert.png" BaseSize="75,75" />
+    <SharedImage Include="Resources\dinner.png" BaseSize="75,75" />
+    <SharedImage Include="Resources\drinks.png" BaseSize="70,70" />
+    <SharedImage Include="Resources\gluten-free.png" BaseSize="70,70" />
+    <SharedImage Include="Resources\keto.png" BaseSize="70,70" />
+    <SharedImage Include="Resources\kosher.png" BaseSize="75,75" />
+    <SharedImage Include="Resources\lunch.png" BaseSize="75,75" />
+    <SharedImage Include="Resources\snack.png" BaseSize="70,70" />
+    <SharedImage Include="Resources\vegan.png" BaseSize="75,75" />
+    <SharedImage Include="Resources\vegetarian.png" BaseSize="70,70" />
+    <SharedImage Include="Resources\breakfast.png" BaseSize="75,75" />
+    <SharedImage Include="Resources\cookbook.png" BaseSize="20,20" />
+    <SharedImage Include="Resources\search.png" BaseSize="20,20" >
+      <BaseSize>20,20</BaseSize>
+    </SharedImage>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing.Common">
       <HintPath>..\..\..\..\Library\Frameworks\Xamarin.iOS.framework\Versions\14.4.1.3\lib\mono\Xamarin.iOS\Facades\System.Drawing.Common.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Resources\cookbook.png">
+      <BaseSize>20,20</BaseSize>
+    </None>
+    <None Update="Resources\search.png">
+      <BaseSize>20,20</BaseSize>
+    </None>
   </ItemGroup>
 </Project>
