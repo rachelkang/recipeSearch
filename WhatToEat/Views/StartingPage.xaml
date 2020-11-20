@@ -4,6 +4,7 @@
              x:Class="Recipes.Views.StartingPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             sharedTransitions:SharedTransitionShell.BackgroundAnimation="Fade"
              Title="{Binding Title}">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>

@@ -2,26 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.MyRecipesPage"
-             xmlns:vm="clr-namespace:Recipes.ViewModels"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Recipes.ViewModels"
              xmlns:model="clr-namespace:Recipes.Models"
              xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation"
-             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows">
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New" Command="{Binding NewItemCommand}" />
     </ContentPage.ToolbarItems>
-    <StackLayout>
-        <Label Text="Your recipes" FontSize="30" FontAttributes="Bold" Margin="20,20,0,0" TextColor="Black"/>
+    <StackLayout Margin="20,0" >
+        <Label Text="Your recipes" FontSize="30" FontAttributes="Bold" TextColor="Black"/>
         <sh:Shadows CornerRadius="30" Shades="{sh:SingleShade Offset='0,5', BlurRadius=15, Opacity=0.20, Color='Black'}">
-            <CarouselView ItemsSource="{Binding Items}" Loop="False"  Margin="20">
+            <CarouselView ItemsSource="{Binding Items}" Loop="False" Margin="0,20,0,0">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="30" Orientation="Horizontal" />
                 </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Frame x:DataType="model:Item" CornerRadius="40" HasShadow="False">
-                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="-50">
+                            <StackLayout sharedTransitions:Transition.Name="recipeImageTransition" VerticalOptions="Center" HorizontalOptions="Center" Padding="-50">
                                 <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="700" WidthRequest="400" Margin="0,-100,0,-400"/>
                                 <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" BackgroundColor="White" FontSize="30" FontAttributes="Bold" Padding="50,10" TextColor="Black"/>
                             </StackLayout>
