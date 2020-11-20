@@ -39,24 +39,12 @@
     <None Remove="Resources\cookbook_gray.png" />
     <None Remove="Resources\search_blue.png" />
     <None Remove="Resources\search_gray.png" />
-    <None Remove="Resources\fork-knife.png" />
-    <None Remove="Resources\meat.png" />
-    <None Remove="Resources\apple.png" />
-    <None Remove="Resources\avocado.png" />
-    <None Remove="Resources\salad.png" />
-    <None Remove="Resources\tomato-milk.png" />
   </ItemGroup>
   <ItemGroup>
-    <SharedImage Include="Resources\fork-knife.png" />
-    <SharedImage Include="Resources\meat.png" />
-    <SharedImage Include="Resources\apple.png" />
-    <SharedImage Include="Resources\avocado.png" />
     <SharedImage Include="Resources\cookbook_blue.png" />
     <SharedImage Include="Resources\cookbook_gray.png" />
-    <SharedImage Include="Resources\salad.png" />
     <SharedImage Include="Resources\search_blue.png" />
     <SharedImage Include="Resources\search_gray.png" />
-    <SharedImage Include="Resources\tomato-milk.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing.Common">
