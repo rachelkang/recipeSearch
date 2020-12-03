@@ -15,7 +15,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="6*" />
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Text="Find the recipe for you." FontSize="50" FontAttributes="Bold" TextColor="Black" Margin="15,15,15,0" />
+        <Label Grid.Column="0" Grid.Row="0" Text="Find the recipe for you" FontSize="50" FontAttributes="Bold" TextColor="Black" Margin="15,15,15,0" />
         <SearchBar Grid.Column="0" Grid.Row="1"
                    x:Name="searchBar"
                    ios:SearchBar.SearchBarStyle="Default"
@@ -30,7 +30,7 @@
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
         <Label Grid.Column="0" Grid.Row="2" Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
-        <Grid Grid.Column="0" Grid.Row="2" Margin="20,5">
+        <Grid Grid.Column="0" Grid.Row="2" Margin="20,5" IsVisible="{Binding RecipeTypeButtonsVisible}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
