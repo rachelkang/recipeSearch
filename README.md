@@ -2,13 +2,9 @@
 
 <img src="screenshots/app_logo.png" align="left" width="150">
 
-## About the app
-
-Rachel's Recipes is a cross-platform mobile application that uses Xamarin.Forms.
+Rachel's Recipes is a cross-platform mobile application that uses Xamarin.Forms. It was inspired by all those who are new to cooking (dare I say, first-time chefs! :)), especially during these unprecedented times of quarantining, social distancing, and increased cooking. It is intended to provide a single place to both search for new recipes as well as keep track of personal ones.
 
 _This app continues to be work-in-progress and at the moment, its primary purpose is for my personal exploration of Xamarin.Forms, to learn more about the framework as a first-time user and contributer._
-
-That being said, the app is inspired by all those who are new to cooking (dare I say, first-time chefs! :)), especially during these unprecedented times of quarantining, social distancing, and increased cooking. It is intended to provide a single place to both search for new recipes as well as keep track of personal ones.
 
 ## App features
 
@@ -16,10 +12,10 @@ That being said, the app is inspired by all those who are new to cooking (dare I
 2. **My Recipes** - Users can create and save their own recipes using the app! Recipes can also be updated and deleted from their collection.
 
 <p float="left">
-  <img src="screenshots/screen_starting.png" width="250">
-  <img src="screenshots/screen_search_recipes.png" width="250">
-  <img src="screenshots/screen_recipe_detail.png" width="250">
-  <img src="screenshots/screen_recipes_carousel.png" width="250">
+  <img src="screenshots/screen_starting.png" width="200">
+  <img src="screenshots/screen_search_recipes.png" width="200">
+  <img src="screenshots/screen_recipe_detail.png" width="200">
+  <img src="screenshots/screen_recipes_carousel.png" width="200">
 </p>
 
 ## NuGet packages
