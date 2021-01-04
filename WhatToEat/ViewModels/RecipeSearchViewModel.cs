@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+﻿ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Recipes.Views;
 
@@ -88,9 +88,11 @@ namespace Recipes.ViewModels
 
                     RecipeData = recipeData;
                     AppShell.Data = RecipeData;
-
-                    //OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
+                    
+                    // OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
                 }
+
+                // OnPropertyChanged(SearchQuery);
             }
         }
 
