@@ -28,8 +28,7 @@
             </StackLayout>
             <StackLayout Grid.Column="0" Grid.Row="5" Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Delete" Command="{Binding DeleteCommand}" BackgroundColor="#BF2E2E" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Update" Command="{Binding UpdateCommand}" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
