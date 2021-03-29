@@ -25,19 +25,10 @@ namespace Recipes.Views
 		{
 			var messageOptions = new MessageOptions
 			{
-				Foreground = primary,
-				FontSize = 7,
-				Message = alertMessage
-			};
-
-			var actionOptions = new List<SnackBarActionOptions>
-			{
-				new SnackBarActionOptions
-				{
-					ForegroundColor = Color.White,
-					BackgroundColor = primary,
-					FontSize = 7
-				}
+				Foreground = Color.White,
+				Message = alertMessage,
+				Font = Font.SystemFontOfSize(14),
+				Padding = new Thickness(10)
 			};
 
 			var options = new SnackBarOptions
@@ -45,8 +36,7 @@ namespace Recipes.Views
 				MessageOptions = messageOptions,
 				Duration = TimeSpan.FromMilliseconds(5000),
 				BackgroundColor = primary,
-				IsRtl = false,
-				Actions = actionOptions
+				IsRtl = false
 			};
 
 			await this.DisplaySnackBarAsync(options);
