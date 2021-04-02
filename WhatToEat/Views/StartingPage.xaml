@@ -21,7 +21,7 @@
                    ios:SearchBar.SearchBarStyle="Default"
                    sharedTransitions:Transition.Name="searchBarTransition"
                    BackgroundColor="White"
-                   Placeholder="Search recipes..."
+                   Placeholder="Search recipes"
                    CancelButtonColor="{StaticResource Primary}"
                    Text="{Binding SearchQuery}"
                    PlaceholderColor="Gray"
