@@ -14,16 +14,16 @@
     <StackLayout Margin="20" >
         <Label Text="Your recipes" FontSize="30" FontAttributes="Bold" TextColor="Black"/>
         <sh:Shadows CornerRadius="30" Shades="{sh:SingleShade Offset='0,2', BlurRadius=10, Opacity=0.20, Color='Black'}">
-            <CarouselView ItemsSource="{Binding Items}" Loop="False" Margin="0,0,0,15">
+            <CarouselView ItemsSource="{Binding Items}" Loop="False">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="30" Orientation="Horizontal" />
                 </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <Frame x:DataType="model:Item" CornerRadius="40" HasShadow="False">
+                        <Frame x:DataType="model:Item" CornerRadius="20" HasShadow="False" IsClippedToBounds="True">
                             <StackLayout sharedTransitions:Transition.Name="recipeImageTransition" VerticalOptions="Center" HorizontalOptions="Center" Padding="-50">
                                 <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="700" WidthRequest="400" Margin="0,-100,0,-400"/>
-                                <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" BackgroundColor="White" FontSize="30" FontAttributes="Bold" Padding="50,10" TextColor="Black"/>
+                                <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" BackgroundColor="White" FontSize="30" FontAttributes="Bold" MaxLines="3" Padding="50,10" TextColor="Black"/>
                             </StackLayout>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
