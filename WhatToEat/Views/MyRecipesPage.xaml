@@ -21,9 +21,9 @@
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Frame x:DataType="model:Item" CornerRadius="20" HasShadow="False" IsClippedToBounds="True">
-                            <StackLayout sharedTransitions:Transition.Name="recipeImageTransition" VerticalOptions="Center" HorizontalOptions="Center" Padding="-50">
-                                <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" Aspect="AspectFill" HeightRequest="700" WidthRequest="400" Margin="0,-100,0,-400"/>
-                                <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" BackgroundColor="White" FontSize="30" FontAttributes="Bold" MaxLines="3" Padding="50,10" TextColor="Black"/>
+                            <StackLayout sharedTransitions:Transition.Name="recipeImageTransition" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="-20">
+                                <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" />
+                                <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" BackgroundColor="White" FontSize="30" FontAttributes="Bold" MaxLines="3" Padding="20,10" Margin="0,-200,0,0" TextColor="Black"/>
                             </StackLayout>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>

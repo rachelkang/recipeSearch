@@ -20,7 +20,7 @@
                    TextColor="Black"
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
-        <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,0,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
+        <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,10,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
         <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="10,0" IsVisible="{Binding SearchResultsVisible}" >
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
@@ -30,7 +30,7 @@
                     <sh:Shadows CornerRadius="20" Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.2, Color='Black'}">
                         <Frame CornerRadius="15" HasShadow="False" IsClippedToBounds="True">
                             <StackLayout HeightRequest="220" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="-20">
-                                <Image Source="{Binding Recipe.ImageUrl}" HorizontalOptions="FillAndExpand" Aspect="AspectFill" Margin="0,0,0,-10"/>
+                                <Image Source="{Binding Recipe.ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" Margin="0,0,0,-10"/>
                                 <Label x:Name="recipeName" Padding="10" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
                             </StackLayout>
                             <Frame.GestureRecognizers>
