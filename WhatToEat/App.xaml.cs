@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Recipes.Services;
 using Recipes.Views;
+using System.Collections.Generic;
 
 namespace Recipes
 {
@@ -12,7 +13,7 @@ namespace Recipes
         public App()
         {
             InitializeComponent();
-
+            Xamarin.Forms.Device.SetFlags(new List<string> { "AccessibilityExperimental" });
             DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
