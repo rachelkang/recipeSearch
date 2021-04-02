@@ -27,6 +27,7 @@
                     <StackLayout Margin="2">
                         <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
                         <Label Text="{Binding RecipeBody}" FontSize="Small" IsVisible="{Binding RecipeBodyVisible}" TextColor="Black"/>
+                        <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" TextColor="Black" AutomationProperties.IsInAccessibleTree="True"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
