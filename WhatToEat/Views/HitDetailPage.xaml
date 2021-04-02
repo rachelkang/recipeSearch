@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <StackLayout Grid.Column="0" Grid.Row="0" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="0,0,0,10" BackgroundColor="White">
             <Image Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" Margin="0,0,0,-150" />
-            <Label Text="{Binding RecipeName}" FontSize="25" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" TextColor="Black" Padding="15,10" BackgroundColor="White"/>
+            <Label Text="{Binding RecipeName}" FontSize="25" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" TextColor="Black" MaxLines="3" Padding="15,10" BackgroundColor="White"/>
         </StackLayout>
         <ScrollView Grid.Column="0" Grid.Row="1" Padding="0,5,0,0" BackgroundColor="White">
             <StackLayout>
@@ -27,7 +27,6 @@
                     <StackLayout Margin="2">
                         <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
                         <Label Text="{Binding RecipeBody}" FontSize="Small" IsVisible="{Binding RecipeBodyVisible}" TextColor="Black"/>
-                        <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" TextColor="Black"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
