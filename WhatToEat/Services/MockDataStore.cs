@@ -19,7 +19,14 @@ namespace Recipes.Services
                     Id = Guid.NewGuid().ToString(),
                     RecipeName = "달걀말이 (Korean Egg Roll)",
                     ImageUrl = "https://www.koreanbapsang.com/wp-content/uploads/2019/10/DSC_1183-2.jpg",
-                    Ingredients = "1 scallion\n8 eggs\ncanola oil\n1 tbsp salt\n1 tbsp pepper",
+                    Ingredients = new List<Ingredient>()
+					{
+                        new Ingredient() { IngredientItem = "1 scallion", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "8 eggs", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "canola oil", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "1 tbsp salt", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "1 tbsp pepper", IngredientChecked = false },
+                    },
                     RecipeBody = "1. Grab a bowl, and add the scallion (chopped), eggs (cracked), salt, pepper\n" +
 					"2. Thoroughly beat the egg mixture\n" +
                     "3. Heat the pan on the stove, and add 3 turns of oil\n" +
@@ -36,7 +43,19 @@ namespace Recipes.Services
                     Id = Guid.NewGuid().ToString(),
                     RecipeName = "된장찌개 (Korean Soybean Paste Stew)",
                     ImageUrl = "https://mblogthumb-phinf.pstatic.net/MjAxNzEyMjlfMTQ0/MDAxNTE0NTM2MTcwMzM5.feATDxTPqCzmnlXqheAC87Fk0pMo_9uz3fj8FDu1zgwg.qdar-w_Xggvqp9IB8bPMwGMRaCt_CvGgDfqFCwbt6Zog.JPEG.sundoong2/image_1532650841514535869603.jpg?type=w800",
-                    Ingredients = "1 bag 다시 (Dasi anchovy soup stock)\n3 tbsp 된장 (soybean paste)\n1.5 tbsp 미소 된장 (miso soybean paste)\n1 tbsp 고추가루 (Korean red pepper powder)\npotato\ncarrot\nonion\n호박 (Korean squash)\n소고기 (beef / thin brisket) (optional)\ntofu (optional)",
+                    Ingredients = new List<Ingredient>()
+                    {
+                        new Ingredient() { IngredientItem = "1 bag 다시 (Dasi anchovy soup stock)", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "3 tbsp 된장 (soybean paste)", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "1.5 tbsp 미소 된장 (miso soybean paste)", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "1 tbsp 고추가루 (Korean red pepper powder)", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "potato", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "carrot", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "onion", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "호박 (Korean squash)", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "소고기 (beef / thin brisket) (optional", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "tofu (optional)", IngredientChecked = false },
+                    },
                     RecipeBody = "1. Pour water into the pot so that it fills about about 1/3 of the pot. Bring the water to a boil\n" +
                     "2. Put the bagged 다시 into the pot\n" +
                     "3. 10 minutes later, add the 된장 and 미소 된장 into the pot\n" +
@@ -52,7 +71,16 @@ namespace Recipes.Services
                     Id = Guid.NewGuid().ToString(),
                     RecipeName = "Salmon Bake",
                     ImageUrl = "https://www.inspiredtaste.net/wp-content/uploads/2018/09/Easy-Oven-Baked-Salmon-Recipe-2-1200.jpg",
-                    Ingredients = "1 pack (frozen) salmon (i.e. costco)\nmasago\nmayo\nolive oil\nsalt\npepper\nscallion (optional)",
+                    Ingredients = new List<Ingredient>()
+                    {
+                        new Ingredient() { IngredientItem = "1 pack (frozen) salmon (i.e. costco)", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "masago", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "mayo", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "olive oil", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "salt", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "pepper", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "scallion (optional", IngredientChecked = false },
+                    },
                     RecipeBody = "1. Thaw frozen salmon for at least 2 hours.\n" +
                     "2. Salt and pepper the salmon on both sides\n" +
                     "3. Oil the pan.\n" +

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using Xamarin.Forms;
 using Recipes.Models;
+using System.Collections.Generic;
 
 namespace Recipes.ViewModels
 {
@@ -80,11 +81,15 @@ namespace Recipes.ViewModels
             {
                 var item = await DataStore.GetItemAsync(itemId);
                 RecipeName = item.RecipeName;
-                Ingredients = item.Ingredients;
+
+                string ingredients = "";
+                foreach (Ingredient ingredient in item.Ingredients)
+                    ingredients += ingredient.IngredientItem + Environment.NewLine;
+                Ingredients = ingredients;
+
                 ImageUrl = item.ImageUrl;
                 RecipeBody = item.RecipeBody;
                 RecipeUrl = item.RecipeUrl;
-                //IsMyRecipe = item.IsMyRecipe;
             }
             catch (Exception)
             {
@@ -114,11 +119,16 @@ namespace Recipes.ViewModels
 
         private async void OnUpdate()
         {
+            List<Ingredient> ingredientList = new List<Ingredient>();
+            string[] ingredientStringList = Ingredients.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string ingredientString in ingredientStringList)
+                ingredientList.Add(new Ingredient { IngredientItem = ingredientString });
+
             Item newItem = new Item()
             {
                 Id = _id,
                 RecipeName = RecipeName,
-                Ingredients = Ingredients,
+                Ingredients = ingredientList,
                 ImageUrl = ImageUrl,
                 RecipeBody = RecipeBody,
                 RecipeUrl = RecipeUrl

@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Recipes.Models;
+using System.Collections.Generic;
 
 namespace Recipes.ViewModels
 {
@@ -66,12 +67,17 @@ namespace Recipes.ViewModels
 
         private async void OnSave()
         {
+            List<Ingredient> ingredientList = new List<Ingredient>();
+            string[] ingredientStringList = Ingredients.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string ingredientString in ingredientStringList)
+				ingredientList.Add(new Ingredient { IngredientItem = ingredientString });
+
             Item newItem = new Item()
             {
                 Id = Guid.NewGuid().ToString(),
                 RecipeName = RecipeName,
                 ImageUrl = ImageUrl,
-                Ingredients = Ingredients,
+                Ingredients = ingredientList,
                 RecipeBody = RecipeBody,
                 RecipeUrl = RecipeUrl
             };
