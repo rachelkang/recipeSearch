@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using Xamarin.Forms;
 using Recipes.Views;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Recipes.ViewModels
 {
@@ -36,7 +38,7 @@ namespace Recipes.ViewModels
             RecipeUrlVisible = true;
         }
 
-        public string ItemId
+		public string ItemId
         {
             get
             {
@@ -64,11 +66,15 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _imageUrl, value);
         }
 
-        public string Ingredients
-        {
-            get => _ingredients;
-            set => SetProperty(ref _ingredients, value);
-        }
+
+        IList<string> source;
+        public ObservableCollection<string> IngredientCheckList { get; private set; }
+
+        //public string Ingredients
+        //{
+        //    get => _ingredients;
+        //    set => SetProperty(ref _ingredients, value);
+        //}
 
         public string RecipeBody
         {
@@ -120,9 +126,12 @@ namespace Recipes.ViewModels
                 Id = item.Id;
                 RecipeName = item.RecipeName;
                 ImageUrl = item.ImageUrl;
-                Ingredients = item.Ingredients;
+                //Ingredients = item.Ingredients;
                 RecipeBody = item.RecipeBody;
                 RecipeUrl = item.RecipeUrl;
+
+                source = new List<string>((item.Ingredients).Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries));
+                IngredientCheckList = new ObservableCollection<string>(source);
 
                 Title = RecipeName;
 
@@ -131,7 +140,7 @@ namespace Recipes.ViewModels
 
                 RecipeNameVisible = !String.IsNullOrEmpty(RecipeName);
                 ImageUrlVisible = !String.IsNullOrEmpty(ImageUrl);
-                IngredientsVisible = !String.IsNullOrEmpty(Ingredients);
+                IngredientsVisible = !String.IsNullOrEmpty(IngredientCheckList.ToString());
                 RecipeBodyVisible = !String.IsNullOrEmpty(RecipeBody);
                 RecipeUrlVisible = !(RecipeUrl == null || FormattedString.Equals(RecipeUrl, emptyFormattedString));
                 
