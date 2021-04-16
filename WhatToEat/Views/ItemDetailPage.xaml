@@ -24,14 +24,25 @@
                 <Frame Background="{StaticResource BlueGradient}" CornerRadius="10" HasShadow="False" Margin="0,5">
                     <StackLayout Margin="2">
                         <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
-                        <Label Text="{Binding Ingredients}" FontSize="Small" IsVisible="{Binding IngredientsVisible}" TextColor="Black"/>
+
+                        <CollectionView  HeightRequest="150" ItemsSource="{Binding IngredientCheckList}" IsVisible="{Binding IngredientsVisible}" SelectionMode="None">
+                            <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="True" AutomationProperties.LabeledBy="{x:Reference recipeName}">
+                                <DataTemplate>
+                                    <StackLayout Orientation="Horizontal">
+                                        <CheckBox Color="{StaticResource Primary}" IsChecked="{Binding IngredientChecked}"/>
+                                        <Label Text="{Binding IngredientItem}" TextColor="Black" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
                     </StackLayout>
                 </Frame>
                 <Frame Background="{StaticResource BlueGradient}" CornerRadius="10" HasShadow="False">
                     <StackLayout Margin="2">
                         <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
-                        <Label Text="{Binding RecipeBody}" FontSize="Small" IsVisible="{Binding RecipeBodyVisible}" TextColor="Black"/>
-                        <Label FormattedText="{Binding RecipeUrl}" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" TextColor="Black"/>
+                        <Label Text="{Binding RecipeBody}" IsVisible="{Binding RecipeBodyVisible}" TextColor="Black"/>
+                        <Label FormattedText="{Binding RecipeUrl}" IsVisible="{Binding RecipeUrlVisible}" TextColor="Black"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>

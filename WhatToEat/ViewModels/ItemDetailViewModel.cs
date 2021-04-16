@@ -2,6 +2,9 @@
 using System.Diagnostics;
 using Xamarin.Forms;
 using Recipes.Views;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using Recipes.Models;
 
 namespace Recipes.ViewModels
 {
@@ -13,7 +16,12 @@ namespace Recipes.ViewModels
         string _itemId;
         string _recipeName;
         string _imageUrl;
-        string _ingredients;
+
+        IList<Ingredient> source;
+        public ObservableCollection<Ingredient> _ingredientCheckList;
+
+        bool _ingredientChecked;
+
         string _recipeBody;
         FormattedString _recipeUrl;
 
@@ -36,7 +44,7 @@ namespace Recipes.ViewModels
             RecipeUrlVisible = true;
         }
 
-        public string ItemId
+		public string ItemId
         {
             get
             {
@@ -64,13 +72,19 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _imageUrl, value);
         }
 
-        public string Ingredients
+        public bool IngredientChecked
         {
-            get => _ingredients;
-            set => SetProperty(ref _ingredients, value);
+            get => _ingredientChecked;
+            set => SetProperty(ref _ingredientChecked, value);
         }
 
-        public string RecipeBody
+		public ObservableCollection<Ingredient> IngredientCheckList
+		{
+			get => _ingredientCheckList;
+			set => SetProperty(ref _ingredientCheckList, value);
+		}
+
+		public string RecipeBody
         {
             get => _recipeBody;
             set => SetProperty(ref _recipeBody, value);
@@ -120,9 +134,14 @@ namespace Recipes.ViewModels
                 Id = item.Id;
                 RecipeName = item.RecipeName;
                 ImageUrl = item.ImageUrl;
-                Ingredients = item.Ingredients;
                 RecipeBody = item.RecipeBody;
                 RecipeUrl = item.RecipeUrl;
+
+                source = item.Ingredients;
+                IngredientCheckList = new ObservableCollection<Ingredient>(source);
+
+                foreach (Ingredient ingredient in IngredientCheckList)
+                    IngredientChecked = ingredient.IngredientChecked;
 
                 Title = RecipeName;
 
@@ -131,7 +150,7 @@ namespace Recipes.ViewModels
 
                 RecipeNameVisible = !String.IsNullOrEmpty(RecipeName);
                 ImageUrlVisible = !String.IsNullOrEmpty(ImageUrl);
-                IngredientsVisible = !String.IsNullOrEmpty(Ingredients);
+                IngredientsVisible = IngredientCheckList.Count > 0;
                 RecipeBodyVisible = !String.IsNullOrEmpty(RecipeBody);
                 RecipeUrlVisible = !(RecipeUrl == null || FormattedString.Equals(RecipeUrl, emptyFormattedString));
                 

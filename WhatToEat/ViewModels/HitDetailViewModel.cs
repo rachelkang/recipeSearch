@@ -5,6 +5,7 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Recipes.Models;
+using System.Collections.Generic;
 
 namespace Recipes.ViewModels
 {
@@ -63,12 +64,18 @@ namespace Recipes.ViewModels
 
         private void OnAddItem()
         {
+
+            List<Ingredient> ingredientList = new List<Ingredient>();
+            string[] ingredientStringList = Ingredients.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string ingredientString in ingredientStringList)
+                ingredientList.Add(new Ingredient { IngredientItem = ingredientString });
+
             Item newItem = new Item()
             {
                 Id = HitId,
                 RecipeName = RecipeName,
                 ImageUrl = ImageUrl,
-                Ingredients = Ingredients,
+                Ingredients = ingredientList,
                 RecipeBody = RecipeBody,
                 RecipeUrl = RecipeUrl
             };
