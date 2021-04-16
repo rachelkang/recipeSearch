@@ -68,15 +68,20 @@ namespace Recipes.ViewModels
 
 
         IList<string> source;
-        public ObservableCollection<string> IngredientCheckList { get; private set; }
+        public ObservableCollection<string> _ingredientCheckList { get; private set; }
 
         //public string Ingredients
         //{
         //    get => _ingredients;
         //    set => SetProperty(ref _ingredients, value);
         //}
+		public ObservableCollection<string> IngredientChecklist
+		{
+			get => _ingredientCheckList;
+			set => SetProperty(ref _ingredientCheckList, value);
+		}
 
-        public string RecipeBody
+		public string RecipeBody
         {
             get => _recipeBody;
             set => SetProperty(ref _recipeBody, value);
@@ -140,7 +145,7 @@ namespace Recipes.ViewModels
 
                 RecipeNameVisible = !String.IsNullOrEmpty(RecipeName);
                 ImageUrlVisible = !String.IsNullOrEmpty(ImageUrl);
-                IngredientsVisible = !String.IsNullOrEmpty(IngredientCheckList.ToString());
+                IngredientsVisible = (IngredientCheckList.Count > 0);
                 RecipeBodyVisible = !String.IsNullOrEmpty(RecipeBody);
                 RecipeUrlVisible = !(RecipeUrl == null || FormattedString.Equals(RecipeUrl, emptyFormattedString));
                 
