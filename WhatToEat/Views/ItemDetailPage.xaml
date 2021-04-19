@@ -17,7 +17,10 @@
         </Grid.RowDefinitions>
         <StackLayout Grid.Column="0" Grid.Row="0" sharedTransitions:Transition.Name="recipeImageTransition" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="0,0,0,10" BackgroundColor="White">
             <Image Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" Margin="0,0,0,-150" />
-            <Label Text="{Binding RecipeName}" FontSize="25" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" TextColor="Black" MaxLines="3" Padding="15,10" BackgroundColor="White"/>
+            <StackLayout Orientation="Horizontal" BackgroundColor="White" Padding="15,10">
+                <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" FontSize="25" FontAttributes="Bold" MaxLines="3" TextColor="Black"/>
+                <Image Source="star.png" IsVisible="{Binding IsFavorite}" HeightRequest="15" Aspect="AspectFit" />
+            </StackLayout>
         </StackLayout>
         <ScrollView Grid.Column="0" Grid.Row="1" Padding="0,5,0,0" BackgroundColor="White">
             <StackLayout>

@@ -51,6 +51,7 @@
     <None Remove="Resources\breakfast.png" />
     <None Remove="Resources\search.png" />
     <None Remove="Resources\cookbook.png" />
+    <None Remove="Resources\star.png" />
   </ItemGroup>
   <ItemGroup>
     <SharedImage Include="Resources\balanced.png" BaseSize="75,75" />
@@ -69,6 +70,7 @@
     <SharedImage Include="Resources\search.png" BaseSize="20,20">
       <BaseSize>20,20</BaseSize>
     </SharedImage>
+    <SharedImage Include="Resources\star.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Drawing.Common">

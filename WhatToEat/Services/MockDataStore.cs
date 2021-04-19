@@ -36,7 +36,8 @@ namespace Recipes.Services
                     "7. Continually fold egg over while pushing uncooked egg to the other side of the pan and shaping it\n" +
                     "8. Once completely folded, remove from pan\n" +
                     "9. Repeat steps 3 - 8 if there is remaining egg mixture\n" +
-                    "10. Cut the 달걀말이 into pieces"
+                    "10. Cut the 달걀말이 into pieces",
+                    IsFavorite = true
                 },
                 new Item
                 {
@@ -64,7 +65,8 @@ namespace Recipes.Services
                     "6. Add in the potato, carrots, onion chunks. These veggies should be chopped in advance into 1/2” - 1” pieces\n" +
                     "7. Add in any additional ingredients you have! (i.e. beef, tofu, etc.)\n" +
                     "8. If you have, add in the Korean squash! This should also have been chopped in advance into 1/2” - 1” pieces\n" +
-                    "9. Continue to boil until ready to serve. Use ladle to remove any froth floating on the soup’s surface"
+                    "9. Continue to boil until ready to serve. Use ladle to remove any froth floating on the soup’s surface",
+                    IsFavorite = true
                 },
                 new Item
                 {
@@ -89,7 +91,8 @@ namespace Recipes.Services
                     "6. Spread a thin layer of the mixture onto the salmon\n" +
                     "7. Preheat the oven to 350ºF\n" +
                     "8. Cover the pan with foil and poke holes with a fork\n" +
-                    "9. Bake the salmon! (combination fast bake ~30 minutes)"
+                    "9. Bake the salmon! (combination fast bake ~30 minutes)",
+                    IsFavorite = true
                 }
             };
         }

@@ -5,6 +5,60 @@
              xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
              Shell.PresentationMode="ModalAnimated"
              Visual="Material">
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="RadioButtonTemplate">
+            <Frame BackgroundColor="Transparent"
+                   HasShadow="False"
+                   HorizontalOptions="Start"
+                   VerticalOptions="Start"
+                   Padding="0">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor"
+                                            Value="{StaticResource Primary}" />
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="1" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="0" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <Grid Margin="5">
+                    <Grid>
+                        <Ellipse Stroke="{StaticResource Primary}"
+                                 WidthRequest="16"
+                                 HeightRequest="16"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                        <Ellipse x:Name="check"
+                                 Fill="{StaticResource Primary}"
+                                 WidthRequest="8"
+                                 HeightRequest="8"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+                    </Grid>
+                    <ContentPresenter />
+                </Grid>
+            </Frame>
+        </ControlTemplate>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="ControlTemplate"
+                    Value="{StaticResource RadioButtonTemplate}" />
+        </Style>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid Margin="20,30,20,20">
             <Grid.ColumnDefinitions>
@@ -18,11 +72,31 @@
             <Label FontSize="25" FontAttributes="Bold" Text="Edit recipe" Margin="15" TextColor="Black"/>
             <ScrollView Grid.Row="1">
                 <StackLayout>
-                    <Entry Placeholder="Recipe Name" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" />
-                    <Entry Placeholder="Image URL" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" />
-                    <Editor Placeholder="Ingredients" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding Ingredients, Mode=TwoWay}" IsSpellCheckEnabled="false" />
-                    <Editor Placeholder="Recipe" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding RecipeBody, Mode=TwoWay}" IsSpellCheckEnabled="false" />
-                    <Label FontSize="Small" FormattedText="{Binding RecipeUrl}" FontAttributes="Italic" TextColor="Gray" />
+                    <StackLayout>
+                        <Entry Placeholder="Recipe Name" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" />
+                        <Entry Placeholder="Image URL" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" />
+                        <Editor Placeholder="Ingredients" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding Ingredients, Mode=TwoWay}" IsSpellCheckEnabled="false" />
+                        <Editor Placeholder="Recipe" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding RecipeBody, Mode=TwoWay}" IsSpellCheckEnabled="false" />
+                        <Label FontSize="14" FormattedText="{Binding RecipeUrl}" FontAttributes="Italic" TextColor="Gray" />
+                    </StackLayout>
+                    <StackLayout RadioButtonGroup.GroupName="favoriteRecipeSelection" Orientation="Horizontal" Margin="0">
+                        <Label Text="Is this a favorite recipe?" TextColor="{StaticResource Primary}" FontSize="16" Padding="10"/>
+                        <RadioButton IsChecked="{Binding IsFavorite}">
+                            <RadioButton.Content>
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label Text="Yes" FontSize="16" />
+                                    <Image Source="star.png" HeightRequest="15" Aspect="AspectFit"/>
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton>
+                            <RadioButton.Content>
+                                <StackLayout Padding="5" >
+                                    <Label Text="No" FontSize="16" />
+                                </StackLayout>
+                            </RadioButton.Content>
+                        </RadioButton>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
             <StackLayout Grid.Row="2" Orientation="Horizontal">

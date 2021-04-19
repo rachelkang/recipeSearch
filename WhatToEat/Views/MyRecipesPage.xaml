@@ -23,7 +23,10 @@
                         <Frame x:DataType="model:Item" CornerRadius="20" HasShadow="False" IsClippedToBounds="True">
                             <StackLayout sharedTransitions:Transition.Name="recipeImageTransition" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="-20">
                                 <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" />
-                                <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" BackgroundColor="White" FontSize="30" FontAttributes="Bold" MaxLines="3" Padding="20,10" Margin="0,-200,0,0" TextColor="Black"/>
+                                <StackLayout Orientation="Horizontal" BackgroundColor="White" Padding="20,10" Margin="0,-200,0,0" >
+                                    <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" FontSize="30" FontAttributes="Bold" MaxLines="3" TextColor="Black"/>
+                                    <Image Source="star.png" IsVisible="{Binding IsFavorite}" HeightRequest="20" Aspect="AspectFit" />
+                                </StackLayout>
                             </StackLayout>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>

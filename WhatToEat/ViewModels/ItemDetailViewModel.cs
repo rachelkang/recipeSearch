@@ -24,6 +24,7 @@ namespace Recipes.ViewModels
 
         string _recipeBody;
         FormattedString _recipeUrl;
+        bool _isFavorite;
 
         bool _recipeNameVisible;
         bool _imageUrlVisible;
@@ -96,6 +97,12 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _recipeUrl, value);
         }
 
+        public bool IsFavorite
+        {
+            get => _isFavorite;
+            set => SetProperty(ref _isFavorite, value);
+        }
+
         public bool RecipeNameVisible
         {
             get => _recipeNameVisible;
@@ -136,6 +143,7 @@ namespace Recipes.ViewModels
                 ImageUrl = item.ImageUrl;
                 RecipeBody = item.RecipeBody;
                 RecipeUrl = item.RecipeUrl;
+                IsFavorite = item.IsFavorite;
 
                 source = item.Ingredients;
                 IngredientCheckList = new ObservableCollection<Ingredient>(source);

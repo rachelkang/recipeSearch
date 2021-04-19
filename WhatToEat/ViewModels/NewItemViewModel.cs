@@ -12,6 +12,7 @@ namespace Recipes.ViewModels
         string _ingredients;
         string _recipeBody;
         FormattedString _recipeUrl;
+        bool _isFavorite;
 
         public NewItemViewModel()
         {
@@ -56,6 +57,12 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _recipeUrl, value);
         }
 
+        public bool IsFavorite
+        {
+            get => _isFavorite;
+            set => SetProperty(ref _isFavorite, value);
+        }
+
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
@@ -79,7 +86,8 @@ namespace Recipes.ViewModels
                 ImageUrl = ImageUrl,
                 Ingredients = ingredientList,
                 RecipeBody = RecipeBody,
-                RecipeUrl = RecipeUrl
+                RecipeUrl = RecipeUrl,
+                IsFavorite = IsFavorite
             };
 
             await DataStore.AddItemAsync(newItem);

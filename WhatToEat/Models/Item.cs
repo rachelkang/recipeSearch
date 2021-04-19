@@ -11,5 +11,6 @@ namespace Recipes.Models
         public List<Ingredient> Ingredients { get; set; }
         public string RecipeBody { get; set; }
         public FormattedString RecipeUrl { get; set; }
+        public bool IsFavorite { get; set; }
     }
 }

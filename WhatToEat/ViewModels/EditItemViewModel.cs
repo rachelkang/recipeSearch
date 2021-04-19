@@ -15,6 +15,7 @@ namespace Recipes.ViewModels
         string _imageUrl;
         string _recipeBody;
         FormattedString _recipeUrl;
+        bool _isFavorite;
 
         public EditItemViewModel()
         {
@@ -75,6 +76,12 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _recipeUrl, value);
         }
 
+        public bool IsFavorite
+        {
+            get => _isFavorite;
+            set => SetProperty(ref _isFavorite, value);
+        }
+
         public async void LoadItemId(string itemId)
         {
             try
@@ -90,6 +97,7 @@ namespace Recipes.ViewModels
                 ImageUrl = item.ImageUrl;
                 RecipeBody = item.RecipeBody;
                 RecipeUrl = item.RecipeUrl;
+                IsFavorite = item.IsFavorite;
             }
             catch (Exception)
             {
@@ -131,7 +139,8 @@ namespace Recipes.ViewModels
                 Ingredients = ingredientList,
                 ImageUrl = ImageUrl,
                 RecipeBody = RecipeBody,
-                RecipeUrl = RecipeUrl
+                RecipeUrl = RecipeUrl,
+                IsFavorite = IsFavorite
             };
 
             await DataStore.UpdateItemAsync(newItem);
