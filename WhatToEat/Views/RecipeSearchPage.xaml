@@ -21,11 +21,11 @@
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
         <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,10,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
-        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="10,0" IsVisible="{Binding SearchResultsVisible}" >
+        <CollectionView x:Name="HitsListView" SelectedItem="{Binding SelectedHit}" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="Single" Margin="10,0" IsVisible="{Binding SearchResultsVisible}" >
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
             </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="True" AutomationProperties.LabeledBy="{x:Reference recipeName}">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <sh:Shadows CornerRadius="20" Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.2, Color='Black'}">
                         <Frame CornerRadius="15" HasShadow="False" IsClippedToBounds="True">

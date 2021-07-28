@@ -15,6 +15,7 @@ namespace Recipes.ViewModels
         string _noResultsLabel;
         bool _noResultsLabelVisible;
         bool _searchResultsVisible;
+        private Hit _selectedHit;
 
         public Command<Hit> ItemTapped { get; }
         public Command SearchCommand { get; }
@@ -62,6 +63,19 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _searchResultsVisible, value);
         }
 
+        public Hit SelectedHit
+        {
+            get
+            {
+                return null;
+            }
+            set
+            {
+                if (value != null)
+                    OnItemSelected(value);
+            }
+        }
+
         async Task OnSearch()
         {
             NoResultsLabelVisible = false;
@@ -88,7 +102,7 @@ namespace Recipes.ViewModels
 
                     RecipeData = recipeData;
                     AppShell.Data = RecipeData;
-                    
+
                     // OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
                 }
 
