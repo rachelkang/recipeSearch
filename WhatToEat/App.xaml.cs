@@ -13,7 +13,7 @@ namespace Recipes
         public App()
         {
             InitializeComponent();
-            Xamarin.Forms.Device.SetFlags(new List<string> { "AccessibilityExperimental" });
+            Xamarin.Forms.Device.SetFlags(new List<string> { "Accessibility_Experimental" });
             DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
