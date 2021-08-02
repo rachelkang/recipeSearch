@@ -5,9 +5,10 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
+             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.Effects;assembly=Xamarin.CommunityToolkit"
              Title="{Binding Title}"
              xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
-             xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation">
+             xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation" xmlns:local="clr-namespace:Recipes">
     <StackLayout Margin="5,5,5,0">
         <SearchBar x:Name="searchBar"
                    ios:SearchBar.SearchBarStyle="Default"
@@ -28,7 +29,9 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <sh:Shadows CornerRadius="20" Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.2, Color='Black'}">
-                        <Frame CornerRadius="15" HasShadow="False" IsClippedToBounds="True">
+                        <local:CustomFrame CornerRadius="15" HasShadow="False" IsClippedToBounds="True"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            xct:SemanticEffect.Description="{Binding Recipe.RecipeName}">
                             <StackLayout HeightRequest="220" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="-20">
                                 <Image Source="{Binding Recipe.ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" Margin="0,0,0,-10"/>
                                 <Label x:Name="recipeName" Padding="10" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
@@ -36,7 +39,7 @@
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
                             </Frame.GestureRecognizers>
-                        </Frame>
+                        </local:CustomFrame>
                     </sh:Shadows>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
