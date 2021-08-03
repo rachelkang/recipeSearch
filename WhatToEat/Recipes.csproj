@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
+    <TargetFrameworks>net6.0-ios;net6.0-android</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <SingleProject>true</SingleProject>
     <UseMaui>true</UseMaui>
@@ -14,8 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<MauiImage Include="Resources\app_icon.png" IsAppIcon="true" Color="#081B25" />
-    <MauiSplashScreen Include="Resources\app_logo.png" Color="#081B25" />
+	<MauiImage Include="Resources\appicon.png" IsAppIcon="true" Color="#081B25" />
+    <MauiSplashScreen Include="Resources\applogo.png" Color="#081B25" />
     <MauiImage Include="Resources\Images\*" />
     <MauiFont Include="Resources\Fonts\*" />
   </ItemGroup>
