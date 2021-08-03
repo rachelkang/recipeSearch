@@ -2,10 +2,12 @@
 using System.Windows.Input;
 using System.Diagnostics;
 using System.Linq;
-using Xamarin.Forms;
-using Xamarin.Essentials;
+using Microsoft.Maui.Controls;
 using Recipes.Models;
 using System.Collections.Generic;
+using Microsoft.Maui.Essentials;
+using Microsoft.Maui;
+using Microsoft.Maui.Graphics;
 
 namespace Recipes.ViewModels
 {
@@ -121,7 +123,7 @@ namespace Recipes.ViewModels
             var recipeBodyFormattedString = new FormattedString();
             recipeBodyFormattedString.Spans.Add(new Span { Text = "Click " });
 
-            var recipeUrlFormattedString = new Span { Text = "here", TextColor = Color.Blue, TextDecorations = TextDecorations.Underline };
+            var recipeUrlFormattedString = new Span { Text = "here", TextColor = Colors.Blue, TextDecorations = TextDecorations.Underline };
             recipeUrlFormattedString.GestureRecognizers.Add(new TapGestureRecognizer()
             {
                 Command = TapCommand,

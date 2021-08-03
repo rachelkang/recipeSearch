@@ -20,7 +20,7 @@ namespace Recipes.Services
                     RecipeName = "달걀말이 (Korean Egg Roll)",
                     ImageUrl = "https://www.koreanbapsang.com/wp-content/uploads/2019/10/DSC_1183-2.jpg",
                     Ingredients = new List<Ingredient>()
-					{
+                    {
                         new Ingredient() { IngredientItem = "1 scallion", IngredientChecked = false },
                         new Ingredient() { IngredientItem = "8 eggs", IngredientChecked = false },
                         new Ingredient() { IngredientItem = "canola oil", IngredientChecked = false },
@@ -28,7 +28,7 @@ namespace Recipes.Services
                         new Ingredient() { IngredientItem = "1 tbsp pepper", IngredientChecked = false },
                     },
                     RecipeBody = "1. Grab a bowl, and add the scallion (chopped), eggs (cracked), salt, pepper\n" +
-					"2. Thoroughly beat the egg mixture\n" +
+                    "2. Thoroughly beat the egg mixture\n" +
                     "3. Heat the pan on the stove, and add 3 turns of oil\n" +
                     "4. Once pan is ready/warm, pour in the egg mixture; if using 8 eggs, pour in only half\n" +
                     "5. Tilt the pan around so egg mixture fills the pan.\n" +

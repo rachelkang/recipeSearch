@@ -1,6 +1,6 @@
 ﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Xaml;
 using Recipes.Services;
 using Recipes.Views;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Recipes
         public App()
         {
             InitializeComponent();
-            Xamarin.Forms.Device.SetFlags(new List<string> { "Accessibility_Experimental" });
+            Microsoft.Maui.Controls.Device.SetFlags(new List<string> { "Accessibility_Experimental" });
             DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Plugin.SharedTransitions;
 using Recipes.Models;
 using Recipes.ViewModels;
 using Recipes.Views;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
 
 namespace Recipes
 {
-    public partial class AppShell : SharedTransitionShell
+    public partial class AppShell : Shell
     {
         public AppShell()
         {
