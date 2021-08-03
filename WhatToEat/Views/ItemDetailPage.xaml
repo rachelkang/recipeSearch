@@ -24,9 +24,8 @@
                 <Frame Background="{StaticResource BlueGradient}" CornerRadius="10" HasShadow="False" Margin="0,5">
                     <StackLayout Margin="2">
                         <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
-
                         <CollectionView  HeightRequest="150" ItemsSource="{Binding IngredientCheckList}" IsVisible="{Binding IngredientsVisible}" SelectionMode="None">
-                            <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="True" AutomationProperties.LabeledBy="{x:Reference recipeName}">
+                            <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <StackLayout Orientation="Horizontal">
                                         <CheckBox Color="{StaticResource Primary}" IsChecked="{Binding IngredientChecked}"/>

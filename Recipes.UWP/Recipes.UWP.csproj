@@ -154,10 +154,10 @@
       <Version>6.2.10</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>5.0.0.1829-pre6</Version>
+      <Version>5.0.0.2083</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.Visual.Material">
-      <Version>5.0.0.1829-pre6</Version>
+      <Version>5.0.0.2083</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

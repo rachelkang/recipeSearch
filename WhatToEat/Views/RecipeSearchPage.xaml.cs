@@ -13,10 +13,10 @@ namespace Recipes.Views
             BindingContext = _viewModel = new RecipeSearchViewModel();
         }
 
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-             _viewModel.SearchCommand.Execute(null);
-		}
-	}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.SearchCommand.Execute(null);
+        }
+    }
 }
