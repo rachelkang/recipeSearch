@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.Maui.Controls;
 using Recipes.ViewModels;
 
 namespace Recipes.Views

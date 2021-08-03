@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.StartingPage"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
-             sharedTransitions:SharedTransitionShell.BackgroundAnimation="Fade"
              Title="{Binding Title}">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
@@ -19,7 +18,6 @@
         <SearchBar Grid.Column="0" Grid.Row="1"
                    x:Name="searchBar"
                    ios:SearchBar.SearchBarStyle="Default"
-                   sharedTransitions:Transition.Name="searchBarTransition"
                    BackgroundColor="White"
                    Placeholder="Search recipes"
                    CancelButtonColor="{StaticResource Primary}"

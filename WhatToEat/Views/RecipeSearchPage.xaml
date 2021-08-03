@@ -1,18 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.RecipeSearchPage"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
-             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.Effects;assembly=Xamarin.CommunityToolkit"
-             Title="{Binding Title}"
-             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
-             xmlns:anim="clr-namespace:Xamanimation;assembly=Xamanimation" xmlns:local="clr-namespace:Recipes">
+             Title="{Binding Title}">
     <StackLayout Margin="5,5,5,0">
         <SearchBar x:Name="searchBar"
                    ios:SearchBar.SearchBarStyle="Default"
-                   sharedTransitions:Transition.Name="searchBarTransition"
                    BackgroundColor="White"
                    Placeholder="Search recipes"
                    CancelButtonColor="{StaticResource Primary}"
@@ -22,33 +17,23 @@
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
         <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,10,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
-        <CollectionView x:Name="HitsListView" SelectedItem="{Binding SelectedHit}" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="Single" Margin="10,0" IsVisible="{Binding SearchResultsVisible}" >
+        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="10,0" IsVisible="{Binding SearchResultsVisible}" >
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
             </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
+            <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="True" AutomationProperties.LabeledBy="{x:Reference recipeName}">
                 <DataTemplate>
-                    <sh:Shadows CornerRadius="20" Shades="{sh:SingleShade Offset='0,5', BlurRadius=10, Opacity=0.2, Color='Black'}">
-                        <local:CustomFrame CornerRadius="15" HasShadow="False" IsClippedToBounds="True"
-                            AutomationProperties.IsInAccessibleTree="True"
-                            xct:SemanticEffect.Description="{Binding Recipe.RecipeName}">
-                            <StackLayout HeightRequest="220" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="-20">
-                                <Image Source="{Binding Recipe.ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" Margin="0,0,0,-10"/>
-                                <Label x:Name="recipeName" Padding="10" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
-                            </StackLayout>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
-                            </Frame.GestureRecognizers>
-                        </local:CustomFrame>
-                    </sh:Shadows>
+                    <Frame CornerRadius="15" HasShadow="False" IsClippedToBounds="True">
+                        <StackLayout HeightRequest="220" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="-20">
+                            <Image Source="{Binding Recipe.ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" Margin="0,0,0,-10"/>
+                            <Label x:Name="recipeName" Padding="10" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-            <CollectionView.Behaviors>
-                <anim:EntranceTransition Duration="200"/>
-            </CollectionView.Behaviors>
         </CollectionView>
-        <StackLayout.Behaviors>
-            <anim:EntranceTransition Duration="500"/>
-        </StackLayout.Behaviors>
     </StackLayout>
 </ContentPage>
