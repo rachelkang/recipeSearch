@@ -7,10 +7,11 @@
         <ResourceDictionary>
             <Color x:Key="Primary">#2BB0ED</Color>
             <Color x:Key="Background">#F2F7FF</Color>
-            <LinearGradientBrush x:Key="BlueGradient" StartPoint="0,0" EndPoint="1,1">
+            <SolidColorBrush  x:Key="BlueGradient" Color="Blue"></SolidColorBrush>
+            <!--<LinearGradientBrush x:Key="BlueGradient" StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="White" Offset="0" />
                 <GradientStop Color="{StaticResource Primary}" Offset="1.0" />
-            </LinearGradientBrush>
+            </LinearGradientBrush>-->
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="VisualStateManager.VisualStateGroups">
