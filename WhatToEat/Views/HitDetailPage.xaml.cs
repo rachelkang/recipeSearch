@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms;
-using Xamarin.CommunityToolkit.Extensions;
-using Xamarin.CommunityToolkit.UI.Views.Options;
 using Recipes.ViewModels;
 using Color = Xamarin.Forms.Color;
 using System;
@@ -21,25 +19,26 @@ namespace Recipes.Views
             BindingContext = _viewModel = new HitDetailViewModel();
         }
 
-		async void AddItem_Clicked(System.Object sender, System.EventArgs e)
+		void AddItem_Clicked(System.Object sender, System.EventArgs e)
 		{
-			var messageOptions = new MessageOptions
-			{
-				Foreground = Color.White,
-				Message = alertMessage,
-				Font = Font.SystemFontOfSize(14),
-				Padding = new Thickness(10)
-			};
+			// TODO MAUI
+			//var messageOptions = new MessageOptions
+			//{
+			//	Foreground = Color.White,
+			//	Message = alertMessage,
+			//	Font = Font.SystemFontOfSize(14),
+			//	Padding = new Thickness(10)
+			//};
 
-			var options = new SnackBarOptions
-			{
-				MessageOptions = messageOptions,
-				Duration = TimeSpan.FromMilliseconds(5000),
-				BackgroundColor = primary,
-				IsRtl = false
-			};
+			//var options = new SnackBarOptions
+			//{
+			//	MessageOptions = messageOptions,
+			//	Duration = TimeSpan.FromMilliseconds(5000),
+			//	BackgroundColor = primary,
+			//	IsRtl = false
+			//};
 
-			await this.DisplaySnackBarAsync(options);
+			//await this.DisplaySnackBarAsync(options);
 		}
 	}
 }
