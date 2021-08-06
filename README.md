@@ -13,9 +13,12 @@ _This app continues to be work-in-progress and at the moment, its primary purpos
 
 <p float="left">
   <img src="screenshots/screen_starting.png" width="200">
-  <img src="screenshots/screen_search_recipes.png" width="200">
-  <img src="screenshots/screen_recipe_detail.png" width="200">
+  <img src="screenshots/screen_search_recipes.png" width="199">
+  <img src="screenshots/screen_recipe_detail.png" width="199">
+  <img src="screenshots/screen_recipe_detail_add.png" width="200">
   <img src="screenshots/screen_recipes_carousel.png" width="200">
+  <img src="screenshots/screen_recipe_detail_saved.png" width="197">
+  <img src="screenshots/screen_recipe_detail_edit.png" width="200">
 </p>
 
 ## NuGet packages
