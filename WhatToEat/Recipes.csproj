@@ -49,31 +49,6 @@
 		<AppxPackageRecipe>bin\$(Configuration)\net6.0-windows10.0.19041\win-x64\Recipes.build.appxrecipe</AppxPackageRecipe>
 		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-windows'))">win-x64</RuntimeIdentifier>
 	</PropertyGroup>
-
-	
-	<ItemGroup Condition=" '$(UseMaui)' != 'true' ">
-		<PackageReference Include="Microsoft.Extensions.Configuration" />
-		<PackageReference Include="Microsoft.Extensions.Logging" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" />
-		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
-	</ItemGroup>
-	<ItemGroup Condition="'$(UseMaui)' != 'true' and $(TargetFramework.Contains('-windows')) == true ">
-		<PackageReference Include="Microsoft.ProjectReunion" />
-		<PackageReference Include="Microsoft.ProjectReunion.Foundation" />
-		<PackageReference Include="Microsoft.ProjectReunion.WinUI" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" />
-	</ItemGroup>
-	<ItemGroup Condition=" '$(UseMaui)' != 'true' ">
-		<ProjectReference Include="..\maui\src\BlazorWebView\src\Maui\Microsoft.AspNetCore.Components.WebView.Maui.csproj" />
-		<ProjectReference Include="..\maui\src\Essentials\src\Essentials-net6.csproj" />
-		<ProjectReference Include="..\maui\src\Controls\src\Core\Controls.Core-net6.csproj" />
-		<ProjectReference Include="..\maui\src\Controls\src\Xaml\Controls.Xaml-net6.csproj" />
-		<ProjectReference Include="..\maui\src\Core\src\Core-net6.csproj" />
-		<ProjectReference Include="..\maui\src\Compatibility\Core\src\Compatibility-net6.csproj" />
-	</ItemGroup>
-
-	<Import Condition=" '$(UseMaui)' != 'true' " Project="..\maui\src\BlazorWebView\src\Maui\build\Microsoft.AspNetCore.Components.WebView.Maui.targets" />
-
 </Project>
 
 <!--<Project Sdk="Microsoft.NET.Sdk">
