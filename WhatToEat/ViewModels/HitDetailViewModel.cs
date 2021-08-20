@@ -3,11 +3,11 @@ using System.Windows.Input;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Essentials;
 using Recipes.Models;
 using System.Collections.Generic;
-using Microsoft.Maui.Essentials;
-using Microsoft.Maui;
 using Microsoft.Maui.Graphics;
+using Microsoft.Maui;
 
 namespace Recipes.ViewModels
 {
@@ -29,7 +29,7 @@ namespace Recipes.ViewModels
 
         public HitDetailViewModel()
         {
-            // Launcher.OpenAsync is provided by Xamarin.Essentials.
+            // Launcher.OpenAsync is provided by Microsoft.Maui.Essentials.
             TapCommand = new Command<string>(async (url) => await Launcher.OpenAsync(url));
             AddItemCommand = new Command(OnAddItem);
         }

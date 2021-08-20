@@ -4,9 +4,10 @@
              x:Class="Recipes.Views.RecipeSearchPage"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
-             Title="{Binding Title}">
-    <StackLayout Margin="5,5,5,0">
-        <SearchBar x:Name="searchBar"
+             xmlns:vlv="clr-namespace:Microsoft.Maui.Controls"
+             Title="{Binding Title}" xmlns:local="clr-namespace:Recipes">
+    <Grid RowDefinitions="Auto,Auto,*" Margin="5,5,5,0">
+        <SearchBar GridLayout.Row="0" x:Name="searchBar"
                    ios:SearchBar.SearchBarStyle="Default"
                    BackgroundColor="White"
                    Placeholder="Search recipes"
@@ -16,14 +17,76 @@
                    TextColor="Black"
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
-        <Label Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,10,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
-        <CollectionView x:Name="HitsListView" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="None" Margin="10,0" IsVisible="{Binding SearchResultsVisible}" >
+        <Label GridLayout.Row="1" Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,10,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
+        <vlv:VirtualListView
+            GridLayout.Row="2"
+			HorizontalOptions="FillAndExpand"
+			VerticalOptions="FillAndExpand"
+			Adapter="{Binding Adapter}"
+            x:Name="vListView"
+			SelectionMode="None">
+            <!--ItemTemplateSelector="{StaticResource itemTemplateSelector}"-->
+
+            <vlv:VirtualListView.ItemTemplate>
+                <DataTemplate>
+                    <!--<Frame CornerRadius="15" HasShadow="False" IsClippedToBounds="True"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            AutomationProperties.HelpText="{Binding Recipe.RecipeName}">-->
+                    <Grid RowDefinitions="*, Auto" HeightRequest="220" SemanticProperties.Description="{Binding Recipe.RecipeName}">
+
+                        <!--
+                        Ancestor Bindings currently don't work
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipeSearchViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
+                        </Grid.GestureRecognizers>-->
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="RecipeSearchPage_Tapped" NumberOfTapsRequired="1"  />
+                        </Grid.GestureRecognizers>
+                        
+                        
+                        <Image Source="{Binding Recipe.ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill"/>
+                        <Label Grid.Row="1"  x:Name="recipeName" Padding="10" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
+                    </Grid>
+                    <!--</Frame>-->
+                </DataTemplate>
+            </vlv:VirtualListView.ItemTemplate>
+            <!--<vlv:VirtualListView.SectionHeaderTemplate>
+                <DataTemplate x:DataType="local:AlbumInfo">
+                    <Grid ColumnDefinitions="Auto,*" BackgroundColor="#0B2161" Padding="10" ColumnSpacing="10" HorizontalOptions="FillAndExpand">
+                        <Image
+								Source="https://community.mp3tag.de/uploads/default/original/2X/a/acf3edeb055e7b77114f9e393d1edeeda37e50c9.png"
+								WidthRequest="40" HeightRequest="40"
+								Grid.Column="0"
+								VerticalOptions="Center"/>
+                        <StackLayout HorizontalOptions="FillAndExpand" Grid.Column="1" Spacing="0">
+                            <Label VerticalOptions="Center" Text="{Binding ArtistName}" FontSize="Subtitle" TextColor="White" />
+                            <Label VerticalOptions="Center" Text="{Binding AlbumTitle}" FontSize="Caption" TextColor="White" />
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </vlv:VirtualListView.SectionHeaderTemplate>
+
+            <vlv:VirtualListView.SectionFooterTemplate>
+                <DataTemplate x:DataType="local:AlbumInfo">
+
+                    <Grid BackgroundColor="LightGray" HorizontalOptions="FillAndExpand">
+                        <Label Margin="10,6,10,6" Text="{Binding TrackCount, StringFormat='{0} Tracks'}" TextColor="Black" HorizontalOptions="Center" />
+                    </Grid>
+
+
+                </DataTemplate>
+            </vlv:VirtualListView.SectionFooterTemplate>-->
+        </vlv:VirtualListView>
+        <!--<CollectionView x:Name="HitsListView" SelectedItem="{Binding SelectedHit}" ItemsSource="{Binding RecipeData.Hits}" SelectionMode="Single" Margin="10,0" IsVisible="{Binding SearchResultsVisible}" >
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
             </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate AutomationProperties.IsInAccessibleTree="True" AutomationProperties.LabeledBy="{x:Reference recipeName}">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame CornerRadius="15" HasShadow="False" IsClippedToBounds="True">
+                    <Frame CornerRadius="15" HasShadow="False" IsClippedToBounds="True"
+                            AutomationProperties.IsInAccessibleTree="True"
+                            AutomationProperties.HelpText="{Binding Recipe.RecipeName}">
                         <StackLayout HeightRequest="220" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="-20">
                             <Image Source="{Binding Recipe.ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" Margin="0,0,0,-10"/>
                             <Label x:Name="recipeName" Padding="10" Text="{Binding Recipe.RecipeName}" LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}" FontSize="16" VerticalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" BackgroundColor="White"/>
@@ -34,6 +97,6 @@
                     </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
+        </CollectionView>-->
+    </Grid>
 </ContentPage>

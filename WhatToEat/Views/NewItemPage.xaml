@@ -4,7 +4,7 @@
              x:Class="Recipes.Views.NewItemPage"
              Shell.PresentationMode="ModalAnimated"
              Title="New Recipe"
-            >
+             Visual="Material">
     <ContentPage.Content>
         <Grid Margin="20,30,20,20">
             <Grid.ColumnDefinitions>

@@ -4,7 +4,8 @@
              x:Class="Recipes.Views.MyRecipesPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:Recipes.ViewModels"
-             xmlns:model="clr-namespace:Recipes.Models">
+             xmlns:model="clr-namespace:Recipes.Models"
+             xmlns:local1="clr-namespace:Recipes">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New" Command="{Binding NewItemCommand}" />
     </ContentPage.ToolbarItems>
@@ -16,7 +17,9 @@
             </CarouselView.ItemsLayout>
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <Frame x:DataType="model:Item" CornerRadius="20" HasShadow="False" IsClippedToBounds="True">
+                    <Frame 
+                            AutomationProperties.IsInAccessibleTree="True"
+                            x:DataType="model:Item" CornerRadius="20" HasShadow="False" IsClippedToBounds="True">
                         <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill" Margin="-20">
                             <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" />
                             <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" BackgroundColor="White" FontSize="30" FontAttributes="Bold" MaxLines="3" Padding="20,10" Margin="0,-200,0,0" TextColor="Black"/>

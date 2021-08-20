@@ -15,11 +15,12 @@ namespace Recipes.ViewModels
         string _noResultsLabel;
         bool _noResultsLabelVisible;
         bool _searchResultsVisible;
-        private Hit _selectedHit;
+        //private Hit _selectedHit;
 
         public Command<Hit> ItemTapped { get; }
         public Command SearchCommand { get; }
 
+		public RecipesDataAdapter Adapter { get; private set; }
         public RecipeSearchViewModel()
         {
             Title = "Search all recipes";
@@ -29,7 +30,9 @@ namespace Recipes.ViewModels
 
             ItemTapped = new Command<Hit>(OnItemSelected);
             SearchCommand = new Command(async () => await OnSearch());
-        }
+			Adapter = new RecipesDataAdapter(this);
+
+		}
 
         public RecipeData RecipeData
         {
@@ -106,6 +109,7 @@ namespace Recipes.ViewModels
                     // OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
                 }
 
+				//OnPropertyChanged(nameof(Adapter));
                 // OnPropertyChanged(SearchQuery);
             }
         }

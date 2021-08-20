@@ -4,7 +4,6 @@ using Microsoft.Maui.Controls.Xaml;
 using Recipes.Services;
 using Recipes.Views;
 using System.Collections.Generic;
-using Microsoft.Maui.Graphics;
 
 namespace Recipes
 {
@@ -14,6 +13,7 @@ namespace Recipes
         public App()
         {
             InitializeComponent();
+            Microsoft.Maui.Controls.Device.SetFlags(new List<string> { "Accessibility_Experimental" });
             DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }

@@ -21,6 +21,7 @@ namespace Recipes.Views
 
 		void AddItem_Clicked(System.Object sender, System.EventArgs e)
 		{
+			// TODO MAUI
 			//var messageOptions = new MessageOptions
 			//{
 			//	Foreground = Color.White,

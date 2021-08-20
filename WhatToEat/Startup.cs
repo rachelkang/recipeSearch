@@ -11,7 +11,8 @@ namespace Recipes
         public void Configure(IAppHostBuilder appBuilder)
         {
             appBuilder
-                .UseMauiApp<App>();
+                .UseMauiApp<App>()
+                .UseVirtualListView();
         }
     }
 }
