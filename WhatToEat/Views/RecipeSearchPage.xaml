@@ -29,22 +29,21 @@
 			SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid HandlerChanged="OnImageHandlerChanged" HeightRequest="220">
-                        <Grid.GestureRecognizers>
+                    <VerticalStackLayout HandlerChanged="OnImageHandlerChanged" HeightRequest="220">
+                        <VerticalStackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="RecipeSearchPage_Tapped" NumberOfTapsRequired="1"  />
-                        </Grid.GestureRecognizers>
-                        <Image HeightRequest="220" Source="{Binding Recipe.ImageUrl}" Aspect="AspectFill"             
+                        </VerticalStackLayout.GestureRecognizers>
+                        <Image Source="{Binding Recipe.ImageUrl}" Aspect="AspectFill"             
                                AutomationProperties.IsInAccessibleTree="False"/>
                         <Label Background="White" TextColor="Black"
                                 Padding="5"
                                 VerticalOptions="End"
-                                Margin="0,0,0,100"
                                 x:Name="recipeName"
                                 Text="{Binding Recipe.RecipeName}"
                                 LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}"
                                 FontSize="16"
                                 FontAttributes="Bold" />
-                    </Grid>
+                    </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

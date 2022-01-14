@@ -16,7 +16,32 @@
     </ContentPage.ToolbarItems>
     <StackLayout Margin="20">
         <Label Text="Your recipes" SemanticProperties.HeadingLevel="Level1" FontSize="30" FontAttributes="Bold" />
-        <CarouselView
+        <CollectionView
+            x:Name="vMyRecipesListView"
+            WidthRequest="350"
+            HeightRequest="570"
+			HorizontalOptions="Fill"
+			VerticalOptions="Fill"
+            ItemsSource="{Binding Items}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout SnapPointsType="MandatorySingle" SnapPointsAlignment="Start" ItemSpacing="30" Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="*, Auto" 
+                              Padding="0,0,20,0" 
+                              HorizontalOptions="Fill" VerticalOptions="Fill"
+                              SemanticProperties.Description="{Binding RecipeName}">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MyRecipesPage_Tapped" NumberOfTapsRequired="1"  />
+                        </Grid.GestureRecognizers>
+                        <Image Source="{Binding ImageUrl}" VerticalOptions="Fill" WidthRequest="340" Aspect="AspectFill"/>
+                        <Label Grid.Row="1"  x:Name="recipeName" Padding="10" Text="{Binding RecipeName}" LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}" FontSize="24" VerticalTextAlignment="Center" FontAttributes="Bold" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--<CarouselView
             x:Name="vMyRecipesListView"
             WidthRequest="350"
             HeightRequest="570"
@@ -29,11 +54,9 @@
             </CarouselView.ItemsLayout>
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-
                     <Grid RowDefinitions="*, Auto" 
                               Padding="0,0,20,0" 
-                              HorizontalOptions="Fill" VerticalOptions="Fill" 
-                              Background="{Binding Source={x:Reference self}, Path=SectionIndex, Converter={StaticResource evenIndexBackgroundConverter}}"
+                              HorizontalOptions="Fill" VerticalOptions="Fill"
                               SemanticProperties.Description="{Binding RecipeName}">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="MyRecipesPage_Tapped" NumberOfTapsRequired="1"  />
@@ -43,6 +66,6 @@
                     </Grid>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
-        </CarouselView>
+        </CarouselView>-->
     </StackLayout>
 </ContentPage>
