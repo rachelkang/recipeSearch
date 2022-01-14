@@ -10,8 +10,8 @@
 		<RootNamespace>Recipes</RootNamespace>
 		<ApplicationTitle>Rachel's Recipes</ApplicationTitle>
 		<ApplicationId>com.companyname.Recipes</ApplicationId>
-		<ApplicationVersion>1.0</ApplicationVersion>
-		<AndroidVersionCode>1</AndroidVersionCode>
+		<!-- Versions -->
+		<ApplicationVersion>1</ApplicationVersion>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
 
 		<!-- Required for C# Hot Reload -->
