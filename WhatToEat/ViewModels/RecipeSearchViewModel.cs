@@ -20,7 +20,6 @@ namespace Recipes.ViewModels
         public Command<Hit> ItemTapped { get; }
         public Command SearchCommand { get; }
 
-		public RecipesDataAdapter Adapter { get; private set; }
         public RecipeSearchViewModel()
         {
             Title = "Search all recipes";
@@ -30,7 +29,6 @@ namespace Recipes.ViewModels
 
             ItemTapped = new Command<Hit>(OnItemSelected);
             SearchCommand = new Command(async () => await OnSearch());
-			Adapter = new RecipesDataAdapter(this);
 
 		}
 
@@ -89,7 +87,7 @@ namespace Recipes.ViewModels
 
                 if (recipeData == null || recipeData.Hits.Length == 0)
                 {
-                    NoResultsLabel = $"Sorry - we couldn't find any recipes for {SearchQuery} :(";
+                    NoResultsLabel = $"Sorry! We couldn't find any recipes for {SearchQuery}. Try searching for a different recipe!";
                     NoResultsLabelVisible = true;
                     SearchResultsVisible = false;
                 }

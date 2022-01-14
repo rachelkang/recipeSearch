@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
 using Microsoft.UI.Xaml;
 using Windows.ApplicationModel;
 
@@ -21,7 +22,7 @@ namespace Recipes.WinUI
             this.InitializeComponent();
         }
 
-        protected override IStartup OnCreateStartup() => new Startup();
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {

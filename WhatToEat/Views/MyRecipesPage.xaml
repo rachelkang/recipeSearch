@@ -3,31 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.MyRecipesPage"
              Title="{Binding Title}"
-             xmlns:local="clr-namespace:Recipes.ViewModels"
-             xmlns:model="clr-namespace:Recipes.Models"
-             xmlns:local1="clr-namespace:Recipes">
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:vm="clr-namespace:Recipes.ViewModels"
+             xmlns:local="clr-namespace:Recipes">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:EvenIndexBackgroundConverter x:Key="evenIndexBackgroundConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="New" Command="{Binding NewItemCommand}" />
     </ContentPage.ToolbarItems>
-    <StackLayout Margin="20" >
-        <Label Text="Your recipes" FontSize="30" FontAttributes="Bold" TextColor="Black"/>
-        <CarouselView ItemsSource="{Binding Items}" Loop="False">
+    <StackLayout Margin="20">
+        <Label Text="Your recipes" SemanticProperties.HeadingLevel="Level1" FontSize="30" FontAttributes="Bold" />
+        <CarouselView
+            x:Name="vMyRecipesListView"
+            WidthRequest="350"
+            HeightRequest="570"
+			HorizontalOptions="Fill"
+			VerticalOptions="Fill"
+            ItemsSource="{Binding Items}"
+			Loop="False">
             <CarouselView.ItemsLayout>
                 <LinearItemsLayout ItemSpacing="30" Orientation="Horizontal" />
             </CarouselView.ItemsLayout>
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <Frame 
-                            AutomationProperties.IsInAccessibleTree="True"
-                            x:DataType="model:Item" CornerRadius="20" HasShadow="False" IsClippedToBounds="True">
-                        <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill" Margin="-20">
-                            <Image x:Name="recipeImageUrl" Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" />
-                            <Label VerticalTextAlignment="Center" Text="{Binding RecipeName}" BackgroundColor="White" FontSize="30" FontAttributes="Bold" MaxLines="3" Padding="20,10" Margin="0,-200,0,0" TextColor="Black"/>
-                        </StackLayout>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}" CommandParameter="{Binding .}"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
+
+                    <Grid RowDefinitions="*, Auto" 
+                              Padding="0,0,20,0" 
+                              HorizontalOptions="Fill" VerticalOptions="Fill" 
+                              Background="{Binding Source={x:Reference self}, Path=SectionIndex, Converter={StaticResource evenIndexBackgroundConverter}}"
+                              SemanticProperties.Description="{Binding RecipeName}">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="MyRecipesPage_Tapped" NumberOfTapsRequired="1"  />
+                        </Grid.GestureRecognizers>
+                        <Image Source="{Binding ImageUrl}" VerticalOptions="Fill" WidthRequest="340" Aspect="AspectFill"/>
+                        <Label Grid.Row="1"  x:Name="recipeName" Padding="10" Text="{Binding RecipeName}" LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}" FontSize="24" VerticalTextAlignment="Center" FontAttributes="Bold" />
+                    </Grid>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>

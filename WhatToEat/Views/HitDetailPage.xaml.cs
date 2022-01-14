@@ -3,6 +3,7 @@ using Microsoft.Maui.Controls;
 using Recipes.ViewModels;
 using System;
 using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Essentials;
 
 namespace Recipes.Views
 {
@@ -11,7 +12,7 @@ namespace Recipes.Views
 
         HitDetailViewModel _viewModel;
 		Color primary = Color.FromArgb("#2BB0ED");
-		//string alertMessage = "This recipe has been added to your personal recipe collection! Go to the 'My Recipes' tab to view and modify this recipe from there :)";
+		string alertMessage = "This recipe has been added to your personal recipe collection! Go to the 'My Recipes' tab to view and modify this recipe from there";
 
 		public HitDetailPage()
         {
@@ -19,8 +20,17 @@ namespace Recipes.Views
             BindingContext = _viewModel = new HitDetailViewModel();
         }
 
+
+		async void OpenUrl(object sender, System.EventArgs e)
+		{
+			await Microsoft.Maui.Essentials.Launcher.OpenAsync(_viewModel.Hit.Recipe.RecipeUrl);
+
+		}
+
 		void AddItem_Clicked(System.Object sender, System.EventArgs e)
 		{
+			SemanticScreenReader.Announce(alertMessage);
+
 			// TODO MAUI
 			//var messageOptions = new MessageOptions
 			//{

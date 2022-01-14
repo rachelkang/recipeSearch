@@ -12,7 +12,7 @@ namespace Recipes.ViewModels
     {
         public Item _selectedItem;
 
-        public ObservableCollection<Item> Items { get; }
+		public ObservableCollection<Item> Items { get; }
         public Command LoadItemsCommand { get; }
         public Command NewItemCommand { get; }
         public Command<Item> ItemTapped { get; }
@@ -25,7 +25,7 @@ namespace Recipes.ViewModels
 
             ItemTapped = new Command<Item>(OnItemSelected);
             NewItemCommand = new Command(OnNewItem);
-        }
+		}
 
         async Task ExecuteLoadItemsCommand()
         {
@@ -48,14 +48,15 @@ namespace Recipes.ViewModels
             {
                 IsBusy = false;
             }
-        }
+
+			MessagingCenter.Send(this, "RemoveRecipeFromVirtualListView");
+		}
 
         public void OnAppearing()
         {
             IsBusy = true;
             SelectedItem = null;
 
-            //await ExecuteLoadItemsCommand();
             LoadItemsCommand.Execute(null);
         }
 

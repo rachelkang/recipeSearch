@@ -6,13 +6,15 @@ using Microsoft.Maui.LifecycleEvents;
 
 namespace Recipes
 {
-    public class Startup : IStartup
+    public class MauiProgram
     {
-        public void Configure(IAppHostBuilder appBuilder)
+        public static MauiApp CreateMauiApp()
         {
-            appBuilder
-                .UseMauiApp<App>()
-                .UseVirtualListView();
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>();
+
+            return builder.Build();
         }
     }
 }
