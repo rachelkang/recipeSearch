@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.NewItemPage"
              Shell.PresentationMode="ModalAnimated"
-             Title="New Recipe"
-             Visual="Material">
+             Title="New Recipe">
     <ContentPage.Content>
         <Grid Margin="20,30,20,20">
             <Grid.ColumnDefinitions>
