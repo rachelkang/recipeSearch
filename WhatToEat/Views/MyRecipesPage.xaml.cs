@@ -11,11 +11,6 @@ namespace Recipes.Views
 		{
 			InitializeComponent();
 			BindingContext = _viewModel = new ItemsViewModel();
-
-			MessagingCenter.Subscribe<ItemsViewModel>(this, "RemoveRecipeFromVirtualListView", (sender) =>
-			{
-				//vMyRecipesListView.InvalidateData();
-			});
 		}
 
 		protected override void OnAppearing()

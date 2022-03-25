@@ -14,8 +14,6 @@ namespace Recipes.Views
             InitializeComponent();
             BindingContext = _viewModel = new RecipeSearchViewModel();
 
-			_viewModel.PropertyChanged += OnPropertedChanged;
-
 		}
 
 		private void OnImageHandlerChanged(object sender, System.EventArgs e)
@@ -23,11 +21,11 @@ namespace Recipes.Views
 #if ANDROID
 			if (sender is IView view)
 			{
-				if (view.Handler?.NativeView is Android.Widget.ImageView aView)
+				if (view.Handler?.PlatformView is Android.Widget.ImageView aView)
 				{
 
 				}
-				else if(view.Handler?.NativeView is Android.Views.ViewGroup vg)
+				else if(view.Handler?.PlatformView is Android.Views.ViewGroup vg)
 				{
 					vg.SetClipChildren(true);
 				}
@@ -51,13 +49,6 @@ namespace Recipes.Views
 		//	}
 
 		//}
-
-		private void OnPropertedChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			if (e.PropertyName == nameof(RecipeSearchViewModel.RecipeData))
-			{
-			}
-		}
 
 		protected override void OnAppearing()
         {

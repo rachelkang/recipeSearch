@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.EditItemPage"
-             Shell.PresentationMode="ModalAnimated">
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+             Shell.PresentationMode="ModalAnimated"
+             Visual="Material">
     <ContentPage.Content>
         <Grid Margin="20,30,20,20">
             <Grid.ColumnDefinitions>

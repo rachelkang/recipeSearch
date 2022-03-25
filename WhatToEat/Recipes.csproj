@@ -50,17 +50,6 @@
 		<UseInterpreter Condition="$(TargetFramework.Contains('-android'))">false</UseInterpreter>
 	</PropertyGroup>-->
 
-	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<!-- Required - WinUI does not yet have buildTransitive for everything -->
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
-		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.30" />
-	</ItemGroup>
-
-	<PropertyGroup>
-		<!-- Required - WinUI can't deploy in a multi-targeting environment -->
-		<AppxPackageRecipe>bin\$(Configuration)\net6.0-windows10.0.19041\win-x64\Recipes.build.appxrecipe</AppxPackageRecipe>
-		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-windows'))">win-x64</RuntimeIdentifier>
-	</PropertyGroup>
 </Project>
 
 <!--<Project Sdk="Microsoft.NET.Sdk">
