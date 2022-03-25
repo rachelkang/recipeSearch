@@ -1,5 +1,5 @@
 ﻿ using System.Threading.Tasks;
-using Xamarin.Forms;
+using Microsoft.Maui.Controls;
 using Recipes.Views;
 
 namespace Recipes.ViewModels
@@ -15,7 +15,7 @@ namespace Recipes.ViewModels
         string _noResultsLabel;
         bool _noResultsLabelVisible;
         bool _searchResultsVisible;
-        private Hit _selectedHit;
+        //private Hit _selectedHit;
 
         public Command<Hit> ItemTapped { get; }
         public Command SearchCommand { get; }
@@ -29,7 +29,8 @@ namespace Recipes.ViewModels
 
             ItemTapped = new Command<Hit>(OnItemSelected);
             SearchCommand = new Command(async () => await OnSearch());
-        }
+
+		}
 
         public RecipeData RecipeData
         {
@@ -86,7 +87,7 @@ namespace Recipes.ViewModels
 
                 if (recipeData == null || recipeData.Hits.Length == 0)
                 {
-                    NoResultsLabel = $"Sorry - we couldn't find any recipes for {SearchQuery} :(";
+                    NoResultsLabel = $"Sorry! We couldn't find any recipes for {SearchQuery}. Try searching for a different recipe!";
                     NoResultsLabelVisible = true;
                     SearchResultsVisible = false;
                 }
@@ -106,6 +107,7 @@ namespace Recipes.ViewModels
                     // OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
                 }
 
+				//OnPropertyChanged(nameof(Adapter));
                 // OnPropertyChanged(SearchQuery);
             }
         }

@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.Maui.Controls;
 using Recipes.ViewModels;
 
 namespace Recipes.Views
@@ -17,6 +17,12 @@ namespace Recipes.Views
         {
             base.OnAppearing();
             _viewModel.OnAppearing();
-        }
-    }
+		}
+
+		async void OpenUrl(object sender, System.EventArgs e)
+		{
+			await Microsoft.Maui.Essentials.Launcher.OpenAsync(_viewModel.RecipeUrl);
+
+		}
+	}
 }

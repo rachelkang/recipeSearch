@@ -1,9 +1,10 @@
 ﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Xaml;
 using Recipes.Services;
 using Recipes.Views;
 using System.Collections.Generic;
+using Recipes.ViewModels;
 
 namespace Recipes
 {
@@ -12,11 +13,13 @@ namespace Recipes
 
         public App()
         {
-            InitializeComponent();
-            Xamarin.Forms.Device.SetFlags(new List<string> { "Accessibility_Experimental" });
+			InitializeComponent();
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
-        }
+			MainPage = new AppShell();
+
+			//MainPage = new EditItemPage();
+			//(MainPage.BindingContext as EditItemViewModel).Id = "78315810-2ad0-4a54-a976-dd80fbfa8d90";
+		}
 
         protected override void OnStart()
         {

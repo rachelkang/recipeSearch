@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.ItemDetailPage"
-             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit" Command="{Binding EditItemCommand}" />
@@ -12,38 +11,42 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3.5*" />
-            <RowDefinition Height="6.5*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
-        <StackLayout Grid.Column="0" Grid.Row="0" sharedTransitions:Transition.Name="recipeImageTransition" VerticalOptions="Fill" HorizontalOptions="Fill" Margin="0,0,0,10" BackgroundColor="White">
-            <Image Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" Margin="0,0,0,-150" />
-            <Label Text="{Binding RecipeName}" FontSize="25" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" TextColor="Black" MaxLines="3" Padding="15,10" BackgroundColor="White"/>
-        </StackLayout>
-        <ScrollView Grid.Column="0" Grid.Row="1" Padding="0,5,0,0" BackgroundColor="White">
-            <StackLayout>
-                <Frame Background="{StaticResource BlueGradient}" CornerRadius="10" HasShadow="False" Margin="0,5">
-                    <StackLayout Margin="2">
-                        <Label Text="Ingredients:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
-                        <CollectionView  HeightRequest="150" ItemsSource="{Binding IngredientCheckList}" IsVisible="{Binding IngredientsVisible}" SelectionMode="None">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout Orientation="Horizontal">
-                                        <CheckBox Color="{StaticResource Primary}" IsChecked="{Binding IngredientChecked}"/>
-                                        <Label Text="{Binding IngredientItem}" TextColor="Black" VerticalOptions="Center"/>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+        <Grid Grid.Column="0" Grid.Row="0" Margin="0,0,0,10">
+            <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill"  IsVisible="{Binding ImageUrlVisible}" />
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" TextColor="Black" SemanticProperties.HeadingLevel="Level1" BackgroundColor="White" FontSize="24" Padding="15" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3" />
+        </Grid>
+        <!-- TODO: Fix ScrollView issue - currently scrolls over above controls -->
+        <ScrollView Grid.Row="1" >
+            <StackLayout BackgroundColor="White">
+                <Label Text="Ingredients:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+                <StackLayout  BindableLayout.ItemsSource="{Binding IngredientCheckList}" Padding="15,0" IsVisible="{Binding IngredientsVisible}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox SemanticProperties.Description="{Binding IngredientItem}" Color="{StaticResource Primary}" IsChecked="{Binding IngredientChecked}"/>
+                                <Label AutomationProperties.IsInAccessibleTree="False" Text="{Binding IngredientItem}" TextColor="Black" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
 
-                    </StackLayout>
-                </Frame>
-                <Frame Background="{StaticResource BlueGradient}" CornerRadius="10" HasShadow="False">
-                    <StackLayout Margin="2">
-                        <Label Text="Recipe:" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
-                        <Label Text="{Binding RecipeBody}" IsVisible="{Binding RecipeBodyVisible}" TextColor="Black"/>
-                        <Label FormattedText="{Binding RecipeUrl}" IsVisible="{Binding RecipeUrlVisible}" TextColor="Black"/>
-                    </StackLayout>
-                </Frame>
+                <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+                <StackLayout  BindableLayout.ItemsSource="{Binding RecipeList}" Padding="20,5">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}" TextColor="Black" VerticalOptions="Center" WidthRequest="340" LineBreakMode="WordWrap"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+                <Label SemanticProperties.HeadingLevel="Level2" TextColor="Black" FontAttributes="Italic" TextDecorations="Underline" Text="Click here to view full recipe." FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" Padding="20,5">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OpenUrl"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
         </ScrollView>
     </Grid>

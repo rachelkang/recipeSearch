@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.EditItemPage"
              xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
@@ -15,21 +15,24 @@
                 <RowDefinition Height="8*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <Label FontSize="25" FontAttributes="Bold" Text="Edit recipe" Margin="15" TextColor="Black"/>
-            <ScrollView Grid.Row="1">
-                <StackLayout>
-                    <Entry Placeholder="Recipe Name" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" />
-                    <Entry Placeholder="Image URL" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" />
-                    <Editor Placeholder="Ingredients" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding Ingredients, Mode=TwoWay}" IsSpellCheckEnabled="false" />
-                    <Editor Placeholder="Recipe" PlaceholderColor="{StaticResource Primary}" BackgroundColor="White" Text="{Binding RecipeBody, Mode=TwoWay}" IsSpellCheckEnabled="false" />
-                    <Label FontSize="Small" FormattedText="{Binding RecipeUrl}" FontAttributes="Italic" TextColor="Gray" />
-                </StackLayout>
-            </ScrollView>
-            <StackLayout Grid.Row="2" Orientation="Horizontal">
-                <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Delete" Command="{Binding DeleteCommand}" BackgroundColor="#BF2E2E" HorizontalOptions="FillAndExpand"/>
-                <Button Text="Update" Command="{Binding UpdateCommand}" HorizontalOptions="FillAndExpand"/>
+
+            <Label FontSize="25" FontAttributes="Bold" Text="Edit recipe" TextColor="{StaticResource Primary}" Margin="15" SemanticProperties.HeadingLevel="Level1"/>
+            <StackLayout Grid.Row="1" Margin="15,0">
+                <Label Text="Recipe Name" TextColor="{StaticResource Primary}" FontSize="16" />
+                <Entry Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
+                <Label Text="Image URL" TextColor="{StaticResource Primary}" FontSize="16"/>
+                <Entry Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
+                <Label Text="Ingredients" TextColor="{StaticResource Primary}" FontSize="16"/>
+                <Editor Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
+                <Label Text="Recipe" TextColor="{StaticResource Primary}" FontSize="16"/>
+                <Editor Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
+                <Label FontSize="Small" FormattedText="{Binding RecipeUrl}" FontAttributes="Italic" TextColor="Gray" />
             </StackLayout>
+            <FlexLayout Grid.Row="2" AlignItems="Center" JustifyContent="SpaceEvenly">
+                <Button Padding="{OnPlatform iOS=12,7}" TextColor="Black" Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="LightGray" HorizontalOptions="Fill" SemanticProperties.HeadingLevel="Level2"/>
+                <Button Padding="{OnPlatform iOS=12,7}" TextColor="Black" Text="Delete" Command="{Binding DeleteCommand}" BackgroundColor="#BF2E2E" HorizontalOptions="Fill" SemanticProperties.HeadingLevel="Level2"/>
+                <Button Padding="{OnPlatform iOS=12,7}" TextColor="White" Text="Update" Command="{Binding UpdateCommand}" HorizontalOptions="Fill" SemanticProperties.HeadingLevel="Level2"/>
+            </FlexLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
