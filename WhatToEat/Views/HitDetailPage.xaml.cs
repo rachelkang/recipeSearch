@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.Maui.Controls;
+﻿using Microsoft.Maui.Controls;
 using Recipes.ViewModels;
-using System;
 using Microsoft.Maui.Graphics;
-using Microsoft.Maui.Essentials;
+using Microsoft.Maui.Accessibility;
+using Microsoft.Maui.ApplicationModel;
 
 namespace Recipes.Views
 {
@@ -23,7 +22,7 @@ namespace Recipes.Views
 
 		async void OpenUrl(object sender, System.EventArgs e)
 		{
-			await Microsoft.Maui.Essentials.Launcher.OpenAsync(_viewModel.Hit.Recipe.RecipeUrl);
+			await Launcher.OpenAsync(_viewModel.Hit.Recipe.RecipeUrl);
 
 		}
 

@@ -3,12 +3,10 @@ using System.Windows.Input;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.Maui.Controls;
-using Microsoft.Maui.Essentials;
 using Recipes.Models;
 using System.Collections.Generic;
-using Microsoft.Maui.Graphics;
-using Microsoft.Maui;
 using System.Collections.ObjectModel;
+using Microsoft.Maui.ApplicationModel;
 
 namespace Recipes.ViewModels
 {
@@ -40,7 +38,6 @@ namespace Recipes.ViewModels
 
 		public HitDetailViewModel()
         {
-            // Launcher.OpenAsync is provided by Microsoft.Maui.Essentials.
             TapCommand = new Command<string>(async (url) => await Launcher.OpenAsync(url));
             AddItemCommand = new Command(OnAddItem);
 			RemoveItemCommand = new Command(OnRemoveItem);
