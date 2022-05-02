@@ -4,7 +4,7 @@
 
 Rachel's Recipes is a cross-platform mobile application that uses Xamarin.Forms. It was inspired by all those who are new to cooking (dare I say, first-time chefs! :)), especially during these unprecedented times of quarantining, social distancing, and increased cooking. It is intended to provide a single place to both search for new recipes as well as keep track of personal ones.
 
-_This app continues to be work-in-progress and at the moment, its primary purpose is for my personal exploration of Xamarin.Forms, to learn more about the framework as a first-time user and contributer._
+_This app continues to be work-in-progress and at the moment, its primary purpose is to test the accessibility of .NET MAUI._
 
 ## App features
 
