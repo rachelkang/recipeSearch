@@ -21,11 +21,15 @@
 
         <CollectionView
             Grid.Row="2"
+            Margin="10"
 			HorizontalOptions="Fill"
 			VerticalOptions="Fill"
             ItemsSource="{Binding RecipeData.Hits}"
             x:Name="vListView"
 			SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout HandlerChanged="OnImageHandlerChanged" HeightRequest="220">
@@ -33,15 +37,18 @@
                             <TapGestureRecognizer Tapped="RecipeSearchPage_Tapped" NumberOfTapsRequired="1"  />
                         </VerticalStackLayout.GestureRecognizers>
                         <Image Source="{Binding Recipe.ImageUrl}" Aspect="AspectFill"             
-                               AutomationProperties.IsInAccessibleTree="False"/>
-                        <Label Background="White" TextColor="Black"
-                                Padding="5"
-                                VerticalOptions="End"
-                                x:Name="recipeName"
-                                Text="{Binding Recipe.RecipeName}"
-                                LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}"
-                                FontSize="16"
-                                FontAttributes="Bold" />
+                                   AutomationProperties.IsInAccessibleTree="False"/>
+                        <Label x:Name="recipeName"
+                                   Background="White" 
+                                   TextColor="Black"
+                                   Padding="5"
+                                   VerticalOptions="Center"
+                                   Text="{Binding Recipe.RecipeName}"
+                                   LineBreakMode="WordWrap" 
+                                   MaxLines="2"
+                                   HeightRequest="80"
+                                   FontSize="16"
+                                   FontAttributes="Bold" />
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
