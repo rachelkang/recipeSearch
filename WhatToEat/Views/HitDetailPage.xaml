@@ -5,22 +5,20 @@
              Title="{Binding Title}"
              Visual="Material"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="true"
-             >
+             ios:Page.UseSafeArea="true">
     <Grid Margin="15">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="8*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="0,0,0,10">
-            <Image Source="{Binding ImageUrl}" Aspect="AspectFill" IsVisible="{Binding ImageUrlVisible}" />
-            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" SemanticProperties.HeadingLevel="Level1" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" FontSize="24" TextColor="Black" MaxLines="3" Padding="15" BackgroundColor="White"/>
+            <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" IsVisible="{Binding ImageUrlVisible}" />
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" TextColor="Black" SemanticProperties.HeadingLevel="Level1" BackgroundColor="White" FontSize="24" Padding="15" Margin="15" HorizontalTextAlignment="Center" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3"/>
         </Grid>
-        <!-- TODO: Fix ScrollView issue - currently scrolls over above controls -->
         <ScrollView Grid.Row="1" >
             <StackLayout BackgroundColor="White">
                 <Label Text="Ingredients:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
