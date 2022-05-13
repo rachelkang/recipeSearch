@@ -10,14 +10,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#176515</Color>
-            <LinearGradientBrush x:Key="BlueGradient" StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="White" Offset="0" />
-                <GradientStop Color="{StaticResource Primary}" Offset="1.0" />
-            </LinearGradientBrush>
-            <RadialGradientBrush x:Key="BlueGradientRadial" Center="0,0">
-                <GradientStop Color="White" Offset="0.5" />
-                <GradientStop Color="{StaticResource Primary}" Offset="1.0" />
-            </RadialGradientBrush>
             <Style TargetType="Button" x:Key="DefaultButtonStyle">
                 <Setter Property="MinimumHeightRequest" Value="44"></Setter>
                 <Setter Property="FontSize" Value="16"/>
@@ -68,8 +60,9 @@
                 <Setter Property="Background" Value="#F7F7F7"/>
                 <Setter Property="ContentLayout" Value="Top,0"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="Padding" Value="0,10"/>
+                <Setter Property="Padding" Value="5,15"/>
                 <Setter Property="FontSize" Value="24"></Setter>
+                <Setter Property="WidthRequest" Value="150"></Setter>
             </Style>
 
         </ResourceDictionary>

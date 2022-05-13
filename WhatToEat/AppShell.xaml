@@ -18,11 +18,11 @@
                 <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Dark=Black, Light=White}" />
                 <Setter Property="Shell.ForegroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="Shell.TitleColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.DisabledColor" Value="#176515FF" />
-                <Setter Property="Shell.UnselectedColor" Value="#176515FF" />
+                <Setter Property="Shell.DisabledColor" Value="#176515CC" />
+                <Setter Property="Shell.UnselectedColor" Value="#587656" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Dark=Black, Light=White}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.TabBarUnselectedColor" Value="LightGray" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#587656" />
                 <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource Primary}" />
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
