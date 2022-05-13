@@ -3,6 +3,7 @@ using System.Diagnostics;
 using Microsoft.Maui.Controls;
 using Recipes.Models;
 using System.Collections.Generic;
+using Microsoft.Maui.Accessibility;
 
 namespace Recipes.ViewModels
 {
@@ -110,7 +111,9 @@ namespace Recipes.ViewModels
         {
             await DataStore.DeleteItemAsync(_id);
 
-			await Shell.Current.GoToAsync("../..");
+            SemanticScreenReader.Announce(RecipeName + " recipe deleted.");
+
+            await Shell.Current.GoToAsync("../..");
         }
 
         private async void OnUpdate()
@@ -131,6 +134,8 @@ namespace Recipes.ViewModels
             };
 
             await DataStore.UpdateItemAsync(newItem);
+
+            SemanticScreenReader.Announce(RecipeName + " recipe updated.");
 
             await Shell.Current.GoToAsync("..");
         }

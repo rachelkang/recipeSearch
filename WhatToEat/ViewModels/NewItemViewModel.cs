@@ -2,6 +2,7 @@
 using Microsoft.Maui.Controls;
 using Recipes.Models;
 using System.Collections.Generic;
+using Microsoft.Maui.Accessibility;
 
 namespace Recipes.ViewModels
 {
@@ -83,6 +84,8 @@ namespace Recipes.ViewModels
             };
 
             await DataStore.AddItemAsync(newItem);
+
+            SemanticScreenReader.Announce(RecipeName + " recipe added.");
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");
