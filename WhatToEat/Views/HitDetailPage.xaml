@@ -33,7 +33,7 @@
                 </StackLayout>
 
                 <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}" />
-                <Label TextColor="{StaticResource Primary}" SemanticProperties.HeadingLevel="Level2" FontAttributes="Italic" TextDecorations="Underline" Text="Click here to view full recipe." FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" Padding="20,5">
+                <Label TextColor="{StaticResource Primary}" FontAttributes="Italic" TextDecorations="Underline" Text="Click here to view full recipe." FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" Padding="20,5">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OpenUrl"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
@@ -41,6 +41,6 @@
 
             </StackLayout>
         </ScrollView>
-        <Button Grid.Row="2" Text="{Binding AddRemoveItemText}" Command="{Binding AddRemoveItemCommand}" Clicked="AddItem_Clicked" SemanticProperties.HeadingLevel="Level2" TextColor="White" FontAttributes="Bold" />
+        <Button Grid.Row="2" Text="{Binding AddRemoveItemText}" Command="{Binding AddRemoveItemCommand}" Clicked="AddItem_Clicked" TextColor="White" FontAttributes="Bold" />
     </Grid>
 </ContentPage>
