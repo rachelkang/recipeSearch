@@ -33,11 +33,7 @@
                 </StackLayout>
 
                 <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}" />
-                <Label TextColor="{StaticResource Primary}" FontAttributes="Italic" TextDecorations="Underline" Text="Click here to view full recipe." FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" Padding="20,5">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OpenUrl"></TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </Label>
+                <Button TextColor="{StaticResource Primary}" BackgroundColor="Transparent" FontAttributes="Italic" Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" />
 
             </StackLayout>
         </ScrollView>

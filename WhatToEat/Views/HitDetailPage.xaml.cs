@@ -23,10 +23,9 @@ namespace Recipes.Views
 		async void OpenUrl(object sender, System.EventArgs e)
 		{
 			await Launcher.OpenAsync(_viewModel.Hit.Recipe.RecipeUrl);
-
 		}
 
-		void AddItem_Clicked(System.Object sender, System.EventArgs e)
+		void AddItem_Clicked(object sender, System.EventArgs e)
 		{
 			SemanticScreenReader.Announce(alertMessage);
 
