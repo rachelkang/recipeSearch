@@ -62,7 +62,7 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="Padding" Value="5,15"/>
                 <Setter Property="FontSize" Value="24"></Setter>
-                <Setter Property="WidthRequest" Value="150"></Setter>
+                <Setter Property="MinimumWidthRequest" Value="150"></Setter>
             </Style>
 
         </ResourceDictionary>
