@@ -31,7 +31,7 @@
                 </StackLayout>
 
                 <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}" />
-                <Button TextColor="{StaticResource Primary}" BackgroundColor="Transparent" FontAttributes="Italic" Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" />
+                <Button TextColor="White" BackgroundColor="{StaticResource Primary}" Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" Margin="25,0" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" />
 
             </StackLayout>
         </ScrollView>

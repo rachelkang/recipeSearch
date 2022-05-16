@@ -41,11 +41,8 @@
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
 
-                <Label SemanticProperties.HeadingLevel="Level2" TextColor="Black" FontAttributes="Italic" TextDecorations="Underline" Text="Click here to view full recipe." FontSize="Small" IsVisible="{Binding RecipeUrlVisible}" Padding="20,5">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OpenUrl"></TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </Label>
+                <Button TextColor="White" BackgroundColor="{StaticResource Primary}" Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" Margin="25,0" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" />
+
             </StackLayout>
         </ScrollView>
     </Grid>
