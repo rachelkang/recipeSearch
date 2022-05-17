@@ -12,12 +12,11 @@
                    ios:SearchBar.SearchBarStyle="Default"
                    SemanticProperties.HeadingLevel="Level3"
                    Placeholder="Search recipes"
-                   CancelButtonColor="{StaticResource Primary}"
                    Text="{Binding SearchQuery}"
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
         
-        <Label Grid.Row="1" Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,10,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic" TextColor="{StaticResource Primary}"/>
+        <Label Grid.Row="1" Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,10,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic"/>
 
         <CollectionView
             Grid.Row="2"
@@ -32,24 +31,31 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <VerticalStackLayout HandlerChanged="OnImageHandlerChanged" HeightRequest="220">
-                        <VerticalStackLayout.GestureRecognizers>
+                    <Grid HandlerChanged="OnImageHandlerChanged" 
+                          HeightRequest="220" 
+                          RowDefinitions="*" 
+                          ColumnDefinitions="*">
+                        <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="RecipeSearchPage_Tapped" NumberOfTapsRequired="1"  />
-                        </VerticalStackLayout.GestureRecognizers>
-                        <Image Source="{Binding Recipe.ImageUrl}" Aspect="AspectFill"             
-                                   AutomationProperties.IsInAccessibleTree="False"/>
-                        <Label x:Name="recipeName"
-                                   Background="White" 
-                                   TextColor="Black"
+                        </Grid.GestureRecognizers>
+
+                        <Grid>
+                            <Image Source="{Binding Recipe.ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" AutomationProperties.IsInAccessibleTree="False"/>
+                            <Label x:Name="recipeName"
                                    Padding="5"
-                                   VerticalOptions="Center"
+                                   HorizontalOptions="Fill" 
+                                   VerticalOptions="End"
+                                   VerticalTextAlignment="Start"
+                                   HorizontalTextAlignment="Center"
                                    Text="{Binding Recipe.RecipeName}"
                                    LineBreakMode="WordWrap" 
                                    MaxLines="2"
                                    HeightRequest="80"
                                    FontSize="16"
                                    FontAttributes="Bold" />
-                    </VerticalStackLayout>
+                        </Grid>
+
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

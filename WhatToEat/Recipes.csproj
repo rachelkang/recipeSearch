@@ -26,8 +26,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<MauiImage ForegroundFile="Resources\appicon.png" Include="Resources\appicon.png" IsAppIcon="true" Color="#081B25" />
-		<MauiSplashScreen Include="Resources\applogo.png" Color="#081B25" />
+		<MauiImage ForegroundFile="Resources\appicon.png" Include="Resources\appicon.png" IsAppIcon="true" Color="#2BB0ED" />
+		<MauiSplashScreen Include="Resources\applogo.png" Color="#2BB0ED" />
 		<MauiImage Include="Resources\Images\*" />
 		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>

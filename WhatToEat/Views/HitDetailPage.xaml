@@ -17,24 +17,24 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="0,0,0,10">
             <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" IsVisible="{Binding ImageUrlVisible}" />
-            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" TextColor="Black" SemanticProperties.HeadingLevel="Level1" BackgroundColor="White" FontSize="24" Padding="15" Margin="15" HorizontalTextAlignment="Center" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3"/>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" SemanticProperties.HeadingLevel="Level1" FontSize="24" Padding="15" Margin="15" HorizontalTextAlignment="Center" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3"/>
         </Grid>
         <ScrollView Grid.Row="1" >
-            <StackLayout BackgroundColor="White">
-                <Label Text="Ingredients:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+            <StackLayout>
+                <Label Text="Ingredients:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
                 <StackLayout BindableLayout.ItemsSource="{Binding Ingredients}" IsVisible="{Binding IngredientsVisible}" Padding="15,0">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding .}" TextColor="Black" VerticalOptions="Center" Margin="10,0"/>
+                            <Label Text="{Binding .}" VerticalOptions="Center" Margin="10,0"/>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
 
-                <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}" />
-                <Button TextColor="White" BackgroundColor="{StaticResource Primary}" Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" Margin="25,0" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" />
+                <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" />
+                <Button Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" Margin="25,0" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" />
 
             </StackLayout>
         </ScrollView>
-        <Button Grid.Row="2" Text="{Binding AddRemoveItemText}" Command="{Binding AddRemoveItemCommand}" Clicked="AddItem_Clicked" TextColor="White" FontAttributes="Bold" />
+        <Button Grid.Row="2" Text="{Binding AddRemoveItemText}" Command="{Binding AddRemoveItemCommand}" Clicked="AddItem_Clicked" FontAttributes="Bold" />
     </Grid>
 </ContentPage>

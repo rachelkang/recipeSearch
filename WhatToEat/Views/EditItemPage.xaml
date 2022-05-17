@@ -16,22 +16,22 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Label FontSize="25" FontAttributes="Bold" Text="Edit recipe" TextColor="{StaticResource Primary}" Margin="15" SemanticProperties.HeadingLevel="Level1"/>
+            <Label FontSize="25" FontAttributes="Bold" Text="Edit recipe" Style="{StaticResource RecipeItemLabelStyle}" Margin="15" SemanticProperties.HeadingLevel="Level1"/>
             <StackLayout Grid.Row="1" Margin="15,0">
-                <Label Text="Recipe Name" TextColor="{StaticResource Primary}" FontSize="16" />
+                <Label Text="Recipe Name" Style="{StaticResource RecipeItemLabelStyle}"/>
                 <Entry Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
-                <Label Text="Image URL" TextColor="{StaticResource Primary}" FontSize="16"/>
+                <Label Text="Image URL" Style="{StaticResource RecipeItemLabelStyle}"/>
                 <Entry Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
-                <Label Text="Ingredients" TextColor="{StaticResource Primary}" FontSize="16"/>
+                <Label Text="Ingredients" Style="{StaticResource RecipeItemLabelStyle}"/>
                 <Editor Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
-                <Label Text="Recipe" TextColor="{StaticResource Primary}" FontSize="16"/>
+                <Label Text="Recipe" Style="{StaticResource RecipeItemLabelStyle}"/>
                 <Editor Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
-                <Label FontSize="Small" FormattedText="{Binding RecipeUrl}" FontAttributes="Italic" TextColor="Gray" />
+                <Label FontSize="Small" FormattedText="{Binding RecipeUrl}" FontAttributes="Italic" />
             </StackLayout>
             <FlexLayout Grid.Row="2" AlignItems="Center" JustifyContent="SpaceEvenly">
-                <Button Padding="{OnPlatform iOS=12,7}" TextColor="Black" Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="LightGray" HorizontalOptions="Fill" SemanticProperties.HeadingLevel="Level2"/>
-                <Button Padding="{OnPlatform iOS=12,7}" TextColor="Black" Text="Delete" Command="{Binding DeleteCommand}" BackgroundColor="#BF2E2E" HorizontalOptions="Fill" SemanticProperties.HeadingLevel="Level2"/>
-                <Button Padding="{OnPlatform iOS=12,7}" TextColor="White" Text="Update" Command="{Binding UpdateCommand}" HorizontalOptions="Fill" SemanticProperties.HeadingLevel="Level2"/>
+                <Button Padding="{OnPlatform iOS=12,7}" TextColor="{AppThemeBinding Dark=White, Light=Black}" Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="{AppThemeBinding Dark=DarkGray, Light=LightGray}" HorizontalOptions="Fill" />
+                <Button Padding="{OnPlatform iOS=12,7}" TextColor="{AppThemeBinding Dark=#BF2E2E, Light=White}" Text="Delete" Command="{Binding DeleteCommand}" BackgroundColor="{AppThemeBinding Dark=White, Light=#BF2E2E}" HorizontalOptions="Fill" />
+                <Button Padding="{OnPlatform iOS=12,7}" Text="Update" Command="{Binding UpdateCommand}" HorizontalOptions="Fill" />
             </FlexLayout>
         </Grid>
     </ContentPage.Content>

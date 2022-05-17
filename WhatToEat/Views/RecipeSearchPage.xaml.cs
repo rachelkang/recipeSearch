@@ -33,7 +33,7 @@ namespace Recipes.Views
 #endif
 		}
 
-		private void RecipeSearchPage_Tapped(object sender, System.EventArgs e)
+		void RecipeSearchPage_Tapped(object sender, System.EventArgs e)
 		{
 			BindableObject bo = sender as BindableObject;
 			_viewModel.ItemTapped.Execute(bo.BindingContext);

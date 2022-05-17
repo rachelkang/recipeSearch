@@ -13,33 +13,18 @@
             <Style TargetType="Button" x:Key="DefaultButtonStyle">
                 <Setter Property="MinimumHeightRequest" Value="44"></Setter>
                 <Setter Property="FontSize" Value="16"/>
-                <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=Black}"/>
-                <Setter Property="VisualStateManager.VisualStateGroups">
-                    <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                            <VisualState x:Name="Disabled">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#176515F3" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateGroupList>
-                </Setter>
-            </Style>
-            <Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource Primary}, Light=White}"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
             </Style>
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=Black}"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark=Black, Light=White}"/>
             </Style>
             <Style TargetType="SearchBar">
                 <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=Black}"/>
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark=Black, Light=White}"></Setter>
-                <Setter Property="PlaceholderColor" Value="Gray"></Setter>
+                <Setter Property="PlaceholderColor" Value="{AppThemeBinding Dark=LightGray, Light={StaticResource Primary}}"></Setter>
+                <Setter Property="CancelButtonColor" Value="{AppThemeBinding Dark=LightGray, Light={StaticResource Primary}}"></Setter>
                 <Setter Property="MinimumHeightRequest" Value="44"></Setter>
             </Style>
             <Style TargetType="Entry">
@@ -56,13 +41,22 @@
             </Style>
 
             <Style TargetType="Button" x:Key="RecipeCategoryButtonStyle" BasedOn="{StaticResource DefaultButtonStyle}">
-                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
-                <Setter Property="Background" Value="#F7F7F7"/>
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark=#2A2A2A, Light=#F7F7F7}"/>
                 <Setter Property="ContentLayout" Value="Top,0"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="Padding" Value="5,15"/>
                 <Setter Property="FontSize" Value="24"></Setter>
                 <Setter Property="MinimumWidthRequest" Value="150"></Setter>
+            </Style>
+
+            <Style TargetType="Label" x:Key="RecipeItemLabelStyle">
+                <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+
+            <Style TargetType="Page">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark=Black, Light=White}"/>
             </Style>
 
         </ResourceDictionary>

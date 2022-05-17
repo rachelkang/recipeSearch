@@ -16,32 +16,32 @@
         </Grid.RowDefinitions>
         <Grid Grid.Column="0" Grid.Row="0" Margin="0,0,0,10">
             <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill"  IsVisible="{Binding ImageUrlVisible}" />
-            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" TextColor="Black" SemanticProperties.HeadingLevel="Level1" BackgroundColor="White" FontSize="24" Padding="15" Margin="15" HorizontalTextAlignment="Center" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3" />
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" SemanticProperties.HeadingLevel="Level1" FontSize="24" Padding="15" Margin="15" HorizontalTextAlignment="Center" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3" />
         </Grid>
         <ScrollView Grid.Row="1" >
-            <StackLayout BackgroundColor="White">
-                <Label Text="Ingredients:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+            <StackLayout>
+                <Label Text="Ingredients:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
                 <StackLayout  BindableLayout.ItemsSource="{Binding IngredientCheckList}" Padding="15,0" IsVisible="{Binding IngredientsVisible}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Orientation="Horizontal">
-                                <CheckBox SemanticProperties.Description="{Binding IngredientItem}" Color="{StaticResource Primary}" IsChecked="{Binding IngredientChecked}"/>
-                                <Label AutomationProperties.IsInAccessibleTree="False" Text="{Binding IngredientItem}" TextColor="Black" VerticalOptions="Center"/>
+                                <CheckBox SemanticProperties.Description="{Binding IngredientItem}" Color="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" IsChecked="{Binding IngredientChecked}"/>
+                                <Label AutomationProperties.IsInAccessibleTree="False" Text="{Binding IngredientItem}"  VerticalOptions="Center"/>
                             </StackLayout>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
 
-                <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{StaticResource Primary}"/>
+                <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
                 <StackLayout  BindableLayout.ItemsSource="{Binding RecipeList}" Padding="20,5">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding .}" TextColor="Black" VerticalOptions="Center" WidthRequest="340" LineBreakMode="WordWrap"/>
+                            <Label Text="{Binding .}" VerticalOptions="Center" WidthRequest="340" LineBreakMode="WordWrap"/>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
 
-                <Button TextColor="White" BackgroundColor="{StaticResource Primary}" Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" Margin="25,0" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" />
+                <Button Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" Margin="25,0" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" />
 
             </StackLayout>
         </ScrollView>
