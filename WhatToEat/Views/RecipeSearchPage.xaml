@@ -33,6 +33,8 @@
                 <DataTemplate>
                     <Grid HandlerChanged="OnImageHandlerChanged" 
                           HeightRequest="220" 
+			  AutomationProperties.IsInAccessibleTree="True"
+			  SemanticProperties.Description="{Binding Recipe.RecipeName}"
                           RowDefinitions="*" 
                           ColumnDefinitions="*">
                         <Grid.GestureRecognizers>
