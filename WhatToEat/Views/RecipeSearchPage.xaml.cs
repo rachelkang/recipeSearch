@@ -14,8 +14,20 @@ namespace Recipes.Views
             InitializeComponent();
             BindingContext = _viewModel = new RecipeSearchViewModel();
 
-		}
+	}
 
+
+        bool _firstNavigatedTo = true;
+        protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+        {
+            base.OnNavigatedTo(args);
+            if (_firstNavigatedTo)
+            {
+                _firstNavigatedTo = false;
+                await Task.Delay(200); // try without this
+                // Set semantic focus to the search box
+            }
+        }
 		private void OnImageHandlerChanged(object sender, System.EventArgs e)
 		{
 #if ANDROID
