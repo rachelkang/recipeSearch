@@ -1,7 +1,6 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Recipes.ViewModels;
-using System.Linq;
 
 namespace Recipes.Views
 {
@@ -13,8 +12,8 @@ namespace Recipes.Views
         {
             InitializeComponent();
             BindingContext = _viewModel = new RecipeSearchViewModel();
-
-		}
+			this.Loaded += (_, _) => searchBar.SetSemanticFocus();
+        }
 
 		private void OnImageHandlerChanged(object sender, System.EventArgs e)
 		{
