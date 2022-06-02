@@ -31,7 +31,8 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid HandlerChanged="OnImageHandlerChanged" 
+                    <Grid SemanticProperties.Description="{Binding Recipe.RecipeName}"
+                          HandlerChanged="OnImageHandlerChanged" 
                           HeightRequest="220" 
                           RowDefinitions="*" 
                           ColumnDefinitions="*">
