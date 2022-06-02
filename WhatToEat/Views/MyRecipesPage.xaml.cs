@@ -7,7 +7,10 @@ namespace Recipes.Views
 	{
 		ItemsViewModel _viewModel;
 
-		public MyRecipesPage()
+        private double width = 0;
+        private double height = 0;
+
+        public MyRecipesPage()
 		{
 			InitializeComponent();
 			BindingContext = _viewModel = new ItemsViewModel();
@@ -25,5 +28,25 @@ namespace Recipes.Views
 			_viewModel.ItemTapped.Execute(bo.BindingContext);
 
 		}
-	}
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            if (width != this.width || height != this.height)
+            {
+                this.width = width;
+                this.height = height;
+                if (width > height)
+                {
+                    vMyRecipesListView.HeightRequest = 200;
+                    vMyRecipesListView.WidthRequest = width - 100;
+                }
+                else
+                {
+                    vMyRecipesListView.HeightRequest = height - 150;
+                    vMyRecipesListView.WidthRequest = 350;
+                }
+            }
+        }
+    }
 }

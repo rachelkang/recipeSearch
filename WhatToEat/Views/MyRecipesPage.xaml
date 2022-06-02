@@ -28,16 +28,29 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid RowDefinitions="*, Auto" 
-                              Padding="0,0,20,0" 
-                              HorizontalOptions="Fill" VerticalOptions="Fill"
-                              SemanticProperties.Description="{Binding RecipeName}">
+                    <Grid RowDefinitions="*" 
+                          ColumnDefinitions="*" 
+                          Padding="0,0,10,0"
+                          WidthRequest="340"
+                          HorizontalOptions="Fill"
+                          VerticalOptions="Fill"
+                          SemanticProperties.Description="{Binding RecipeName}">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="MyRecipesPage_Tapped" NumberOfTapsRequired="1"  />
                         </Grid.GestureRecognizers>
-                        <Image Source="{Binding ImageUrl}" VerticalOptions="Fill" WidthRequest="340" Aspect="AspectFill"/>
-                        <Label Grid.Row="1"  x:Name="recipeName" Padding="10" Text="{Binding RecipeName}" LineBreakMode="WordWrap" MaxLines="3" Style="{DynamicResource ListItemTextStyle}" FontSize="24" VerticalTextAlignment="Center" FontAttributes="Bold" />
+
+                        <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" AutomationProperties.IsInAccessibleTree="False"/>
+                        <Label x:Name="recipeName"
+                               Padding="10"
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center"
+                               Text="{Binding RecipeName}"
+                               LineBreakMode="WordWrap" 
+                               MaxLines="3"
+                               FontSize="16"
+                               FontAttributes="Bold" />
                     </Grid>
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
