@@ -19,14 +19,14 @@
             <Label FontSize="25" FontAttributes="Bold" Text="New recipe" SemanticProperties.HeadingLevel="Level1" Margin="15" Style="{StaticResource RecipeItemLabelStyle}"/>
             <ScrollView Grid.Row="1">
                 <StackLayout Margin="15,0">
-                    <Label Text="Recipe Name" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Entry Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
-                    <Label Text="Image URL" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Entry Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
-                    <Label Text="Ingredients" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Editor Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
-                    <Label Text="Recipe" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Editor Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
+                    <Label x:Name="recipeNameLabel" Text="Recipe Name" Style="{StaticResource RecipeItemLabelStyle}"/>
+                    <Entry SemanticProperties.Description="{Binding Source={x:Reference recipeNameLabel},Path=Text}" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
+                    <Label x:Name="imageUrlLabel" Text="Image URL" Style="{StaticResource RecipeItemLabelStyle}"/>
+                    <Entry SemanticProperties.Description="{Binding Source={x:Reference imageUrlLabel},Path=Text}" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
+                    <Label x:Name="ingredientsLabel" Text="Ingredients" Style="{StaticResource RecipeItemLabelStyle}"/>
+                    <Editor SemanticProperties.Description="{Binding Source={x:Reference ingredientsLabel},Path=Text}" Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
+                    <Label x:Name="recipeLabel" Text="Recipe" Style="{StaticResource RecipeItemLabelStyle}"/>
+                    <Editor SemanticProperties.Description="{Binding Source={x:Reference recipeLabel},Path=Text}" Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" />
                 </StackLayout>
             </ScrollView>
             <FlexLayout Grid.Row="2" AlignItems="Center" JustifyContent="SpaceEvenly">
