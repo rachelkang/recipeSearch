@@ -31,7 +31,7 @@
             </ScrollView>
             <FlexLayout Grid.Row="2" AlignItems="Center" JustifyContent="SpaceEvenly">
                 <Button Padding="{OnPlatform iOS=12,7}" TextColor="{AppThemeBinding Dark=White, Light=Black}" Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="{AppThemeBinding Dark=DarkGray, Light=LightGray}" HorizontalOptions="Fill"/>
-                <Button Padding="{OnPlatform iOS=12,7}" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="Fill"/>
+                <Button Padding="{OnPlatform iOS=12,7}" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="Fill" Background="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" TextColor="{AppThemeBinding Dark={StaticResource Primary}, Light=White}"/>
 
 
             </FlexLayout>
