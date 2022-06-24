@@ -3,8 +3,9 @@ using Microsoft.Maui;
 
 namespace Recipes
 {
-	[Register("AppDelegate")]
-	public class AppDelegate : MauiUIApplicationDelegate<MauiProgram>
-	{
-	}
+    [Register("AppDelegate")]
+    public class AppDelegate : MauiUIApplicationDelegate
+    {
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+    }
 }
