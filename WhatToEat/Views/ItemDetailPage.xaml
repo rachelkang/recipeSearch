@@ -25,7 +25,7 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Orientation="Horizontal">
-                                <CheckBox SemanticProperties.Description="{Binding IngredientItem}" Color="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" IsChecked="{Binding IngredientChecked}"/>
+                                <CheckBox SemanticProperties.Description="{Binding IngredientItem}" Color="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" IsChecked="{Binding IngredientChecked}" HeightRequest="50" WidthRequest="50"/>
                                 <Label AutomationProperties.IsInAccessibleTree="False" Text="{Binding IngredientItem}"  VerticalOptions="Center"/>
                             </StackLayout>
                         </DataTemplate>
