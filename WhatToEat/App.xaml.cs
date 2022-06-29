@@ -8,7 +8,7 @@ using Recipes.ViewModels;
 
 namespace Recipes
 {
-    public partial class App : Application
+    public partial class App : Microsoft.Maui.Controls.Application
     {
 
         public App()
