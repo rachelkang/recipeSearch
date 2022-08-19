@@ -49,7 +49,7 @@
                 <Setter Property="Padding" Value="5,15"/>
                 <Setter Property="FontSize" Value="24"></Setter>
                 <Setter Property="MinimumWidthRequest" Value="150"></Setter>
-                <Setter Property="MinimumHeightRequest" Value="{OnPlatform Android=150}"></Setter>
+                <Setter Property="MinimumHeightRequest" Value="{OnPlatform Android=150, Default=-1}"></Setter>
             </Style>
 
             <Style TargetType="Label" x:Key="RecipeItemLabelStyle">
