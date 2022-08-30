@@ -25,7 +25,19 @@ namespace Recipes.Views
 			await Launcher.OpenAsync(_viewModel.Hit.Recipe.RecipeUrl);
 		}
 
-		void AddItem_Clicked(object sender, System.EventArgs e)
+        void Button_Loaded(System.Object sender, System.EventArgs _)
+        {
+#if IOS || MACCATALYST
+            if (sender is IElement e && e.Handler.PlatformView is UIKit.UIView uiView)
+            {
+                uiView.AccessibilityTraits = UIKit.UIAccessibilityTrait.Link;
+                System.Diagnostics.Debug.WriteLine($"{uiView.AccessibilityTraits}");
+            }
+            System.Diagnostics.Debug.WriteLine("asdf");
+#endif
+        }
+
+        void AddItem_Clicked(object sender, System.EventArgs e)
 		{
 			SemanticScreenReader.Announce(alertMessage);
 
