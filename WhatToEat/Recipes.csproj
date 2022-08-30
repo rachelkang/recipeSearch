@@ -13,7 +13,6 @@
 		<!-- Versions -->
 		<ApplicationVersion>2</ApplicationVersion>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
-    <RuntimeIdentifier Condition=" $(TargetFramework.Contains('-ios')) ">ios-arm64</RuntimeIdentifier>
 
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
@@ -23,6 +22,7 @@
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -39,9 +39,9 @@
 		<MauiImage Include="Resources\Images\cookbook.png" BaseSize="23,23" />
 	</ItemGroup>
 
-	<ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst'))">
+	<!--<ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst'))">
 		<BundleResource Include="Platforms\MacCatalyst\trayicon.png" />
-	</ItemGroup>
+	</ItemGroup>-->
 
     <PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">
         <GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
