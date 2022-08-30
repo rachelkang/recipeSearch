@@ -18,24 +18,20 @@ namespace Recipes.Views
         {
             base.OnAppearing();
             _viewModel.OnAppearing();
-		}
+        }
 
-		async void OpenUrl(object sender, System.EventArgs e)
-		{
+        async void OpenUrl(object sender, System.EventArgs e)
+        {
             System.Diagnostics.Debug.WriteLine("WHAT");
-			await Launcher.OpenAsync(_viewModel.RecipeUrl);
+            await Launcher.OpenAsync(_viewModel.RecipeUrl);
 
-		}
+        }
 
         void Button_Loaded(System.Object sender, System.EventArgs _)
         {
 #if IOS || MACCATALYST
             if (sender is IElement e && e.Handler.PlatformView is UIKit.UIView uiView)
-            {
                 uiView.AccessibilityTraits = UIKit.UIAccessibilityTrait.Link;
-                System.Diagnostics.Debug.WriteLine($"{uiView.AccessibilityTraits}");
-            }
-            System.Diagnostics.Debug.WriteLine("asdf");
 #endif
         }
     }
