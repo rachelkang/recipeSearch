@@ -4,31 +4,31 @@
              x:Class="Recipes.Views.StartingPage"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              Title="{Binding Title}">
-    <Grid Margin="5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <ScrollView>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0" Text="Find the recipe for you"
-               SemanticProperties.HeadingLevel="Level1" FontSize="24" FontAttributes="Bold" Margin="15,15,15,0" />
-        <SearchBar Grid.Column="0" Grid.Row="1"
-                   x:Name="searchBar"
-                   ios:SearchBar.SearchBarStyle="Default"
-                   SemanticProperties.HeadingLevel="Level3"
-                   Placeholder="Search recipes"
-                   FontSize="14"
-                   Text="{Binding SearchQuery}"
-                   Margin="0,5,0,5"
-                   SearchCommand="{Binding SearchCommand}"
-                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+            <Label Grid.Column="0" Grid.Row="0" Text="Find the recipe for you"
+                SemanticProperties.HeadingLevel="Level1" FontSize="24" FontAttributes="Bold" Margin="15,15,15,0" />
+            <SearchBar Grid.Column="0" Grid.Row="1"
+                    x:Name="searchBar"
+                    ios:SearchBar.SearchBarStyle="Default"
+                    SemanticProperties.HeadingLevel="Level3"
+                    Placeholder="Search recipes"
+                    FontSize="14"
+                    Text="{Binding SearchQuery}"
+                    Margin="0,5,0,5"
+                    SearchCommand="{Binding SearchCommand}"
+                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
 
-        <ScrollView Grid.Column="0" Grid.Row="2" Margin="20,5">
-            <Grid>
+            <Grid Grid.Column="0" Grid.Row="2" Margin="20,5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -63,6 +63,6 @@
                     </StackLayout>
                 </ScrollView>
             </Grid>
-        </ScrollView>
-    </Grid>
+        </Grid>
+    </ScrollView>
 </ContentPage>

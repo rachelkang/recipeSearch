@@ -11,7 +11,7 @@
 		<ApplicationTitle>Rachel's Recipes</ApplicationTitle>
 		<ApplicationId>com.companyname.Recipes</ApplicationId>
 		<!-- Versions -->
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationVersion>2</ApplicationVersion>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
     <RuntimeIdentifier Condition=" $(TargetFramework.Contains('-ios')) ">ios-arm64</RuntimeIdentifier>
 
