@@ -1,12 +1,8 @@
-﻿using System;
-using Microsoft.Maui.Controls;
-using Recipes.Models;
-using System.Collections.Generic;
-using Microsoft.Maui.Accessibility;
+﻿using Recipes.Models;
 
 namespace Recipes.ViewModels
 {
-    public class NewItemViewModel : BaseViewModel
+    public class NewRecipeViewModel : BaseViewModel
     {
         string _recipeName;
         string _imageUrl;
@@ -14,17 +10,17 @@ namespace Recipes.ViewModels
         string _recipeBody;
         string _recipeUrl;
 
-        public NewItemViewModel()
+        public NewRecipeViewModel()
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
-            this.PropertyChanged +=
+            PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
         }
 
         private bool ValidateSave()
         {
-            return !String.IsNullOrWhiteSpace(_recipeName);
+            return !string.IsNullOrWhiteSpace(_recipeName);
         }
 
         public string RecipeName
@@ -69,11 +65,11 @@ namespace Recipes.ViewModels
         private async void OnSave()
         {
             List<Ingredient> ingredientList = new List<Ingredient>();
-            string[] ingredientStringList = (Ingredients ?? String.Empty).Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            string[] ingredientStringList = (Ingredients ?? string.Empty).Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string ingredientString in ingredientStringList)
 				ingredientList.Add(new Ingredient { IngredientItem = ingredientString });
 
-            Item newItem = new Item()
+            Item NewRecipe = new Item()
             {
                 Id = Guid.NewGuid().ToString(),
                 RecipeName = RecipeName,
@@ -83,7 +79,7 @@ namespace Recipes.ViewModels
                 RecipeUrl = RecipeUrl
             };
 
-            await DataStore.AddItemAsync(newItem);
+            await DataStore.AddItemAsync(NewRecipe);
 
             SemanticScreenReader.Announce(RecipeName + " recipe added.");
 

@@ -38,6 +38,23 @@
 		<MauiImage Include="Resources\Images\search.png" BaseSize="23,23" />
 		<MauiImage Include="Resources\Images\cookbook.png" BaseSize="23,23" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Views\EditRecipePage.xaml.cs">
+	    <DependentUpon>EditRecipePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\SearchResultDetailPage.xaml.cs">
+	    <DependentUpon>SearchResultDetailPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\NewRecipePage.xaml.cs">
+	    <DependentUpon>NewRecipePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\RecipeDetailPage.xaml.cs">
+	    <DependentUpon>RecipeDetailPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\SearchResultsPage.xaml.cs">
+	    <DependentUpon>SearchResultsPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
 
 	<!--<ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst'))">
 		<BundleResource Include="Platforms\MacCatalyst\trayicon.png" />
@@ -80,15 +97,15 @@
     <EmbeddedResource Remove="Views\RecipeSearch.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Views\ItemDetailPage %28copy%29.xaml.cs" />
-    <Compile Remove="Views\RecipeSearchPage %28copy%29.xaml.cs" />
+    <Compile Remove="Views\RecipeDetailPage %28copy%29.xaml.cs" />
+    <Compile Remove="Views\SearchResultsPage %28copy%29.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\RecipeSearch.xaml.cs">
       <DependentUpon>RecipeSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\RecipeSearchPage.xaml.cs">
-      <DependentUpon>RecipeSearchPage.xaml</DependentUpon>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\SearchResultsPage.xaml.cs">
+      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

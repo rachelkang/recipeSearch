@@ -12,11 +12,11 @@ namespace Recipes
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(RecipeSearchPage), typeof(RecipeSearchPage));
-            Routing.RegisterRoute(nameof(HitDetailPage), typeof(HitDetailPage));
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
-            Routing.RegisterRoute(nameof(EditItemPage), typeof(EditItemPage));
+            Routing.RegisterRoute(nameof(SearchResultsPage), typeof(SearchResultsPage));
+            Routing.RegisterRoute(nameof(SearchResultDetailPage), typeof(SearchResultDetailPage));
+            Routing.RegisterRoute(nameof(RecipeDetailPage), typeof(RecipeDetailPage));
+            Routing.RegisterRoute(nameof(NewRecipePage), typeof(NewRecipePage));
+            Routing.RegisterRoute(nameof(EditRecipePage), typeof(EditRecipePage));
         }
 
         public static RecipeData Data { get; set; }

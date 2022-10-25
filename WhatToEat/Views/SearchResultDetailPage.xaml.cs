@@ -1,22 +1,18 @@
-﻿using Microsoft.Maui.Controls;
-using Recipes.ViewModels;
-using Microsoft.Maui.Graphics;
-using Microsoft.Maui.Accessibility;
-using Microsoft.Maui.ApplicationModel;
+﻿using Recipes.ViewModels;
 
 namespace Recipes.Views
 {
-    public partial class HitDetailPage : ContentPage
+    public partial class SearchResultDetailPage : ContentPage
     {
 
-        HitDetailViewModel _viewModel;
+        SearchResultDetailViewModel _viewModel;
         Color primary = Color.FromArgb("#2BB0ED");
         string alertMessage = "This recipe has been added to your personal recipe collection! Go to the 'My Recipes' tab to view and modify this recipe from there";
 
-        public HitDetailPage()
+        public SearchResultDetailPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new HitDetailViewModel();
+            BindingContext = _viewModel = new SearchResultDetailViewModel();
         }
 
 

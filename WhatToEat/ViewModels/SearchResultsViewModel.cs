@@ -1,12 +1,10 @@
-﻿ using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using Recipes.Views;
+﻿using Recipes.Views;
 
 namespace Recipes.ViewModels
 {
     [QueryProperty(nameof(SearchQuery), nameof(SearchQuery))]
     [QueryProperty(nameof(SearchFilter), nameof(SearchFilter))]
-    public class RecipeSearchViewModel : BaseViewModel
+    public class SearchResultsViewModel : BaseViewModel
     {
         RestService _restService;
 
@@ -15,12 +13,11 @@ namespace Recipes.ViewModels
         string _noResultsLabel;
         bool _noResultsLabelVisible;
         bool _searchResultsVisible;
-        //private Hit _selectedHit;
 
         public Command<Hit> ItemTapped { get; }
         public Command SearchCommand { get; }
 
-        public RecipeSearchViewModel()
+        public SearchResultsViewModel()
         {
             Title = "Search all recipes";
             _restService = new RestService();
@@ -103,12 +100,7 @@ namespace Recipes.ViewModels
 
                     RecipeData = recipeData;
                     AppShell.Data = RecipeData;
-
-                    // OnPropertyChanged(nameof(RecipeData)); // tells Xaml view to update
                 }
-
-				//OnPropertyChanged(nameof(Adapter));
-                // OnPropertyChanged(SearchQuery);
             }
         }
 
@@ -141,8 +133,8 @@ namespace Recipes.ViewModels
             if (hit == null)
                 return;
 
-            // This will push the HitDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(HitDetailPage)}?HitId={hit.Id}");
+            // This will push the SearchResultDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(SearchResultDetailPage)}?HitId={hit.Id}");
         }
     }
 }

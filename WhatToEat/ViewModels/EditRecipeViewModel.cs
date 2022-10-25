@@ -1,14 +1,10 @@
-﻿using System;
-using System.Diagnostics;
-using Microsoft.Maui.Controls;
+﻿using System.Diagnostics;
 using Recipes.Models;
-using System.Collections.Generic;
-using Microsoft.Maui.Accessibility;
 
 namespace Recipes.ViewModels
 {
     [QueryProperty(nameof(Id), nameof(Id))]
-    public class EditItemViewModel : BaseViewModel
+    public class EditRecipeViewModel : BaseViewModel
     {
         string _id;
         string _recipeName;
@@ -17,20 +13,20 @@ namespace Recipes.ViewModels
         string _recipeBody;
         string _recipeUrl;
 
-        public EditItemViewModel()
+        public EditRecipeViewModel()
         {
             UpdateCommand = new Command(OnUpdate, ValidateUpdate);
             DeleteCommand = new Command(OnDelete);
             CancelCommand = new Command(OnCancel);
-            this.PropertyChanged +=
+            PropertyChanged +=
                 (_, __) => UpdateCommand.ChangeCanExecute();
-            this.PropertyChanged +=
+            PropertyChanged +=
                 (_, __) => DeleteCommand.ChangeCanExecute();
         }
 
         private bool ValidateUpdate()
         {
-            return !String.IsNullOrWhiteSpace(_recipeName);
+            return !string.IsNullOrWhiteSpace(_recipeName);
         }
 
         public string Id
@@ -123,7 +119,7 @@ namespace Recipes.ViewModels
             foreach (string ingredientString in ingredientStringList)
                 ingredientList.Add(new Ingredient { IngredientItem = ingredientString });
 
-            Item newItem = new Item()
+            Item NewRecipe = new Item()
             {
                 Id = _id,
                 RecipeName = RecipeName,
@@ -133,7 +129,7 @@ namespace Recipes.ViewModels
                 RecipeUrl = RecipeUrl
             };
 
-            await DataStore.UpdateItemAsync(newItem);
+            await DataStore.UpdateItemAsync(NewRecipe);
 
             SemanticScreenReader.Announce(RecipeName + " recipe updated.");
 
