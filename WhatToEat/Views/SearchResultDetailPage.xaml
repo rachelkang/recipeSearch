@@ -19,7 +19,7 @@
             <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" IsVisible="{Binding ImageUrlVisible}" />
             <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" SemanticProperties.HeadingLevel="Level1" FontSize="24" Padding="15" Margin="15" HorizontalTextAlignment="Center" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3"/>
         </Grid>
-        <ScrollView Grid.Row="1" >
+        <ScrollView Grid.Row="1" AutomationProperties.IsInAccessibleTree="False" >
             <StackLayout>
                 <Label Text="Ingredients:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
                 <StackLayout BindableLayout.ItemsSource="{Binding Ingredients}" IsVisible="{Binding IngredientsVisible}" Padding="15,0">
