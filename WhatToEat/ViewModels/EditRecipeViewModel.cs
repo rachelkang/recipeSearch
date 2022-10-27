@@ -12,6 +12,8 @@ namespace Recipes.ViewModels
         string _imageUrl;
         string _recipeBody;
         string _recipeUrl;
+        float _recipeRating;
+        string _recipeReview;
 
         public EditRecipeViewModel()
         {
@@ -72,6 +74,18 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _recipeUrl, value);
         }
 
+        public float RecipeRating
+        {
+            get => _recipeRating;
+            set => SetProperty(ref _recipeRating, value);
+        }
+
+        public string RecipeReview
+        {
+            get => _recipeReview;
+            set => SetProperty(ref _recipeReview, value);
+        }
+
         public async void LoadItemId(string itemId)
         {
             try
@@ -87,6 +101,8 @@ namespace Recipes.ViewModels
                 ImageUrl = item.ImageUrl;
                 RecipeBody = item.RecipeBody;
                 RecipeUrl = item.RecipeUrl;
+                RecipeRating = item.RecipeRating;
+                RecipeReview = item.RecipeReview;
             }
             catch (Exception)
             {
@@ -126,7 +142,9 @@ namespace Recipes.ViewModels
                 Ingredients = ingredientList,
                 ImageUrl = ImageUrl,
                 RecipeBody = RecipeBody,
-                RecipeUrl = RecipeUrl
+                RecipeUrl = RecipeUrl,
+                RecipeRating = RecipeRating,
+                RecipeReview = RecipeReview
             };
 
             await DataStore.UpdateItemAsync(NewRecipe);

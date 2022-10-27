@@ -21,13 +21,18 @@ namespace Recipes.ViewModels
 
         string _recipeBody;
         string _recipeUrl;
+        float _recipeRating;
+        string _recipeReview;
+        
 
         bool _recipeNameVisible;
         bool _imageUrlVisible;
         bool _ingredientsVisible;
         bool _recipeBodyVisible;
         bool _recipeUrlVisible;
-		private string[] _recipeList;
+        bool _recipeReviewVisible;
+
+        private string[] _recipeList;
 
 		public string Id { get; set; }
 
@@ -40,6 +45,7 @@ namespace Recipes.ViewModels
             IngredientsVisible = true;
             RecipeBodyVisible = true;
             RecipeUrlVisible = true;
+            RecipeReviewVisible = false;
         }
 
 		public string ItemId
@@ -100,6 +106,18 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _recipeUrl, value);
         }
 
+        public float RecipeRating
+        {
+            get => _recipeRating;
+            set => SetProperty(ref _recipeRating, value);
+        }
+
+        public string RecipeReview
+        {
+            get => _recipeReview;
+            set => SetProperty(ref _recipeReview, value);
+        }
+
         public bool RecipeNameVisible
         {
             get => _recipeNameVisible;
@@ -130,6 +148,12 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _recipeUrlVisible, value);
         }
 
+        public bool RecipeReviewVisible
+        {
+            get => _recipeReviewVisible;
+            set => SetProperty(ref _recipeReviewVisible, value);
+        }
+
         public async void LoadItemId(string itemId)
         {
             try
@@ -140,6 +164,8 @@ namespace Recipes.ViewModels
                 ImageUrl = item.ImageUrl;
                 RecipeBody = item.RecipeBody;
                 RecipeUrl = item.RecipeUrl;
+                RecipeRating = item.RecipeRating;
+                RecipeReview = item.RecipeReview;
 				RecipeList = item.RecipeBody?.Split("\n") ?? new string[0];
 				source = item.Ingredients;
                 IngredientCheckList = new ObservableCollection<Ingredient>(source);
@@ -157,6 +183,7 @@ namespace Recipes.ViewModels
                 IngredientsVisible = IngredientCheckList.Count > 0;
                 RecipeBodyVisible = !string.IsNullOrEmpty(RecipeBody);
                 RecipeUrlVisible = !(RecipeUrl == null || Equals(RecipeUrl, emptyFormattedString));
+                RecipeReviewVisible = !string.IsNullOrEmpty(RecipeReview);
                 
             }
             catch (Exception) 

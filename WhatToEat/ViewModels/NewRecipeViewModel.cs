@@ -9,6 +9,8 @@ namespace Recipes.ViewModels
         string _ingredients;
         string _recipeBody;
         string _recipeUrl;
+        float _recipeRating;
+        string _recipeReview;
 
         public NewRecipeViewModel()
         {
@@ -53,6 +55,18 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _recipeUrl, value);
         }
 
+        public float RecipeRating
+        {
+            get => _recipeRating;
+            set => SetProperty(ref _recipeRating, value);
+        }
+
+        public string RecipeReview
+        {
+            get => _recipeReview;
+            set => SetProperty(ref _recipeReview, value);
+        }
+
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
 
@@ -76,7 +90,9 @@ namespace Recipes.ViewModels
                 ImageUrl = ImageUrl,
                 Ingredients = ingredientList,
                 RecipeBody = RecipeBody,
-                RecipeUrl = RecipeUrl
+                RecipeUrl = RecipeUrl,
+                RecipeRating = RecipeRating,
+                RecipeReview = RecipeReview
             };
 
             await DataStore.AddItemAsync(NewRecipe);

@@ -20,6 +20,20 @@ namespace Recipes.Services
                     RecipeName = "달걀말이 (Korean Egg Roll)",
                     ImageUrl = "https://www.koreanbapsang.com/wp-content/uploads/2019/10/DSC_1183-2.jpg",
                     Ingredients = new List<Ingredient>()
+                    {
+                        new Ingredient() { IngredientItem = "1 scallion", IngredientChecked = false },
+                        new Ingredient() { IngredientItem = "8 eggs", IngredientChecked = false }
+                    },
+                    RecipeBody = "1. Grab a bowl, and add the scallion (chopped), eggs (cracked), salt, pepper.\n",
+                    RecipeRating = 9,
+                    RecipeReview = "A classic side dish in a Korean household. Thank you Mrs. Kang for the recipe!"
+                },
+                new Item
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    RecipeName = "달걀말이 (Korean Egg Roll)",
+                    ImageUrl = "https://www.koreanbapsang.com/wp-content/uploads/2019/10/DSC_1183-2.jpg",
+                    Ingredients = new List<Ingredient>()
 					{
                         new Ingredient() { IngredientItem = "1 scallion", IngredientChecked = false },
                         new Ingredient() { IngredientItem = "8 eggs", IngredientChecked = false },
@@ -36,7 +50,9 @@ namespace Recipes.Services
                     "7. Continually fold egg over while pushing uncooked egg to the other side of the pan and shaping it.\n" +
                     "8. Once completely folded, remove from pan.\n" +
                     "9. Repeat steps 3 - 8 if there is remaining egg mixture.\n" +
-                    "10. Cut the 달걀말이 into pieces."
+                    "10. Cut the 달걀말이 into pieces.",
+                    RecipeRating = 9,
+                    RecipeReview = "A classic side dish in a Korean household. Thank you Mrs. Kang for the recipe!"
                 },
                 new Item
                 {
@@ -64,7 +80,9 @@ namespace Recipes.Services
                     "6. Add in the potato, carrots, onion chunks. These veggies should be chopped in advance into 1/2” - 1” pieces.\n" +
                     "7. Add in any additional ingredients you have! (i.e. beef, tofu, etc.).\n" +
                     "8. If you have, add in the Korean squash! This should also have been chopped in advance into 1/2” - 1” pieces.\n" +
-                    "9. Continue to boil until ready to serve. Use ladle to remove any froth floating on the soup’s surface"
+                    "9. Continue to boil until ready to serve. Use ladle to remove any froth floating on the soup’s surface",
+                    RecipeRating = 10,
+                    RecipeReview = "A classic stew in a Korean household. The optional beef inclusion is a MUST! Thank you Mrs. Kang for the recipe!"
                 },
                 new Item
                 {
@@ -89,7 +107,9 @@ namespace Recipes.Services
                     "6. Spread a thin layer of the mixture onto the salmon.\n" +
                     "7. Preheat the oven to 350ºF.\n" +
                     "8. Cover the pan with foil and poke holes with a fork.\n" +
-                    "9. Bake the salmon! (combination fast bake ~30 minutes)"
+                    "9. Bake the salmon! (combination fast bake ~30 minutes)",
+                    RecipeRating = 8,
+                    RecipeReview = "A unique take on a salmon bake. I'm yet to try a similar dish anywhere else. Thank you Mrs. Kang for the recipe!"
                 }
             };
         }
