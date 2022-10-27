@@ -24,7 +24,7 @@ namespace Recipes.Views
             await Launcher.OpenAsync(_viewModel.RecipeUrl);
         }
 
-        void Button_Loaded(object sender, EventArgs e)
+        void Button_Loaded(object sender, EventArgs _)
         {
 #if IOS || MACCATALYST
             if (sender is IElement e && e.Handler.PlatformView is UIKit.UIView uiView)
