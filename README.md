@@ -39,5 +39,5 @@ _This app continues to be work-in-progress and at the moment, its primary purpos
 ## Credits
 _Disclaimer: Although the app is called "Rachel's Recipes", none of the recipes are her own._
 * Recipes from [Edamam](https://developer.edamam.com/) and my mother
-* Icons from [Flaticon](https://www.flaticon.com/)
+* Icons created by [Freepik - Flaticon](https://www.flaticon.com/)
 * Engineering tips and morale from the [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) team :)
