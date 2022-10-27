@@ -58,8 +58,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label Text="Review:" SemanticProperties.HeadingLevel="Level2" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" IsVisible="{Binding RecipeReviewVisible}"/>
-                    <Label Grid.Column="1" Text="{Binding RecipeRating, StringFormat='{0:F1} / 10 ★'}" Style="{StaticResource RecipeItemLabelStyle}" IsVisible="{Binding RecipeReviewVisible}" />
+                    <Label Text="Review:" SemanticProperties.HeadingLevel="Level2" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" IsVisible="{Binding RecipeReviewVisible}" />
+                    <Label Grid.Column="1" Text="{Binding RecipeRating, StringFormat='{0:F1} / 10 ★'}" Style="{StaticResource RecipeItemLabelStyle}" IsVisible="{Binding RecipeReviewVisible}" SemanticProperties.Description="{Binding RecipeRating, StringFormat='{0:F1} out of 10 stars'}"/>
                 </Grid>
                 <Label Padding="15" Text="{Binding RecipeReview}" IsVisible="{Binding RecipeReviewVisible}" />
             </StackLayout>

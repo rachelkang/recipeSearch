@@ -4,12 +4,15 @@ namespace Recipes.Views
 {
     public partial class EditRecipePage : ContentPage
     {
-        EditRecipeViewModel _viewModel;
-
         public EditRecipePage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new EditRecipeViewModel();
+            BindingContext = new EditRecipeViewModel();
+        }
+
+        private void OnValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SemanticScreenReader.Announce(SemanticProperties.GetDescription(ratingLabel));
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using Recipes.Models;
+﻿using Recipes.Models;
 using Recipes.ViewModels;
 
 namespace Recipes.Views
@@ -12,6 +11,11 @@ namespace Recipes.Views
         {
             InitializeComponent();
             BindingContext = new NewRecipeViewModel();
+        }
+
+        private void OnValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SemanticScreenReader.Announce(SemanticProperties.GetDescription(ratingLabel));
         }
     }
 }
