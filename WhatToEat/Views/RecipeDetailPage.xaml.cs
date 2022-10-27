@@ -20,8 +20,8 @@ namespace Recipes.Views
 
         async void OpenUrl(object sender, EventArgs e)
         {
+            SemanticScreenReader.Announce("Exiting app. Entering browser to view full recipe.");
             await Launcher.OpenAsync(_viewModel.RecipeUrl);
-
         }
 
         void Button_Loaded(object sender, EventArgs e)

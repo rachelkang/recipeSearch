@@ -20,20 +20,6 @@ namespace Recipes.Services
                     RecipeName = "달걀말이 (Korean Egg Roll)",
                     ImageUrl = "https://www.koreanbapsang.com/wp-content/uploads/2019/10/DSC_1183-2.jpg",
                     Ingredients = new List<Ingredient>()
-                    {
-                        new Ingredient() { IngredientItem = "1 scallion", IngredientChecked = false },
-                        new Ingredient() { IngredientItem = "8 eggs", IngredientChecked = false }
-                    },
-                    RecipeBody = "1. Grab a bowl, and add the scallion (chopped), eggs (cracked), salt, pepper.\n",
-                    RecipeRating = 9,
-                    RecipeReview = "A classic side dish in a Korean household. Thank you Mrs. Kang for the recipe!"
-                },
-                new Item
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    RecipeName = "달걀말이 (Korean Egg Roll)",
-                    ImageUrl = "https://www.koreanbapsang.com/wp-content/uploads/2019/10/DSC_1183-2.jpg",
-                    Ingredients = new List<Ingredient>()
 					{
                         new Ingredient() { IngredientItem = "1 scallion", IngredientChecked = false },
                         new Ingredient() { IngredientItem = "8 eggs", IngredientChecked = false },
