@@ -2,7 +2,8 @@
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Recipes
 {
@@ -26,7 +27,7 @@ namespace Recipes
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    recipeData = JsonConvert.DeserializeObject<RecipeData>(content);
+                    recipeData = JsonSerializer.Deserialize<RecipeData>(content);
                 }
             }
             catch (Exception ex)

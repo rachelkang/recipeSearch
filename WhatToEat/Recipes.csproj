@@ -26,7 +26,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<MauiIcon ForegroundFile="Resources\AppIcon\appicon.png" Include="Resources\AppIcon\appicon.png" Color="#2BB0ED" />
 		<MauiSplashScreen Include="Resources\Splash\splash.png" Color="#2BB0ED" />
 		<MauiImage Include="Resources\Images\*" />
