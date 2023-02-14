@@ -59,6 +59,9 @@
 		<UseInterpreter Condition="$(TargetFramework.Contains('-android'))">false</UseInterpreter>
 	</PropertyGroup>-->
 
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+      <CreatePackage>false</CreatePackage>
+    </PropertyGroup>
 </Project>
 
 <!--<Project Sdk="Microsoft.NET.Sdk">
