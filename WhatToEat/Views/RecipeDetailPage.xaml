@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Recipes.Views.ItemDetailPage"
+             x:Class="Recipes.Views.RecipeDetailPage"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Edit" Command="{Binding EditItemCommand}" />
+        <ToolbarItem Text="Edit" Command="{Binding EditRecipeCommand}" />
     </ContentPage.ToolbarItems>
     <Grid Margin="15">
         <Grid.ColumnDefinitions>
@@ -18,7 +18,7 @@
             <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill"  IsVisible="{Binding ImageUrlVisible}" />
             <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" SemanticProperties.HeadingLevel="Level1" FontSize="24" Padding="15" Margin="15" HorizontalTextAlignment="Center" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3" />
         </Grid>
-        <ScrollView Grid.Row="1" >
+        <ScrollView Grid.Row="1" AutomationProperties.IsInAccessibleTree="False">
             <StackLayout>
                 <Label Text="Ingredients:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
                 <StackLayout  BindableLayout.ItemsSource="{Binding IngredientCheckList}" Padding="15,0" IsVisible="{Binding IngredientsVisible}">
@@ -50,6 +50,18 @@
                         HorizontalOptions="Start"
                         Background="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" TextColor="{AppThemeBinding Dark={StaticResource Primary}, Light=White}" />
 
+                <Grid Padding="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Text="Review:" SemanticProperties.HeadingLevel="Level2" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" IsVisible="{Binding RecipeReviewVisible}" />
+                    <Label Grid.Column="1" Text="{Binding RecipeRating, StringFormat='{0:F1} / 10 ★'}" Style="{StaticResource RecipeItemLabelStyle}" IsVisible="{Binding RecipeReviewVisible}" SemanticProperties.Description="{Binding RecipeRating, StringFormat='{0:F1} out of 10 stars'}"/>
+                </Grid>
+                <Label Padding="15" Text="{Binding RecipeReview}" IsVisible="{Binding RecipeReviewVisible}" />
             </StackLayout>
         </ScrollView>
     </Grid>

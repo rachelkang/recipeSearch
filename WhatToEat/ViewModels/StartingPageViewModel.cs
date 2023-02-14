@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
-using Recipes.Views;
+﻿using Recipes.Views;
 
 namespace Recipes.ViewModels
 {
@@ -39,7 +37,7 @@ namespace Recipes.ViewModels
                 RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint, filter));
 
                 string urlEncodedFilter = System.Net.WebUtility.UrlEncode(filter);
-                await Shell.Current.GoToAsync($"{nameof(RecipeSearchPage)}?SearchQuery={SearchQuery}&SearchFilter={urlEncodedFilter}");
+                await Shell.Current.GoToAsync($"{nameof(SearchResultsPage)}?SearchQuery={SearchQuery}&SearchFilter={urlEncodedFilter}");
 
                 SearchQuery = string.Empty;
             }

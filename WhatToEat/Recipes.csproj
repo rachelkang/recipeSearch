@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net7.0-windows10.0.19041</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -17,9 +17,9 @@
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
 
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-ios'">13.6</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net7.0-android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
@@ -37,6 +37,10 @@
 		<MauiImage Include="Resources\Images\search.png" BaseSize="23,23" />
 		<MauiImage Include="Resources\Images\cookbook.png" BaseSize="23,23" />
 	</ItemGroup>
+
+	<!--<ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst'))">
+		<BundleResource Include="Platforms\MacCatalyst\trayicon.png" />
+	</ItemGroup>-->
 
 	<!--<ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst'))">
 		<BundleResource Include="Platforms\MacCatalyst\trayicon.png" />
@@ -79,15 +83,15 @@
     <EmbeddedResource Remove="Views\RecipeSearch.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Views\ItemDetailPage %28copy%29.xaml.cs" />
-    <Compile Remove="Views\RecipeSearchPage %28copy%29.xaml.cs" />
+    <Compile Remove="Views\RecipeDetailPage %28copy%29.xaml.cs" />
+    <Compile Remove="Views\SearchResultsPage %28copy%29.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\RecipeSearch.xaml.cs">
       <DependentUpon>RecipeSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\RecipeSearchPage.xaml.cs">
-      <DependentUpon>RecipeSearchPage.xaml</DependentUpon>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\SearchResultsPage.xaml.cs">
+      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

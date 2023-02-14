@@ -11,5 +11,7 @@ namespace Recipes.Models
         public List<Ingredient> Ingredients { get; set; }
         public string RecipeBody { get; set; }
         public string RecipeUrl { get; set; }
+        public float RecipeRating { get; set; }
+        public string RecipeReview { get; set; }
     }
 }

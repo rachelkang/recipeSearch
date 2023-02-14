@@ -1,11 +1,10 @@
-﻿using Microsoft.Maui.Controls;
-using Recipes.ViewModels;
+﻿using Recipes.ViewModels;
 
 namespace Recipes.Views
 {
-	public partial class MyRecipesPage : ContentPage
+    public partial class MyRecipesPage : ContentPage
 	{
-		ItemsViewModel _viewModel;
+		MyRecipesViewModel _viewModel;
 
         private double width = 0;
         private double height = 0;
@@ -13,7 +12,7 @@ namespace Recipes.Views
         public MyRecipesPage()
 		{
 			InitializeComponent();
-			BindingContext = _viewModel = new ItemsViewModel();
+			BindingContext = _viewModel = new MyRecipesViewModel();
 		}
 
 		protected override void OnAppearing()

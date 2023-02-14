@@ -1,17 +1,15 @@
-﻿using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using Recipes.ViewModels;
+﻿using Recipes.ViewModels;
 
 namespace Recipes.Views
 {
-    public partial class RecipeSearchPage : ContentPage
+	public partial class SearchResultsPage : ContentPage
     {
-        RecipeSearchViewModel _viewModel;
+        SearchResultsViewModel _viewModel;
 
-        public RecipeSearchPage()
+        public SearchResultsPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new RecipeSearchViewModel();
+            BindingContext = _viewModel = new SearchResultsViewModel();
 			this.Loaded += (_, _) => searchBar.SetSemanticFocus();
         }
 
@@ -32,22 +30,12 @@ namespace Recipes.Views
 #endif
 		}
 
-		void RecipeSearchPage_Tapped(object sender, System.EventArgs e)
+		void SearchResultsPage_Tapped(object sender, System.EventArgs e)
 		{
 			BindableObject bo = sender as BindableObject;
 			_viewModel.ItemTapped.Execute(bo.BindingContext);
 
 		}
-
-		//private void RecipeSearchPage_SelectedItemsChanged(object sender, Microsoft.Maui.SelectedItemsChangedEventArgs e)
-		//{
-		//	foreach(var item in e.NewSelection)
-		//	{
-		//		vListView.SetDeselected(vListView.SelectedItems.ToArray());
-		//		_viewModel.SelectedHit = _viewModel.RecipeData.Hits[item.ItemIndex];
-		//	}
-
-		//}
 
 		protected override void OnAppearing()
         {

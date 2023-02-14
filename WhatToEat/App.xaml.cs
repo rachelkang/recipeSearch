@@ -17,8 +17,8 @@ namespace Recipes
             DependencyService.Register<MockDataStore>();
 			MainPage = new AppShell();
 
-			//MainPage = new EditItemPage();
-			//(MainPage.BindingContext as EditItemViewModel).Id = "78315810-2ad0-4a54-a976-dd80fbfa8d90";
+			//MainPage = new EditRecipePage();
+			//(MainPage.BindingContext as EditRecipeViewModel).Id = "78315810-2ad0-4a54-a976-dd80fbfa8d90";
 		}
 
         protected override void OnStart()

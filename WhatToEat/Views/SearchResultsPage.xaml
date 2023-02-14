@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Recipes.Views.RecipeSearchPage"
+             x:Class="Recipes.Views.SearchResultsPage"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
              Title="{Binding Title}" xmlns:local="clr-namespace:Recipes">
@@ -37,7 +37,7 @@
                           RowDefinitions="*" 
                           ColumnDefinitions="*">
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="RecipeSearchPage_Tapped" NumberOfTapsRequired="1"  />
+                            <TapGestureRecognizer Tapped="SearchResultsPage_Tapped" NumberOfTapsRequired="1"  />
                         </Grid.GestureRecognizers>
 
                         <Grid>
