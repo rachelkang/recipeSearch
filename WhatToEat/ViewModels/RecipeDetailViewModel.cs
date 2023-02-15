@@ -1,17 +1,14 @@
-﻿using System;
-using System.Diagnostics;
-using Microsoft.Maui.Controls;
+﻿using System.Diagnostics;
 using Recipes.Views;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
 using Recipes.Models;
 
 namespace Recipes.ViewModels
 {
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
-    public class ItemDetailViewModel : BaseViewModel
+    public class RecipeDetailViewModel : BaseViewModel
     {
-        public Command EditItemCommand { get; }
+        public Command EditRecipeCommand { get; }
 
         string _itemId;
         string _recipeName;
@@ -24,25 +21,31 @@ namespace Recipes.ViewModels
 
         string _recipeBody;
         string _recipeUrl;
+        float _recipeRating;
+        string _recipeReview;
+        
 
         bool _recipeNameVisible;
         bool _imageUrlVisible;
         bool _ingredientsVisible;
         bool _recipeBodyVisible;
         bool _recipeUrlVisible;
-		private string[] _recipeList;
+        bool _recipeReviewVisible;
+
+        private string[] _recipeList;
 
 		public string Id { get; set; }
 
-        public ItemDetailViewModel()
+        public RecipeDetailViewModel()
         {
-            EditItemCommand = new Command(OnEditItem);
+            EditRecipeCommand = new Command(OnEditRecipe);
 
             RecipeNameVisible = true;
             ImageUrlVisible = true;
             IngredientsVisible = true;
             RecipeBodyVisible = true;
             RecipeUrlVisible = true;
+            RecipeReviewVisible = false;
         }
 
 		public string ItemId
@@ -103,6 +106,18 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _recipeUrl, value);
         }
 
+        public float RecipeRating
+        {
+            get => _recipeRating;
+            set => SetProperty(ref _recipeRating, value);
+        }
+
+        public string RecipeReview
+        {
+            get => _recipeReview;
+            set => SetProperty(ref _recipeReview, value);
+        }
+
         public bool RecipeNameVisible
         {
             get => _recipeNameVisible;
@@ -133,6 +148,12 @@ namespace Recipes.ViewModels
             set => SetProperty(ref _recipeUrlVisible, value);
         }
 
+        public bool RecipeReviewVisible
+        {
+            get => _recipeReviewVisible;
+            set => SetProperty(ref _recipeReviewVisible, value);
+        }
+
         public async void LoadItemId(string itemId)
         {
             try
@@ -143,6 +164,8 @@ namespace Recipes.ViewModels
                 ImageUrl = item.ImageUrl;
                 RecipeBody = item.RecipeBody;
                 RecipeUrl = item.RecipeUrl;
+                RecipeRating = item.RecipeRating;
+                RecipeReview = item.RecipeReview;
 				RecipeList = item.RecipeBody?.Split("\n") ?? new string[0];
 				source = item.Ingredients;
                 IngredientCheckList = new ObservableCollection<Ingredient>(source);
@@ -155,11 +178,12 @@ namespace Recipes.ViewModels
                 var emptyFormattedString = new FormattedString();
                 emptyFormattedString.Spans.Add(new Span { Text = "" });
 
-                RecipeNameVisible = !String.IsNullOrEmpty(RecipeName);
-                ImageUrlVisible = !String.IsNullOrEmpty(ImageUrl);
+                RecipeNameVisible = !string.IsNullOrEmpty(RecipeName);
+                ImageUrlVisible = !string.IsNullOrEmpty(ImageUrl);
                 IngredientsVisible = IngredientCheckList.Count > 0;
-                RecipeBodyVisible = !String.IsNullOrEmpty(RecipeBody);
-                RecipeUrlVisible = !(RecipeUrl == null || FormattedString.Equals(RecipeUrl, emptyFormattedString));
+                RecipeBodyVisible = !string.IsNullOrEmpty(RecipeBody);
+                RecipeUrlVisible = !(RecipeUrl == null || Equals(RecipeUrl, emptyFormattedString));
+                RecipeReviewVisible = !string.IsNullOrEmpty(RecipeReview);
                 
             }
             catch (Exception) 
@@ -168,9 +192,9 @@ namespace Recipes.ViewModels
             }
         }
 
-        private async void OnEditItem(object obj)
+        private async void OnEditRecipe(object obj)
         {
-            await Shell.Current.GoToAsync($"{nameof(EditItemPage)}?{nameof(EditItemViewModel.Id)}={_itemId}");
+            await Shell.Current.GoToAsync($"{nameof(EditRecipePage)}?{nameof(EditRecipeViewModel.Id)}={_itemId}");
         }
 
         public void OnAppearing()

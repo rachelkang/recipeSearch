@@ -1,17 +1,15 @@
-﻿using Microsoft.Maui.ApplicationModel;
-using Microsoft.Maui.Controls;
-using Recipes.ViewModels;
+﻿using Recipes.ViewModels;
 
 namespace Recipes.Views
 {
-    public partial class ItemDetailPage : ContentPage
+    public partial class RecipeDetailPage : ContentPage
     {
-        ItemDetailViewModel _viewModel;
+        RecipeDetailViewModel _viewModel;
 
-        public ItemDetailPage()
+        public RecipeDetailPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new ItemDetailViewModel();
+            BindingContext = _viewModel = new RecipeDetailViewModel();
         }
 
         protected override void OnAppearing()
@@ -20,14 +18,13 @@ namespace Recipes.Views
             _viewModel.OnAppearing();
         }
 
-        async void OpenUrl(object sender, System.EventArgs e)
+        async void OpenUrl(object sender, EventArgs e)
         {
-            System.Diagnostics.Debug.WriteLine("WHAT");
+            SemanticScreenReader.Announce("Exiting app. Entering browser to view full recipe.");
             await Launcher.OpenAsync(_viewModel.RecipeUrl);
-
         }
 
-        void Button_Loaded(System.Object sender, System.EventArgs _)
+        void Button_Loaded(object sender, EventArgs _)
         {
 #if IOS || MACCATALYST
             if (sender is IElement e && e.Handler.PlatformView is UIKit.UIView uiView)

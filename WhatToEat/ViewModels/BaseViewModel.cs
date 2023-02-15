@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using Microsoft.Maui.Controls;
 
 using Recipes.Models;
 using Recipes.Services;

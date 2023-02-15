@@ -1,31 +1,28 @@
-﻿using Microsoft.Maui.Controls;
-using Recipes.ViewModels;
-using Microsoft.Maui.Graphics;
-using Microsoft.Maui.Accessibility;
-using Microsoft.Maui.ApplicationModel;
+﻿using Recipes.ViewModels;
 
 namespace Recipes.Views
 {
-    public partial class HitDetailPage : ContentPage
+    public partial class SearchResultDetailPage : ContentPage
     {
 
-        HitDetailViewModel _viewModel;
+        SearchResultDetailViewModel _viewModel;
         Color primary = Color.FromArgb("#2BB0ED");
         string alertMessage = "This recipe has been added to your personal recipe collection! Go to the 'My Recipes' tab to view and modify this recipe from there";
 
-        public HitDetailPage()
+        public SearchResultDetailPage()
         {
             InitializeComponent();
-            BindingContext = _viewModel = new HitDetailViewModel();
+            BindingContext = _viewModel = new SearchResultDetailViewModel();
         }
 
 
-        async void OpenUrl(object sender, System.EventArgs e)
+        async void OpenUrl(object sender, EventArgs e)
         {
+            SemanticScreenReader.Announce("Exiting app. Entering browser to view full recipe.");
             await Launcher.OpenAsync(_viewModel.Hit.Recipe.RecipeUrl);
         }
 
-        void Button_Loaded(System.Object sender, System.EventArgs _)
+        void Button_Loaded(object sender, EventArgs _)
         {
 #if IOS || MACCATALYST
             if (sender is IElement e && e.Handler.PlatformView is UIKit.UIView uiView)

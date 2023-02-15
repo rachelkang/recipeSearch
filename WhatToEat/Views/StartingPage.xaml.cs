@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using Recipes.ViewModels;
+﻿using Recipes.ViewModels;
 
 namespace Recipes.Views
 {
