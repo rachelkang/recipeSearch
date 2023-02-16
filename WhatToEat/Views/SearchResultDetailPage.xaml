@@ -19,7 +19,7 @@
             <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" IsVisible="{Binding ImageUrlVisible}" />
             <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" SemanticProperties.HeadingLevel="Level1" FontSize="24" Padding="15" Margin="15" HorizontalTextAlignment="Center" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3"/>
         </Grid>
-        <ScrollView Grid.Row="1" >
+        <ScrollView Grid.Row="1">
             <StackLayout>
                 <Label Text="Ingredients:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
                 <StackLayout BindableLayout.ItemsSource="{Binding Ingredients}" IsVisible="{Binding IngredientsVisible}" Padding="15,0">
@@ -31,10 +31,10 @@
                 </StackLayout>
 
                 <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" />
-                <Button Loaded="Button_Loaded" Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" Margin="25,0" HeightRequest="50" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" Background="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" TextColor="{AppThemeBinding Dark={StaticResource Primary}, Light=White}" />
+                <Button Loaded="Button_Loaded" Text="Click here to view full recipe." Clicked="OpenUrl" FontSize="Small" Margin="25,0" IsVisible="{Binding RecipeUrlVisible}" HorizontalOptions="Start" Background="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" TextColor="{AppThemeBinding Dark={StaticResource Primary}, Light=White}" />
 
             </StackLayout>
         </ScrollView>
-        <Button Grid.Row="2" Text="{Binding AddRemoveItemText}" Command="{Binding AddRemoveItemCommand}" Clicked="AddItem_Clicked" FontAttributes="Bold" Background="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" TextColor="{AppThemeBinding Dark={StaticResource Primary}, Light=White}" />
+        <Button Grid.Row="2" Text="Add to My Recipes" Command="{Binding AddItemCommand}" Clicked="AddItem_Clicked" FontAttributes="Bold" Background="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" TextColor="{AppThemeBinding Dark={StaticResource Primary}, Light=White}" />
     </Grid>
 </ContentPage>
