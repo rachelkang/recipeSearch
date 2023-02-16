@@ -33,10 +33,10 @@
                 </StackLayout>
 
                 <Label Text="Recipe:" SemanticProperties.HeadingLevel="Level2" Padding="15" FontAttributes="Bold" TextDecorations="Underline" FontSize="Medium" TextColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
-                <StackLayout  BindableLayout.ItemsSource="{Binding RecipeList}" Padding="20,5">
+                <StackLayout  BindableLayout.ItemsSource="{Binding RecipeList}" Padding="20,5" >
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding .}" VerticalOptions="Center" WidthRequest="340" LineBreakMode="WordWrap"/>
+                            <Label Text="{Binding .}" VerticalOptions="Center" LineBreakMode="WordWrap"/>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
