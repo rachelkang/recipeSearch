@@ -30,9 +30,10 @@ namespace Recipes.Views
 #endif
         }
 
-        void AddItem_Clicked(object sender, System.EventArgs e)
+        async void AddItem_Clicked(object sender, System.EventArgs e)
         {
-            SemanticScreenReader.Announce(alertMessage);
+			await Task.Delay(100);
+			SemanticScreenReader.Announce(alertMessage);
 
             // TODO MAUI
             //var messageOptions = new MessageOptions
