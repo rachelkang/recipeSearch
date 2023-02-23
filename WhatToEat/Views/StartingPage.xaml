@@ -20,7 +20,6 @@
             <SearchBar Grid.Column="0" Grid.Row="1"
                     x:Name="searchBar"
                     ios:SearchBar.SearchBarStyle="Default"
-                    SemanticProperties.HeadingLevel="Level3"
                     Placeholder="Search recipes"
                     FontSize="14"
                     Text="{Binding SearchQuery}"
