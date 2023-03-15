@@ -13,9 +13,10 @@ namespace Recipes.Views
             BindingContext = new NewRecipeViewModel();
         }
 
-        private void OnValueChanged(object sender, ValueChangedEventArgs e)
+        private async void OnValueChanged(object sender, ValueChangedEventArgs e)
         {
-            SemanticScreenReader.Announce(SemanticProperties.GetDescription(ratingLabel));
+			await Task.Delay(100);
+			SemanticScreenReader.Announce(SemanticProperties.GetDescription(ratingLabel));
         }
     }
 }
