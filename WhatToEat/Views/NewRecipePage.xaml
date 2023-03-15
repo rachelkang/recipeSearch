@@ -20,7 +20,8 @@
             <ScrollView Grid.Row="1" AutomationProperties.IsInAccessibleTree="False">
                 <StackLayout Margin="15,0">
                     <Label x:Name="recipeNameLabel" Text="Recipe Name" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Entry SemanticProperties.Description="{Binding Source={x:Reference recipeNameLabel},Path=Text}" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Label x:Name="recipeSaveValidationError" Text="A recipe name is required to save this recipe" TextColor="{AppThemeBinding Dark=White, Light=#BF2E2E}" IsVisible="{Binding RecipeValidationErrorVisible}" FontAttributes="Italic" />
+                    <Entry x:Name="recipeNameEntry" SemanticProperties.Description="{Binding Source={x:Reference recipeNameLabel},Path=Text}" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="imageUrlLabel" Text="Image URL" Style="{StaticResource RecipeItemLabelStyle}"/>
                     <Entry SemanticProperties.Description="{Binding Source={x:Reference imageUrlLabel},Path=Text}" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="ingredientsLabel" Text="Ingredients" Style="{StaticResource RecipeItemLabelStyle}"/>

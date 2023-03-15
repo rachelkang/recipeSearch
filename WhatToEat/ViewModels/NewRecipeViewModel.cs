@@ -5,7 +5,8 @@ namespace Recipes.ViewModels
     public class NewRecipeViewModel : BaseViewModel
     {
         string _recipeName;
-        string _imageUrl;
+        bool _recipeValidationErrorVisible;
+		string _imageUrl;
         string _ingredients;
         string _recipeBody;
         string _recipeUrl;
@@ -14,7 +15,8 @@ namespace Recipes.ViewModels
 
         public NewRecipeViewModel()
         {
-            SaveCommand = new Command(OnSave, ValidateSave);
+            RecipeValidationErrorVisible = false;
+			SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
             PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
@@ -25,13 +27,19 @@ namespace Recipes.ViewModels
             return !string.IsNullOrWhiteSpace(_recipeName);
         }
 
-        public string RecipeName
-        {
-            get => _recipeName;
-            set => SetProperty(ref _recipeName, value);
-        }
+		public string RecipeName
+		{
+			get => _recipeName;
+			set => SetProperty(ref _recipeName, value);
+		}
 
-        public string ImageUrl
+		public bool RecipeValidationErrorVisible
+		{
+			get => _recipeValidationErrorVisible;
+			set => SetProperty(ref _recipeValidationErrorVisible, value);
+		}
+
+		public string ImageUrl
         {
             get => _imageUrl;
             set => SetProperty(ref _imageUrl, value);
@@ -78,7 +86,10 @@ namespace Recipes.ViewModels
 
         private async void OnSave()
         {
-            List<Ingredient> ingredientList = new List<Ingredient>();
+            if (string.IsNullOrWhiteSpace(_recipeName))
+                RecipeValidationErrorVisible = true;
+
+			List<Ingredient> ingredientList = new List<Ingredient>();
             string[] ingredientStringList = (Ingredients ?? string.Empty).Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string ingredientString in ingredientStringList)
 				ingredientList.Add(new Ingredient { IngredientItem = ingredientString });
