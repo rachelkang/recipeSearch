@@ -51,7 +51,7 @@
                 </ScrollView>
 
                 <Label Grid.Column="0" Grid.Row="2" Text="Search by diet" SemanticProperties.HeadingLevel="Level2" FontSize="24" FontAttributes="Bold" />
-                <ScrollView Grid.Column="0" Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,10" HeightRequest="170">
+                <ScrollView Grid.Column="0" Grid.Row="3" Orientation="Horizontal" Margin="0,0,0,10" >
                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="0,5">
                         <Button Text="Balanced" ImageSource="balanced.png" Command="{Binding FilteredSearchCommand}" CommandParameter="diet=balanced" Style="{StaticResource RecipeCategoryButtonStyle}"/>
                         <Button Text="Vegetarian" ImageSource="vegetarian.png" Command="{Binding FilteredSearchCommand}" CommandParameter="health=vegetarian" Style="{StaticResource RecipeCategoryButtonStyle}"/>
