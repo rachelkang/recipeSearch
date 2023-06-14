@@ -46,10 +46,15 @@ namespace Recipes.ViewModels
                 IsBusy = false;
             }
 
-			MessagingCenter.Send(this, "RemoveRecipeFromVirtualListView");
-		}
 
-        public void OnAppearing()
+            #if NET8_0_OR_GREATER
+                    CommunityToolkit.Mvvm.Messaging.WeakReferenceMessenger.Default.Send(this, "RemoveRecipeFromVirtualListView"); 
+            #else
+                    MessagingCenter.Send(this, "RemoveRecipeFromVirtualListView");
+            #endif
+        }
+
+            public void OnAppearing()
         {
             IsBusy = true;
             SelectedItem = null;
