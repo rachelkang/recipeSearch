@@ -14,7 +14,7 @@ namespace Recipes.ViewModels
         string _recipeUrl;
         float _recipeRating;
         string _recipeReview;
-
+        
         public EditRecipeViewModel()
         {
             UpdateCommand = new Command(OnUpdate, ValidateUpdate);

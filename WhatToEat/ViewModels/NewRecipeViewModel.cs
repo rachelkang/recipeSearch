@@ -5,7 +5,6 @@ namespace Recipes.ViewModels
     public class NewRecipeViewModel : BaseViewModel
     {
         string _recipeName;
-        bool _recipeValidationErrorVisible;
 		string _imageUrl;
         string _ingredients;
         string _recipeBody;
@@ -15,8 +14,7 @@ namespace Recipes.ViewModels
 
         public NewRecipeViewModel()
         {
-            RecipeValidationErrorVisible = false;
-			SaveCommand = new Command(OnSave, ValidateSave);
+            SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
             PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
@@ -31,12 +29,6 @@ namespace Recipes.ViewModels
 		{
 			get => _recipeName;
 			set => SetProperty(ref _recipeName, value);
-		}
-
-		public bool RecipeValidationErrorVisible
-		{
-			get => _recipeValidationErrorVisible;
-			set => SetProperty(ref _recipeValidationErrorVisible, value);
 		}
 
 		public string ImageUrl
@@ -86,9 +78,6 @@ namespace Recipes.ViewModels
 
         private async void OnSave()
         {
-            if (string.IsNullOrWhiteSpace(_recipeName))
-                RecipeValidationErrorVisible = true;
-
 			List<Ingredient> ingredientList = new List<Ingredient>();
             string[] ingredientStringList = (Ingredients ?? string.Empty).Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string ingredientString in ingredientStringList)
