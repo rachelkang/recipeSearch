@@ -27,13 +27,13 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Entry x:Name="recipeNameEntry" SemanticProperties.Description="Recipe Name, Required field" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Entry x:Name="recipeNameEntry" Placeholder="Recipe Name, Required field" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="imageUrlLabel" Text="Image URL" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Entry SemanticProperties.Description="{Binding Source={x:Reference imageUrlLabel},Path=Text}" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Entry Placeholder="{Binding Source={x:Reference imageUrlLabel},Path=Text}" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="ingredientsLabel" Text="Ingredients" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Editor SemanticProperties.Description="{Binding Source={x:Reference ingredientsLabel},Path=Text}" Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Editor Placeholder="{Binding Source={x:Reference ingredientsLabel},Path=Text}" Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="recipeLabel" Text="Recipe" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Editor SemanticProperties.Description="{Binding Source={x:Reference recipeLabel},Path=Text}" Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Editor Placeholder="{Binding Source={x:Reference recipeLabel},Path=Text}" Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
