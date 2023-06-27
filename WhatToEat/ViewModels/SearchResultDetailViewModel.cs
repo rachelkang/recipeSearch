@@ -153,7 +153,7 @@ namespace Recipes.ViewModels
             }
         }
 
-        public async void LoadSearchResultDetails()
+        public void LoadSearchResultDetails()
 		{
 			var emptyFormattedString = new FormattedString();
 			emptyFormattedString.Spans.Add(new Span { Text = "" });

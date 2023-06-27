@@ -6,7 +6,7 @@ namespace Recipes.Views
     {
 
         SearchResultDetailViewModel _viewModel;
-        Color primary = Color.FromArgb("#2BB0ED");
+        Color primary = Color.FromArgb("#176515");
         string alertMessage = "This recipe has been added to your personal recipe collection! Go to the 'My Recipes' tab to view and modify this recipe from there";
 
         public SearchResultDetailPage()

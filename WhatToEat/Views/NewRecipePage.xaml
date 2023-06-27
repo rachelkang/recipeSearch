@@ -19,8 +19,15 @@
             <Label FontSize="25" FontAttributes="Bold" Text="New recipe" SemanticProperties.HeadingLevel="Level1" Margin="15" Style="{StaticResource RecipeItemLabelStyle}"/>
             <ScrollView Grid.Row="1" AutomationProperties.IsInAccessibleTree="False">
                 <StackLayout Margin="15,0">
-                    <Label x:Name="recipeNameLabel" Text="Recipe Name" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Entry SemanticProperties.Description="{Binding Source={x:Reference recipeNameLabel},Path=Text}" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Label x:Name="recipeNameLabel" Style="{StaticResource RecipeItemLabelStyle}" SemanticProperties.Description="Recipe Name, Required field">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Recipe Name" />
+                                <Span Text="*" TextColor="{AppThemeBinding Dark=White, Light=#BF2E2E}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Entry x:Name="recipeNameEntry" SemanticProperties.Description="Recipe Name, Required field" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="imageUrlLabel" Text="Image URL" Style="{StaticResource RecipeItemLabelStyle}"/>
                     <Entry SemanticProperties.Description="{Binding Source={x:Reference imageUrlLabel},Path=Text}" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="ingredientsLabel" Text="Ingredients" Style="{StaticResource RecipeItemLabelStyle}"/>
@@ -47,7 +54,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Slider x:Name="ratingSlider" Value="{Binding Source={x:Reference ratingStepper}, Path=Value}" Minimum="0" Maximum="10" ThumbColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MinimumTrackColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MaximumTrackColor="Gray" VerticalOptions="Center" ValueChanged="OnValueChanged"/>
+                        <Slider x:Name="ratingSlider" SemanticProperties.Description="Review" SemanticProperties.Hint="Rate out of ten stars" Value="{Binding Source={x:Reference ratingStepper}, Path=Value}" Minimum="0" Maximum="10" ThumbColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MinimumTrackColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MaximumTrackColor="Gray" VerticalOptions="Center" ValueChanged="OnValueChanged"/>
                         <Stepper Grid.Column="1" x:Name="ratingStepper" Value="{Binding RecipeRating, Mode=TwoWay}" Minimum="0" Maximum="10" Increment="0.1" VerticalOptions="Center" ValueChanged="OnValueChanged" />
                     </Grid>
                     <Editor SemanticProperties.Description="{Binding Source={x:Reference reviewLabel},Path=Text}" Text="{Binding RecipeReview, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50" />
@@ -55,9 +62,24 @@
             </ScrollView>
             <FlexLayout Grid.Row="2" AlignItems="Center" JustifyContent="SpaceEvenly">
                 <Button Padding="{OnPlatform iOS=12,7}" TextColor="{AppThemeBinding Dark=White, Light=Black}" Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="{AppThemeBinding Dark=DarkGray, Light=LightGray}" HorizontalOptions="Fill"/>
-                <Button Padding="{OnPlatform iOS=12,7}" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="Fill" Background="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" TextColor="{AppThemeBinding Dark={StaticResource Primary}, Light=White}"/>
-
-
+                <Button Padding="{OnPlatform iOS=12,7}" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="Fill">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="Background" Value="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" />
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource Primary}, Light=White}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="Background" Value="{AppThemeBinding Dark=DarkGray, Light={StaticResource Secondary}}" />
+                                    <Setter Property="TextColor" Value="{AppThemeBinding Dark=LightGray, Light=White}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Button>
             </FlexLayout>
         </Grid>
     </ContentPage.Content>

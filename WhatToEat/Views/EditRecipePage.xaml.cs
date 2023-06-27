@@ -10,9 +10,17 @@ namespace Recipes.Views
             BindingContext = new EditRecipeViewModel();
         }
 
-        private void OnValueChanged(object sender, ValueChangedEventArgs e)
+        private async void OnValueChanged(object sender, ValueChangedEventArgs e)
         {
-            SemanticScreenReader.Announce(SemanticProperties.GetDescription(ratingLabel));
-        }
+            string increasedOrDecreased = "";
+
+            if (e.NewValue > e.OldValue)
+                increasedOrDecreased = "Rating increased to ";
+            else
+				increasedOrDecreased = "Rating decreased to ";
+
+			await Task.Delay(100);
+			SemanticScreenReader.Announce(increasedOrDecreased + SemanticProperties.GetDescription(ratingLabel));
+		}
     }
 }

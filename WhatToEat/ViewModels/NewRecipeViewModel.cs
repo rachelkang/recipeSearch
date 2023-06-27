@@ -5,7 +5,7 @@ namespace Recipes.ViewModels
     public class NewRecipeViewModel : BaseViewModel
     {
         string _recipeName;
-        string _imageUrl;
+		string _imageUrl;
         string _ingredients;
         string _recipeBody;
         string _recipeUrl;
@@ -25,13 +25,13 @@ namespace Recipes.ViewModels
             return !string.IsNullOrWhiteSpace(_recipeName);
         }
 
-        public string RecipeName
-        {
-            get => _recipeName;
-            set => SetProperty(ref _recipeName, value);
-        }
+		public string RecipeName
+		{
+			get => _recipeName;
+			set => SetProperty(ref _recipeName, value);
+		}
 
-        public string ImageUrl
+		public string ImageUrl
         {
             get => _imageUrl;
             set => SetProperty(ref _imageUrl, value);
@@ -78,7 +78,7 @@ namespace Recipes.ViewModels
 
         private async void OnSave()
         {
-            List<Ingredient> ingredientList = new List<Ingredient>();
+			List<Ingredient> ingredientList = new List<Ingredient>();
             string[] ingredientStringList = (Ingredients ?? string.Empty).Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string ingredientString in ingredientStringList)
 				ingredientList.Add(new Ingredient { IngredientItem = ingredientString });
