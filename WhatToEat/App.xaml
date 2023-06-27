@@ -20,8 +20,10 @@
                 <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource Primary}, Light=White}"/>
                 <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark=White, Light={StaticResource Primary}}"/>
             </Style>
-            <Style TargetType="Label">
+            <Style TargetType="Label" x:Key="RecipeNameStyle">
                 <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=Black}"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark=Black, Light=White}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
             <Style TargetType="SearchBar">
                 <Setter Property="TextColor" Value="{AppThemeBinding Dark=White, Light=Black}"/>

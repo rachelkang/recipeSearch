@@ -23,7 +23,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Recipe Name" />
-                                <Span Text="*" TextColor="#BF2E2E" />
+                                <Span Text="*" TextColor="{AppThemeBinding Dark=White, Light=#BF2E2E}" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>

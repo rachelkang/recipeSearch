@@ -45,10 +45,10 @@
                                HorizontalOptions="Center" 
                                VerticalOptions="Center"
                                Text="{Binding RecipeName}"
+                               Style="{StaticResource RecipeNameStyle}"
                                LineBreakMode="WordWrap" 
                                MaxLines="3"
-                               FontSize="16"
-                               FontAttributes="Bold" />
+                               FontSize="16" />
                     </Grid>
 
                 </DataTemplate>

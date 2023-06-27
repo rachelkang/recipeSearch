@@ -48,11 +48,11 @@
                                    VerticalTextAlignment="Start"
                                    HorizontalTextAlignment="Center"
                                    Text="{Binding Recipe.RecipeName}"
+                                   Style="{StaticResource RecipeNameStyle}"
                                    LineBreakMode="WordWrap" 
                                    MaxLines="2"
                                    HeightRequest="80"
-                                   FontSize="16"
-                                   FontAttributes="Bold" />
+                                   FontSize="16"/>
                         </Grid>
 
                     </Grid>

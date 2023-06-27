@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
         <Grid Grid.Column="0" Grid.Row="0" Margin="0,0,0,10">
             <Image Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill"  IsVisible="{Binding ImageUrlVisible}" AutomationProperties.IsInAccessibleTree="False" />
-            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" SemanticProperties.HeadingLevel="Level1" FontSize="24" Padding="5" Margin="15,0" HorizontalTextAlignment="Center" FontAttributes="Bold" IsVisible="{Binding RecipeNameVisible}" MaxLines="3" />
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding RecipeName}" Style="{StaticResource RecipeNameStyle}" SemanticProperties.HeadingLevel="Level1" FontSize="24" Padding="5" Margin="15,0" HorizontalTextAlignment="Center" IsVisible="{Binding RecipeNameVisible}" MaxLines="3" />
         </Grid>
         <ScrollView Grid.Row="1" AutomationProperties.IsInAccessibleTree="False" VerticalScrollBarVisibility="Always">
             <StackLayout>
