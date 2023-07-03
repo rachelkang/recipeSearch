@@ -16,17 +16,15 @@
     </ContentPage.ToolbarItems>
     <StackLayout Margin="20">
         <Label Text="Your recipes" SemanticProperties.HeadingLevel="Level1" FontSize="30" FontAttributes="Bold" />
-        <CollectionView
+        <CarouselView
             x:Name="vMyRecipesListView"
             WidthRequest="350"
             HeightRequest="570"
 			HorizontalOptions="Fill"
 			VerticalOptions="Fill"
-            ItemsSource="{Binding Items}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout SnapPointsType="MandatorySingle" SnapPointsAlignment="Start" ItemSpacing="30" Orientation="Horizontal" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
+            ItemsSource="{Binding Items}"
+            Loop="False">
+            <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <Grid RowDefinitions="*" 
                           ColumnDefinitions="*" 
@@ -52,8 +50,8 @@
                     </Grid>
 
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
         <!--<CarouselView
             x:Name="vMyRecipesListView"
             WidthRequest="350"
