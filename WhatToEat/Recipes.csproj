@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net8.0-windows10.0.19041</TargetFrameworks>
+		<MajorFrameworkVersion>8.0</MajorFrameworkVersion>
+    <TargetFrameworks>net$(MajorFrameworkVersion)-android;net$(MajorFrameworkVersion)-ios;net$(MajorFrameworkVersion)-maccatalyst</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net$(MajorFrameworkVersion)-windows10.0.19041.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -14,8 +15,8 @@
 		<ApplicationVersion>2</ApplicationVersion>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
 
-        <!-- Required for running on iPhone device -->
-        <!--<RuntimeIdentifier Condition=" $(TargetFramework.Contains('-ios')) ">ios-arm64</RuntimeIdentifier>-->
+    <!-- Required for running on iPhone device -->
+    <!--<RuntimeIdentifier Condition=" $(TargetFramework.Contains('-ios')) ">ios-arm64</RuntimeIdentifier>-->
 
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
@@ -28,6 +29,10 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+  <ItemGroup Condition="$(MajorFrameworkVersion) >= 8.0">
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-preview.6.8686" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<MauiIcon ForegroundFile="Resources\AppIcon\appicon.png" Include="Resources\AppIcon\appicon.png" Color="#2BB0ED" />
 		<MauiSplashScreen Include="Resources\Splash\splash.png" Color="#176515" />
@@ -38,116 +43,4 @@
 		<MauiImage Include="Resources\Images\search.png" BaseSize="23,23" />
 		<MauiImage Include="Resources\Images\cookbook.png" BaseSize="23,23" />
 	</ItemGroup>
-
-	<!--<ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst'))">
-		<BundleResource Include="Platforms\MacCatalyst\trayicon.png" />
-	</ItemGroup>-->
-
-	<!--<ItemGroup Condition="$(TargetFramework.Contains('-maccatalyst'))">
-		<BundleResource Include="Platforms\MacCatalyst\trayicon.png" />
-	</ItemGroup>-->
-
-    <PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">
-        <GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
-        <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
-        <PackageCertificateThumbprint>7BDF21F3C01DBDEC499B41C99435BFEE9B9B4DF4</PackageCertificateThumbprint>
-    </PropertyGroup>
-	
-	<!--<PropertyGroup>
-		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-ios'))">iossimulator-x64</RuntimeIdentifier>
-		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-maccatalyst'))">maccatalyst-x64</RuntimeIdentifier>
-		<InvariantGlobalization Condition="$(TargetFramework.Contains('-maccatalyst'))">true</InvariantGlobalization>
-		<UseInterpreter Condition="$(TargetFramework.Contains('-android'))">false</UseInterpreter>
-	</PropertyGroup>-->
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
-      <CreatePackage>false</CreatePackage>
-    </PropertyGroup>
 </Project>
-
-<!--<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" Version="5.0.0.2083" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Resizetizer.NT" Version="0.2.0" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
-    <PackageReference Include="Sharpnado.Shadows" Version="1.2.0" />
-    <PackageReference Include="Microsoft.Maui.Controls.Visual.Material" Version="5.0.0.2012" />
-    <PackageReference Include="Xamanimation" Version="1.3.0" />
-    <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="2.4.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Remove="Views\RecipeSearch.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Views\RecipeDetailPage %28copy%29.xaml.cs" />
-    <Compile Remove="Views\SearchResultsPage %28copy%29.xaml.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\RecipeSearch.xaml.cs">
-      <DependentUpon>RecipeSearch.xaml</DependentUpon>
-    </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\SearchResultsPage.xaml.cs">
-      <DependentUpon>SearchResultsPage.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Resources\cookbook_blue.png" />
-    <None Remove="Resources\search_blue.png" />
-    <None Remove="Resources\balanced.png" />
-    <None Remove="Resources\dessert.png" />
-    <None Remove="Resources\dinner.png" />
-    <None Remove="Resources\drinks.png" />
-    <None Remove="Resources\gluten-free.png" />
-    <None Remove="Resources\keto.png" />
-    <None Remove="Resources\kosher.png" />
-    <None Remove="Resources\lunch.png" />
-    <None Remove="Resources\snack.png" />
-    <None Remove="Resources\vegan.png" />
-    <None Remove="Resources\vegetarian.png" />
-    <None Remove="Resources\breakfast.png" />
-    <None Remove="Resources\search.png" />
-    <None Remove="Resources\cookbook.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <SharedImage Include="Resources\balanced.png" BaseSize="75,75" />
-    <SharedImage Include="Resources\dessert.png" BaseSize="75,75" />
-    <SharedImage Include="Resources\dinner.png" BaseSize="75,75" />
-    <SharedImage Include="Resources\drinks.png" BaseSize="70,70" />
-    <SharedImage Include="Resources\gluten-free.png" BaseSize="70,70" />
-    <SharedImage Include="Resources\keto.png" BaseSize="70,70" />
-    <SharedImage Include="Resources\kosher.png" BaseSize="75,75" />
-    <SharedImage Include="Resources\lunch.png" BaseSize="75,75" />
-    <SharedImage Include="Resources\snack.png" BaseSize="70,70" />
-    <SharedImage Include="Resources\vegan.png" BaseSize="75,75" />
-    <SharedImage Include="Resources\vegetarian.png" BaseSize="70,70" />
-    <SharedImage Include="Resources\breakfast.png" BaseSize="75,75" />
-    <SharedImage Include="Resources\cookbook.png" BaseSize="20,20" />
-    <SharedImage Include="Resources\search.png" BaseSize="20,20">
-      <BaseSize>20,20</BaseSize>
-    </SharedImage>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Drawing.Common">
-      <HintPath>..\..\..\..\Library\Frameworks\Xamarin.iOS.framework\Versions\14.4.1.3\lib\mono\Xamarin.iOS\Facades\System.Drawing.Common.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Resources\cookbook.png">
-      <BaseSize>20,20</BaseSize>
-    </None>
-    <None Update="Resources\search.png">
-      <BaseSize>20,20</BaseSize>
-    </None>
-  </ItemGroup>
-</Project>-->
