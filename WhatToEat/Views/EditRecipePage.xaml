@@ -15,7 +15,7 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Label FontSize="25" FontAttributes="Bold" Text="Edit recipe" Style="{StaticResource RecipeItemLabelStyle}" Margin="15" SemanticProperties.HeadingLevel="Level1"/>
+            <Label FontSize="25" FontAttributes="Bold" Text="Edit recipe" Style="{StaticResource RecipeItemLabelStyle}" SemanticProperties.HeadingLevel="Level1"/>
             <ScrollView Grid.Row="1" AutomationProperties.IsInAccessibleTree="False">
                 <StackLayout Margin="15,0">
                     <Label x:Name="recipeNameLabel" Style="{StaticResource RecipeItemLabelStyle}" SemanticProperties.Description="Recipe Name, Required field">
@@ -54,7 +54,11 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Slider x:Name="ratingSlider" SemanticProperties.Description="Review" SemanticProperties.Hint="Rate out of ten stars" Value="{Binding Source={x:Reference ratingStepper}, Path=Value}" Minimum="0" Maximum="10" ThumbColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MinimumTrackColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MaximumTrackColor="Gray" VerticalOptions="Center" ValueChanged="OnValueChanged"/>
-                        <Stepper Grid.Column="1" x:Name="ratingStepper" Value="{Binding RecipeRating, Mode=TwoWay}" Minimum="0" Maximum="10" Increment="0.1" VerticalOptions="Center" ValueChanged="OnValueChanged" />
+                        <StackLayout Grid.Column="1">
+                            <Stepper x:Name="ratingStepper" Value="{Binding RecipeRating, Mode=TwoWay}" Minimum="0" Maximum="10" Increment="0.1" VerticalOptions="Center" ValueChanged="OnValueChanged" />
+                            <Stepper SemanticProperties.Description="Review" Value="{Binding RecipeRating, Mode=TwoWay}" Minimum="0" Maximum="10" Increment="0.1" VerticalOptions="Center" ValueChanged="OnValueChanged" />
+                        </StackLayout>
+                        
                     </Grid>
                     <Editor SemanticProperties.Description="{Binding Source={x:Reference reviewLabel},Path=Text}" Text="{Binding RecipeReview, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50" />
                 </StackLayout>

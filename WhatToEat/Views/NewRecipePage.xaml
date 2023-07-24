@@ -16,7 +16,7 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <Label FontSize="25" FontAttributes="Bold" Text="New recipe" SemanticProperties.HeadingLevel="Level1" Margin="15" Style="{StaticResource RecipeItemLabelStyle}"/>
+            <Label FontSize="25" FontAttributes="Bold" Text="New recipe" SemanticProperties.HeadingLevel="Level1" Style="{StaticResource RecipeItemLabelStyle}"/>
             <ScrollView Grid.Row="1" AutomationProperties.IsInAccessibleTree="False">
                 <StackLayout Margin="15,0">
                     <Label x:Name="recipeNameLabel" Style="{StaticResource RecipeItemLabelStyle}" SemanticProperties.Description="Recipe Name, Required field">
