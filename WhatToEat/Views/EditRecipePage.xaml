@@ -32,7 +32,7 @@
                     <Label x:Name="ingredientsLabel" Text="Ingredients" Style="{StaticResource RecipeItemLabelStyle}"/>
                     <Editor Placeholder="{Binding Source={x:Reference ingredientsLabel},Path=Text}" Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="recipeLabel" Text="Recipe" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Editor Placeholder="{Binding Source={x:Reference recipeLabel},Path=Text}" Text="{Binding RecipeBody, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Editor Placeholder="{Binding Source={x:Reference recipeLabel},Path=Text}" Text="{Binding RecipeBody, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label FontSize="Small" FormattedText="{Binding RecipeUrl}" FontAttributes="Italic" />
                     <Grid>
                         <Grid.ColumnDefinitions>
