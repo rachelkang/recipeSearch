@@ -56,7 +56,6 @@
                         <Slider x:Name="ratingSlider" SemanticProperties.Description="Review" SemanticProperties.Hint="Rate out of ten stars" Value="{Binding Source={x:Reference ratingStepper}, Path=Value}" Minimum="0" Maximum="10" ThumbColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MinimumTrackColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MaximumTrackColor="Gray" VerticalOptions="Center" ValueChanged="OnValueChanged"/>
                         <StackLayout Grid.Column="1">
                             <Stepper x:Name="ratingStepper" Value="{Binding RecipeRating, Mode=TwoWay}" Minimum="0" Maximum="10" Increment="0.1" VerticalOptions="Center" ValueChanged="OnValueChanged" />
-                            <Stepper SemanticProperties.Description="Review" Value="{Binding RecipeRating, Mode=TwoWay}" Minimum="0" Maximum="10" Increment="0.1" VerticalOptions="Center" ValueChanged="OnValueChanged" />
                         </StackLayout>
                         
                     </Grid>
