@@ -31,6 +31,7 @@
 
   <ItemGroup Condition="$(MajorFrameworkVersion) >= 8.0">
     <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-preview.7.8842" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.0-preview.7.8842" />
   </ItemGroup>
 
 	<ItemGroup>
