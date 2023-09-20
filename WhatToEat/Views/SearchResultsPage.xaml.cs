@@ -30,15 +30,9 @@ namespace Recipes.Views
 #endif
 		}
 
-		void SearchResultsPage_Tapped(object sender, System.EventArgs e)
-		{
-			BindableObject bo = sender as BindableObject;
-			_viewModel.ItemTapped.Execute(bo.BindingContext);
-
-		}
-
 		protected override void OnAppearing()
         {
+			vListView.SelectedItem = null;
 			_viewModel.SelectedHit = null;
 			base.OnAppearing();
             _viewModel.SearchCommand.Execute(null);

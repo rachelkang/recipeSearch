@@ -13,6 +13,7 @@ namespace Recipes.ViewModels
         string _noResultsLabel;
         bool _noResultsLabelVisible;
         bool _searchResultsVisible;
+        Hit _selectedHit;
 
         public Command<Hit> ItemTapped { get; }
         public Command SearchCommand { get; }
@@ -65,12 +66,15 @@ namespace Recipes.ViewModels
         {
             get
             {
-                return null;
+                return _selectedHit;
             }
             set
             {
-                if (value != null)
-                    OnItemSelected(value);
+                if (_selectedHit != value)
+                {
+                    _selectedHit = value;
+                    OnItemSelected(_selectedHit);
+                }
             }
         }
 

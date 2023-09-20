@@ -24,7 +24,8 @@
 			VerticalOptions="Fill"
             ItemsSource="{Binding RecipeData.Hits}"
             x:Name="vListView"
-			SelectionMode="None">
+			SelectionMode="Single"
+            SelectedItem="{Binding SelectedHit}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="15" VerticalItemSpacing="15" />
             </CollectionView.ItemsLayout>
@@ -32,12 +33,9 @@
                 <DataTemplate>
                     <Grid SemanticProperties.Description="{Binding Recipe.RecipeName}"
                           HandlerChanged="OnImageHandlerChanged" 
-                          HeightRequest="220" 
+                          HeightRequest="220"
                           RowDefinitions="*" 
                           ColumnDefinitions="*">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="SearchResultsPage_Tapped" NumberOfTapsRequired="1"  />
-                        </Grid.GestureRecognizers>
 
                         <Grid>
                             <Image Source="{Binding Recipe.ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" AutomationProperties.IsInAccessibleTree="False"/>
