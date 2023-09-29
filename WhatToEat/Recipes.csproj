@@ -2,8 +2,7 @@
 
 	<PropertyGroup>
 		<MajorFrameworkVersion>8.0</MajorFrameworkVersion>
-    <TargetFrameworks>net$(MajorFrameworkVersion)-android;net$(MajorFrameworkVersion)-ios;net$(MajorFrameworkVersion)-maccatalyst</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net$(MajorFrameworkVersion)-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks>$(TargetFrameworks);net$(MajorFrameworkVersion)-windows10.0.19041.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -15,18 +14,11 @@
 		<ApplicationVersion>2</ApplicationVersion>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
 
-    <!-- Required for running on iPhone device -->
-    <!--<RuntimeIdentifier Condition=" $(TargetFramework.Contains('-ios')) ">ios-arm64</RuntimeIdentifier>-->
-
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
 
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net8.0-ios'">13.6</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net8.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net8.0-android'">21.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
-		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
   <ItemGroup Condition="$(MajorFrameworkVersion) >= 8.0">
