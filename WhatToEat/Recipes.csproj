@@ -41,7 +41,7 @@
 		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 	<ItemGroup Condition="$(TargetFramework.Contains('-ios')) == true ">
-		<MauiImage Include="Resources\Images\search.png" BaseSize="23,23" />
-		<MauiImage Include="Resources\Images\cookbook.png" BaseSize="23,23" />
+		<MauiImage Update="Resources\Images\search.png" BaseSize="23,23" />
+		<MauiImage Update="Resources\Images\cookbook.png" BaseSize="23,23" />
 	</ItemGroup>
 </Project>
