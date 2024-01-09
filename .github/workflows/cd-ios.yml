@@ -24,6 +24,9 @@ on:
       build-version:
         required: true
         type: string
+      package-name:
+        required: true
+        type: string
     secrets:      
       p12-cert:
         required: true
@@ -55,15 +58,7 @@ jobs:
       - uses: actions/checkout@v3
         name: Checkout the code
   
-      # This step might be obsolete at some point as .NET MAUI workloads 
-      # are starting to come pre-installed on the GH Actions build agents.
-      - name: Install MAUI Workload
-        run: dotnet workload install maui --ignore-failed-sources
-  
-      - name: Restore Dependencies
-        run: dotnet restore ${{ inputs.project-file }}
-      
-      # These expire on a yearly basis, so check if they're still valid!
+        # These expire on a yearly basis, so check if they're still valid!
       - uses: apple-actions/import-codesign-certs@v2
         with: 
           p12-file-base64: ${{ secrets.p12-cert }}
@@ -78,6 +73,16 @@ jobs:
           issuer-id: ${{ secrets.appstore-issuer }}
           api-key-id: ${{ secrets.appstore-keyid }}
           api-private-key: ${{ secrets.appstore-private-key }}
+
+      # This step might be obsolete at some point as .NET MAUI workloads 
+      # are starting to come pre-installed on the GH Actions build agents.
+      - name: Install MAUI Workload
+        run: dotnet workload install maui --ignore-failed-sources
+  
+      - name: Restore Dependencies
+        run: dotnet restore ${{ inputs.project-file }}
+      
+
 
       - name: Version the app
         uses: managedcode/MAUIAppVersion@v1

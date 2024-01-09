@@ -19,6 +19,7 @@ env:
   DOTNET_VERSION_TARGETS: net8.0
   CSPROJ_TO_BUILD: ./WhatToEat/Recipes.csproj
   PROJECT_FOLDER: ./WhatToEat
+  PACKAGE_NAME: com.microsoft.*
 
 jobs:
   vars:
@@ -30,6 +31,7 @@ jobs:
       dotnetVersionTargets: ${{ env.DOTNET_VERSION_TARGETS }}
       csprojToBuild: ${{ env.CSPROJ_TO_BUILD }}
       projectFolder: ${{ env.PROJECT_FOLDER }}
+      packageName: ${{ env.PACKAGE_NAME }}
     steps:
       - run: echo "Exposing env vars, because they can't be passed to nested workflows."
   build-ios:   
@@ -42,6 +44,7 @@ jobs:
       project-file: ${{ needs.vars.outputs.csprojToBuild }}
       project-folder: ${{ needs.vars.outputs.projectFolder }}
       build-config: 'Release'
+      package-name: ${{ needs.vars.outputs.packageName }}
       build-version: ${{ needs.vars.outputs.buildVersion }}
     secrets:
       p12-cert: ${{ secrets.CERTIFICATES_P12 }}
