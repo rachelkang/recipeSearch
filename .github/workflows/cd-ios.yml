@@ -105,9 +105,9 @@ jobs:
           path: '**/*.ipa'
 
       # - name: Upload app to TestFlight
-      #   uses: apple-actions/upload-testflight-build@v1
-      #   with:
-      #     app-path: ${{ github.workspace }}/${{ inputs.project-folder }}/bin/${{ inputs.build-config }}/${{ inputs.dotnet-version-target }}-ios/ios-arm64/publish/${{ inputs.project-folder }}.ipa
-      #     issuer-id: ${{ secrets.appstore-issuer }}
-      #     api-key-id: ${{ secrets.appstore-keyid }}
-      #     api-private-key: ${{ secrets.appstore-private-key }}
+      - uses: apple-actions/upload-testflight-build@v1
+        with:
+          app-path: ${{ github.workspace }}/${{ inputs.project-folder }}/bin/${{ inputs.build-config }}/${{ inputs.dotnet-version-target }}-ios/ios-arm64/publish/${{ inputs.project-folder }}.ipa
+          issuer-id: ${{ secrets.appstore-issuer }}
+          api-key-id: ${{ secrets.appstore-keyid }}
+          api-private-key: ${{ secrets.appstore-private-key }}
