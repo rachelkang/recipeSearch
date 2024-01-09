@@ -9,7 +9,7 @@ on:
       dotnet-version-target:
         required: true
         type: string
-       project-file:
+      project-file:
         required: true
         type: string
       project-folder:
