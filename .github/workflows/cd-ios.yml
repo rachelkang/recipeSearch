@@ -94,7 +94,12 @@ jobs:
         run: dotnet build ${{ inputs.project-file }} -c ${{ inputs.build-config }} -f:${{ inputs.dotnet-version-target }}-ios --no-restore
 
       - name: Publish the iOS app
-        run: dotnet publish ${{inputs.project-file}} -c ${{ inputs.build-config }} -f:${{ inputs.dotnet-version-target }}-ios /p:ArchiveOnBuild=true /p:EnableAssemblyILStripping=false
+        run: dotnet publish ${{inputs.project-file}} -c ${{ inputs.build-config }} -f:${{ inputs.dotnet-version-target }}-ios /p:ArchiveOnBuild=true -p:CodesignKey="Apple Distribution: Rui Marinho (AF6KR9V5H6)"
+
+      - name: Upload a ipa Artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          path: '**/*.ipa'
 
       # - name: Upload app to TestFlight
       #   uses: apple-actions/upload-testflight-build@v1
