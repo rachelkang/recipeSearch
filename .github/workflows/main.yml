@@ -45,6 +45,7 @@ jobs:
       project-folder: ${{ needs.vars.outputs.projectFolder }}
       build-config: 'Release'
       package-name: ${{ needs.vars.outputs.packageName }}
+      codesign-key:  'Apple Distribution: Rui Marinho (AF6KR9V5H6)'
       build-version: ${{ needs.vars.outputs.buildVersion }}
     secrets:
       p12-cert: ${{ secrets.CERTIFICATES_P12 }}
