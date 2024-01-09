@@ -19,7 +19,7 @@ env:
   DOTNET_VERSION_TARGETS: net8.0
   CSPROJ_TO_BUILD: ./WhatToEat/Recipes.csproj
   PROJECT_FOLDER: ./WhatToEat
-  PACKAGE_NAME: '*''
+  PACKAGE_NAME: '*'
 
 jobs:
   vars:
