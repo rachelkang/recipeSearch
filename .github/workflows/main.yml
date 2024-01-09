@@ -1,0 +1,66 @@
+name: CD Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - "**.md"
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+      - '**/*.yml'
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  BUILD_VERSION: '2.0'
+  DOTNET_VERSION: 8.0.x
+  XCODE_VERSION: 14.3
+  DOTNET_VERSION_TARGETS: net8.0
+  CSPROJ_TO_BUILD: ./WhatToEat/Recipes.csproj
+  PROJECT_FOLDER: ./WhatToEat
+
+jobs:
+  vars:
+    runs-on: ubuntu-22.04
+    outputs:      
+      buildVersion: ${{ env.BUILD_VERSION }}
+      dotnetVersion: ${{ env.DOTNET_VERSION }}
+      xcodeVersion: ${{ env.XCODE_VERSION }}
+      dotnetVersionTargets: ${{ env.DOTNET_VERSION_TARGETS }}
+      csprojToBuild: ${{ env.CSPROJ_TO_BUILD }}
+      projectFolder: ${{ env.PROJECT_FOLDER }}
+    steps:
+      - run: echo "Exposing env vars, because they can't be passed to nested workflows."
+  build-ios:   
+    needs: vars 
+    uses: cd-ios.yml
+    with:
+      dotnet-version: ${{ needs.vars.outputs.dotnetVersion }}
+      dotnet-version-target: ${{ needs.vars.outputs.dotnetVersionTargets }}
+      xcode-version: ${{ needs.vars.outputs.xcodeVersion }}
+      project-file: ${{ needs.vars.outputs.csprojToBuild }}
+      project-folder: ${{ needs.vars.outputs.projectFolder }}
+      build-config: 'Release'
+      build-version: ${{ needs.vars.outputs.buildVersion }}
+    secrets:
+      p12-cert: ${{ secrets.CERTIFICATES_P12 }}
+      p12-cert-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
+      appstore-issuer: ${{ secrets.APPSTORE_ISSUER_ID }}
+      appstore-keyid: ${{ secrets.APPSTORE_KEY_ID }}
+      appstore-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
+  build-android:
+    needs: vars
+    uses: cd-android.yml
+    with:
+      dotnet-version: ${{ needs.vars.outputs.dotnetVersion }}
+      dotnet-version-target: ${{ needs.vars.outputs.dotnetVersionTargets }}
+      project-file: ${{ needs.vars.outputs.csprojToBuild }}
+      project-folder: ${{ needs.vars.outputs.projectFolder }}
+      build-config: 'Release'
+      build-version: ${{ needs.vars.outputs.buildVersion }}
+    secrets:
+      keystore: ${{ secrets.PLAY_KEYSTORE }}
+      keystore-alias: ${{ secrets.PLAY_KEYSTORE_ALIAS }}
+      keystore-password: ${{ secrets.PLAY_KEYSTORE_PASS }}
+      playstore-service-account: ${{ secrets.PLAYSTORE_SERVICE_ACC }}

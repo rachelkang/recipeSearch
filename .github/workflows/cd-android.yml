@@ -1,0 +1,84 @@
+name: Android Publish
+
+on:
+  workflow_call:
+    inputs:
+      dotnet-version:
+        required: true
+        type: string
+      dotnet-version-target:
+        required: true
+        type: string
+      xcode-version:
+        required: true
+        type: string
+      project-file:
+        required: true
+        type: string
+      project-folder:
+        required: true
+        type: string
+      build-config:
+        required: true
+        type: string
+      build-version:
+        required: true
+        type: string
+    secrets:      
+      keystore-password:
+        required: true
+      keystore-alias:
+        required: true
+      keystore:
+        required: true
+      playstore-service-account:
+        required: true
+
+jobs:
+  publish-android:
+    runs-on: windows-latest
+    name: Android Publish
+        
+    steps:
+    - name: Setup .NET ${{ inputs.dotnet-version }}
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ inputs.dotnet-version }}
+
+    - uses: actions/checkout@v3
+      name: Checkout the code
+
+    # This step might be obsolete at some point as .NET MAUI workloads 
+    # are starting to come pre-installed on the GH Actions build agents.
+    - name: Install MAUI Workload
+      run: dotnet workload install maui --ignore-failed-sources
+
+    - name: Restore Dependencies
+      run: dotnet restore ${{ inputs.project-file }}
+
+    - name: Decode Keystore
+      id: decode_keystore
+      uses: timheuer/base64-to-file@v1
+      with:
+        fileDir: '${{ github.workspace }}\${{ inputs.project-folder }}'
+        fileName: 'ourkeystore.jks'
+        encodedString: ${{ secrets.keystore }}
+
+    - name: Version the app
+      uses: managedcode/MAUIAppVersion@v1
+      with: 
+        csproj: ${{ inputs.project-file }}
+        version: ${{ github.run_number }} # to keep value unique
+        displayVersion: ${{ inputs.build-version }}.${{ github.run_number }}
+        printFile: true # optional
+
+    - name: Publish MAUI Android AAB
+      run: dotnet publish ${{inputs.project-file}} -c ${{ inputs.build-config }} -f ${{ inputs.dotnet-version-target }}-android /p:AndroidPackageFormats=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyStore=ourkeystore.jks /p:AndroidSigningKeyAlias=${{secrets.keystore-alias}} /p:AndroidSigningKeyPass="${{ secrets.keystore-password }}" /p:AndroidSigningStorePass="${{ secrets.keystore-password }}" --no-restore
+    
+    # - uses: r0adkll/upload-google-play@v1.0.17
+    #   name: Upload Android Artifact to Play Console
+    #   with:
+    #     serviceAccountJsonPlainText: ${{ secrets.playstore-service-account }}
+    #     packageName: ${{ inputs.package-name }}
+    #     releaseFiles: ${{ github.workspace }}\${{ inputs.project-folder }}\bin\${{ inputs.build-config }}\${{ inputs.dotnet-version-target }}-android\${{ inputs.package-name }}-Signed.aab
+    #     track: internal
