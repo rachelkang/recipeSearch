@@ -38,8 +38,8 @@ on:
 
 jobs:
   publish-ios:
-    runs-on: macos-13
-    name: iOS Publish
+    runs-on: macos-latest
+    name: iOS Build and Publish
         
     steps:
       - uses: maxim-lobanov/setup-xcode@v1
