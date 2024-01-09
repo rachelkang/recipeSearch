@@ -18,7 +18,7 @@ env:
   XCODE_VERSION: 15.0.1
   DOTNET_VERSION_TARGETS: net8.0
   CSPROJ_TO_BUILD: ./WhatToEat/Recipes.csproj
-  PROJECT_FOLDER: ./WhatToEat
+  PROJECT_FOLDER: WhatToEat
   PACKAGE_NAME: 'com.microsoft.*'
   CODESIGN_KEY: 'Apple Distribution: Rui Marinho (AF6KR9V5H6)'
 
