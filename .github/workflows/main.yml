@@ -20,6 +20,7 @@ env:
   CSPROJ_TO_BUILD: ./WhatToEat/Recipes.csproj
   PROJECT_FOLDER: ./WhatToEat
   PACKAGE_NAME: 'com.microsoft.*'
+  CODESIGN_KEY: 'Apple Distribution: Rui Marinho (AF6KR9V5H6)'
 
 jobs:
   vars:
@@ -32,6 +33,7 @@ jobs:
       csprojToBuild: ${{ env.CSPROJ_TO_BUILD }}
       projectFolder: ${{ env.PROJECT_FOLDER }}
       packageName: ${{ env.PACKAGE_NAME }}
+      codesignKey: ${{ env.CODESIGN_KEY }}
     steps:
       - run: echo "Exposing env vars, because they can't be passed to nested workflows."
   build-ios:   
@@ -45,7 +47,7 @@ jobs:
       project-folder: ${{ needs.vars.outputs.projectFolder }}
       build-config: 'Release'
       package-name: ${{ needs.vars.outputs.packageName }}
-      codesign-key:  'Apple Distribution: Rui Marinho (AF6KR9V5H6)'
+      codesign-key:  ${{ needs.vars.outputs.codesignKey }}
       build-version: ${{ needs.vars.outputs.buildVersion }}
     secrets:
       p12-cert: ${{ secrets.CERTIFICATES_P12 }}
