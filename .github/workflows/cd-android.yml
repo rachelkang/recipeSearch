@@ -69,7 +69,7 @@ jobs:
         displayVersion: ${{ inputs.build-version }}.${{ github.run_number }}
         printFile: true # optional
 
-    - name: Build MAUI Android AAB
+    - name: Build App
       run: dotnet build ${{inputs.project-file}} -c ${{ inputs.build-config }} -f ${{ inputs.dotnet-version-target }}-android --no-restore    
     # - name: Publish MAUI Android AAB
     #   run: dotnet publish ${{inputs.project-file}} -c ${{ inputs.build-config }} -f ${{ inputs.dotnet-version-target }}-android /p:AndroidPackageFormats=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyStore=ourkeystore.jks /p:AndroidSigningKeyAlias=${{secrets.keystore-alias}} /p:AndroidSigningKeyPass="${{ secrets.keystore-password }}" /p:AndroidSigningStorePass="${{ secrets.keystore-password }}" --no-restore
