@@ -34,7 +34,7 @@ jobs:
       - run: echo "Exposing env vars, because they can't be passed to nested workflows."
   build-ios:   
     needs: vars 
-    uses: cd-ios.yml
+    uses: ./.github/workflows/cd-ios.yml
     with:
       dotnet-version: ${{ needs.vars.outputs.dotnetVersion }}
       dotnet-version-target: ${{ needs.vars.outputs.dotnetVersionTargets }}
@@ -51,7 +51,7 @@ jobs:
       appstore-private-key: ${{ secrets.APPSTORE_PRIVATE_KEY }}
   build-android:
     needs: vars
-    uses: cd-android.yml
+    uses: ./.github/workflows/cd-android.yml
     with:
       dotnet-version: ${{ needs.vars.outputs.dotnetVersion }}
       dotnet-version-target: ${{ needs.vars.outputs.dotnetVersionTargets }}
