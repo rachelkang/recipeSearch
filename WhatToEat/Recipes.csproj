@@ -10,7 +10,7 @@
 		<UseMaui>true</UseMaui>
 		<RootNamespace>Recipes</RootNamespace>
 		<ApplicationTitle>Rachel's Recipes</ApplicationTitle>
-		<ApplicationId>com.companyname.Recipes</ApplicationId>
+		<ApplicationId>com.microsoft.rachel.recipes</ApplicationId>
 		<!-- Versions -->
 		<ApplicationVersion>2</ApplicationVersion>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
