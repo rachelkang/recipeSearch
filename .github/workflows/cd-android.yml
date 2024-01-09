@@ -53,13 +53,13 @@ jobs:
     - name: Restore Dependencies
       run: dotnet restore ${{ inputs.project-file }}
 
-    - name: Decode Keystore
-      id: decode_keystore
-      uses: timheuer/base64-to-file@v1
-      with:
-        fileDir: '${{ github.workspace }}\${{ inputs.project-folder }}'
-        fileName: 'ourkeystore.jks'
-        encodedString: ${{ secrets.keystore }}
+    # - name: Decode Keystore
+    #   id: decode_keystore
+    #   uses: timheuer/base64-to-file@v1
+    #   with:
+    #     fileDir: '${{ github.workspace }}\${{ inputs.project-folder }}'
+    #     fileName: 'ourkeystore.jks'
+    #     encodedString: ${{ secrets.keystore }}
 
     - name: Version the app
       uses: managedcode/MAUIAppVersion@v1
@@ -69,8 +69,10 @@ jobs:
         displayVersion: ${{ inputs.build-version }}.${{ github.run_number }}
         printFile: true # optional
 
-    - name: Publish MAUI Android AAB
-      run: dotnet publish ${{inputs.project-file}} -c ${{ inputs.build-config }} -f ${{ inputs.dotnet-version-target }}-android /p:AndroidPackageFormats=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyStore=ourkeystore.jks /p:AndroidSigningKeyAlias=${{secrets.keystore-alias}} /p:AndroidSigningKeyPass="${{ secrets.keystore-password }}" /p:AndroidSigningStorePass="${{ secrets.keystore-password }}" --no-restore
+    - name: Build MAUI Android AAB
+      run: dotnet build ${{inputs.project-file}} -c ${{ inputs.build-config }} -f ${{ inputs.dotnet-version-target }}-android --no-restore    
+    # - name: Publish MAUI Android AAB
+    #   run: dotnet publish ${{inputs.project-file}} -c ${{ inputs.build-config }} -f ${{ inputs.dotnet-version-target }}-android /p:AndroidPackageFormats=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyStore=ourkeystore.jks /p:AndroidSigningKeyAlias=${{secrets.keystore-alias}} /p:AndroidSigningKeyPass="${{ secrets.keystore-password }}" /p:AndroidSigningStorePass="${{ secrets.keystore-password }}" --no-restore
     
     # - uses: r0adkll/upload-google-play@v1.0.17
     #   name: Upload Android Artifact to Play Console
