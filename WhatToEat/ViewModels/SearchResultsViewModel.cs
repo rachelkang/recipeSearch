@@ -97,12 +97,18 @@ namespace Recipes.ViewModels
                     NoResultsLabelVisible = false;
                     SearchResultsVisible = true;
 
-                    for (int i = 0; i < recipeData.Hits.Length; i++)
+                    // Sort the recipeData alphabetically by the recipe's name.
+                    var sortedHits = recipeData.Hits.OrderBy(hit => hit.Recipe.RecipeName).ToArray();
+
+                    for (var i = 0; i < sortedHits.Length; i++)
                     {
-                        recipeData.Hits[i].Id = i;
+                        sortedHits[i].Id = i;
                     }
 
-                    RecipeData = recipeData;
+                    RecipeData = new RecipeData
+                    {
+                        Hits = sortedHits
+                    };
                     AppShell.Data = RecipeData;
                 }
             }
