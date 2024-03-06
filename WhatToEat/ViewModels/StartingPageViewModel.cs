@@ -12,6 +12,8 @@ namespace Recipes.ViewModels
         public Command<string> FilteredSearchCommand { get; }
         public Command<Hit> BalancedMealsTapped { get; }
 
+        public Command GoToAboutPageCommand { get; }
+
         public StartingPageViewModel()
         {
             Title = "Recipes";
@@ -19,6 +21,7 @@ namespace Recipes.ViewModels
 
             SearchCommand = new Command(async () => await OnSearch());
             FilteredSearchCommand = new Command<string>(async (filter) => await OnSearch(filter));
+            GoToAboutPageCommand = new Command(async () => await Shell.Current.GoToAsync($"{nameof(AboutPage)}"));
         }
 
         public RecipeData RecipeData { get; set; }
