@@ -84,11 +84,20 @@ namespace Recipes.ViewModels
 
             if (!string.IsNullOrWhiteSpace(SearchQuery) || !string.IsNullOrWhiteSpace(SearchFilter))
             {
-                RecipeData recipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint));
+                RecipeData recipeData = null;
+                string errorMessage = string.Empty;
+                try
+                {
+                    RecipeData = await _restService.GetRecipeDataAsync(GenerateRequestUri(Constants.EdamamEndpoint));
+                }
+                catch (Exception ex)
+                {
+                    errorMessage = $"\n {ex.Message}";
+                }
 
                 if (recipeData == null || recipeData.Hits.Length == 0)
                 {
-                    NoResultsLabel = $"Sorry! We couldn't find any recipes for {SearchQuery}. Try searching for a different recipe!";
+                    NoResultsLabel = $"Sorry! We couldn't find any recipes for {SearchQuery}. Try searching for a different recipe!{errorMessage}";
                     NoResultsLabelVisible = true;
                     SearchResultsVisible = false;
                 }
