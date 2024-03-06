@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Recipes.Views.AboutPage"
+               Shell.PresentationMode="ModalAnimated"
+             Title="AboutPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="logo.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+                <Label Text="{Binding AboutText}" />
+                <Label FontSize="22">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="{Binding PackageName}" FontAttributes="Bold" FontSize="22" />
+                                <Span Text=" " />
+                                <Span Text="{Binding PackageVersion}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="This app is written using package" />
+                                <Span Text=" " />
+                                <Span Text="{Binding PackageInformationalVersion}" FontAttributes="Bold" />
+                                <Span Text="." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Was build on AzureDevOps" />
+                                <Span Text=" " />
+                                <Span Text="{Binding BuildId, StringFormat='the build id was {0}.'}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button Margin="0,10,0,0"
+                        Text="{Binding BuildId, StringFormat='Visit build id {0} on azdo'}"
+                        Command="{Binding OpenWebCommand}"
+                        CommandParameter="{Binding AzdoUrl}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+                <Button Margin="0,10,0,0"
+                        Text="{Binding Sha, StringFormat='Visit commit {0} on Github'}"
+                        Command="{Binding OpenWebCommand}"
+                        CommandParameter="{Binding ShaUrl}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+                <Button Text="Close" Command="{Binding GoBackCommand}" />
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

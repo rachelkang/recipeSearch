@@ -10,7 +10,7 @@
 		<UseMaui>true</UseMaui>
 		<RootNamespace>Recipes</RootNamespace>
 		<ApplicationTitle>Rachel's Recipes</ApplicationTitle>
-		<ApplicationId>com.companyname.Recipes</ApplicationId>
+		<ApplicationId>com.microsoft.rachel.recipes</ApplicationId>
 		<!-- Versions -->
 		<ApplicationVersion>2</ApplicationVersion>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
@@ -29,9 +29,12 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-  <ItemGroup Condition="$(MajorFrameworkVersion) >= 8.0">
-    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+  <ItemGroup Condition="$(MajorFrameworkVersion) &gt;= 8.0">
+    <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.6-nightly.9827" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.6-nightly.9827" />
   </ItemGroup>
 
 	<ItemGroup>
