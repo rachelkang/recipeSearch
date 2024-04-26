@@ -39,4 +39,12 @@ namespace Recipes
         [JsonPropertyName("url")]
         public string RecipeUrl { get; set; }
     }
+
+    [JsonSourceGenerationOptions(WriteIndented = true)]
+    [JsonSerializable(typeof(RecipeData))]
+    [JsonSerializable(typeof(Hit))]
+    [JsonSerializable(typeof(Recipe))]
+    internal partial class SourceGenerationContext : JsonSerializerContext
+    {
+    }
 }
