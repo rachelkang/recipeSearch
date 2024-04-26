@@ -1,9 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Recipes.ViewModels"
              x:Class="Recipes.Views.EditRecipePage"
              Shell.PresentationMode="ModalAnimated"
-             Visual="Material">
+             Visual="Material"
+             x:DataType="local:EditRecipeViewModel">
     <ContentPage.Content>
         <Grid Margin="20,30,20,20">
             <Grid.ColumnDefinitions>
@@ -28,11 +30,11 @@
                     </Label>
                     <Entry x:Name="recipeNameEntry" Placeholder="Recipe Name, Required field" Text="{Binding RecipeName, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="imageUrlLabel" Text="Image URL" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Entry Placeholder="{Binding Source={x:Reference imageUrlLabel},Path=Text}" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Entry Placeholder="{Binding Source={x:Reference imageUrlLabel}, Path=Text, x:DataType=Label}" Text="{Binding ImageUrl, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="ingredientsLabel" Text="Ingredients" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Editor Placeholder="{Binding Source={x:Reference ingredientsLabel},Path=Text}" Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Editor Placeholder="{Binding Source={x:Reference ingredientsLabel}, Path=Text, x:DataType=Label}" Text="{Binding Ingredients, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label x:Name="recipeLabel" Text="Recipe" Style="{StaticResource RecipeItemLabelStyle}"/>
-                    <Editor Placeholder="{Binding Source={x:Reference recipeLabel},Path=Text}" Text="{Binding RecipeBody, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
+                    <Editor Placeholder="{Binding Source={x:Reference recipeLabel}, Path=Text, x:DataType=Label}" Text="{Binding RecipeBody, Mode=TwoWay}" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50"/>
                     <Label FontSize="Small" FormattedText="{Binding RecipeUrl}" FontAttributes="Italic" />
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -43,7 +45,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Label x:Name="reviewLabel" Text="Review" Style="{StaticResource RecipeItemLabelStyle}"/>
-                        <Label Grid.Column="1" x:Name="ratingLabel" Text="{Binding Source={x:Reference ratingSlider}, Path=Value, StringFormat='{0:F1} / 10 ★'}" HorizontalOptions="Center" Style="{StaticResource RecipeItemLabelStyle}" SemanticProperties.Description="{Binding RecipeRating, StringFormat='{0:F1} out of 10 stars'}" />
+                        <Label Grid.Column="1" x:Name="ratingLabel" Text="{Binding Source={x:Reference ratingSlider}, Path=Value, StringFormat='{0:F1} / 10 ★', x:DataType=Slider}" HorizontalOptions="Center" Style="{StaticResource RecipeItemLabelStyle}" SemanticProperties.Description="{Binding RecipeRating, StringFormat='{0:F1} out of 10 stars'}" />
                     </Grid>
                     <Grid Margin="0,10">
                         <Grid.ColumnDefinitions>
@@ -53,13 +55,13 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Slider x:Name="ratingSlider" SemanticProperties.Description="Review" SemanticProperties.Hint="Rate out of ten stars" Value="{Binding Source={x:Reference ratingStepper}, Path=Value}" Minimum="0" Maximum="10" ThumbColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MinimumTrackColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MaximumTrackColor="Gray" VerticalOptions="Center" ValueChanged="OnValueChanged"/>
+                        <Slider x:Name="ratingSlider" SemanticProperties.Description="Review" SemanticProperties.Hint="Rate out of ten stars" Value="{Binding Source={x:Reference ratingStepper}, Path=Value, x:DataType=Stepper}" Minimum="0" Maximum="10" ThumbColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MinimumTrackColor="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" MaximumTrackColor="Gray" VerticalOptions="Center" ValueChanged="OnValueChanged"/>
                         <StackLayout Grid.Column="1">
                             <Stepper x:Name="ratingStepper" Value="{Binding RecipeRating, Mode=TwoWay}" Minimum="0" Maximum="10" Increment="0.1" VerticalOptions="Center" ValueChanged="OnValueChanged" />
                         </StackLayout>
                         
                     </Grid>
-                    <Editor SemanticProperties.Description="{Binding Source={x:Reference reviewLabel},Path=Text}" Text="{Binding RecipeReview, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50" />
+                    <Editor SemanticProperties.Description="{Binding Source={x:Reference reviewLabel}, Path=Text, x:DataType=Label}" Text="{Binding RecipeReview, Mode=TwoWay}" AutoSize="TextChanges" IsSpellCheckEnabled="false" Margin="0,0,0,10" MinimumHeightRequest="50" />
                 </StackLayout>
             </ScrollView>
             <FlexLayout Grid.Row="2" AlignItems="Center" JustifyContent="SpaceEvenly">

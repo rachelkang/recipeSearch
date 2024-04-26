@@ -2,17 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.MyRecipesPage"
-             Title="{Binding Title}"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
-             xmlns:local="clr-namespace:Recipes">
+             xmlns:models="clr-namespace:Recipes.Models"
+             xmlns:local="clr-namespace:Recipes"
+             Title="{Binding Title, x:DataType=vm:MyRecipesViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:EvenIndexBackgroundConverter x:Key="evenIndexBackgroundConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="New" Command="{Binding NewRecipeCommand}" />
+        <ToolbarItem Text="New" Command="{Binding NewRecipeCommand, x:DataType=vm:MyRecipesViewModel}" />
     </ContentPage.ToolbarItems>
     <StackLayout Margin="20">
         <Label Text="Your recipes" SemanticProperties.HeadingLevel="Level1" FontSize="30" FontAttributes="Bold" />
@@ -22,8 +23,9 @@
             HeightRequest="570"
 			HorizontalOptions="Fill"
 			VerticalOptions="Fill"
-            ItemsSource="{Binding Items}"
-            Loop="False">
+            ItemsSource="{Binding Items, x:DataType=vm:MyRecipesViewModel}"
+            Loop="False"
+            x:DataType="models:Item">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <Grid RowDefinitions="*" 

@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.RecipeDetailPage"
+             xmlns:vm="clr-namespace:Recipes.ViewModels"
+             xmlns:models="clr-namespace:Recipes.Models"
+             x:DataType="vm:RecipeDetailViewModel"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit" Command="{Binding EditRecipeCommand}" />
@@ -25,8 +28,8 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Orientation="Horizontal">
-                                <CheckBox SemanticProperties.Description="{Binding IngredientItem}" Color="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" IsChecked="{Binding IngredientChecked}" HeightRequest="50" WidthRequest="50"/>
-                                <Label AutomationProperties.IsInAccessibleTree="False" Text="{Binding IngredientItem}"  VerticalOptions="Center"/>
+                                <CheckBox SemanticProperties.Description="{Binding IngredientItem, x:DataType=models:Ingredient}" Color="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" IsChecked="{Binding IngredientChecked}" HeightRequest="50" WidthRequest="50"/>
+                                <Label AutomationProperties.IsInAccessibleTree="False" Text="{Binding IngredientItem, x:DataType=models:Ingredient}"  VerticalOptions="Center"/>
                             </StackLayout>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>

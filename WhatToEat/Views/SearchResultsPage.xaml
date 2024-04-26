@@ -4,6 +4,8 @@
              x:Class="Recipes.Views.SearchResultsPage"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:vm="clr-namespace:Recipes.ViewModels"
+             xmlns:recipes="clr-namespace:Recipes"
+             x:DataType="vm:SearchResultsViewModel"
              Title="{Binding Title}" xmlns:local="clr-namespace:Recipes">
 
     <Grid RowDefinitions="Auto,Auto,*" Margin="5,5,5,0" HandlerChanged="OnImageHandlerChanged" >
@@ -13,7 +15,7 @@
                    Placeholder="Search recipes"
                    Text="{Binding SearchQuery}"
                    SearchCommand="{Binding SearchCommand}"
-                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}, x:DataType=SearchBar}"/>
         
         <Label Grid.Row="1" Text="{Binding NoResultsLabel}" IsVisible="{Binding NoResultsLabelVisible}" Padding="20,10,20,0" HorizontalTextAlignment="Center" FontAttributes="Italic"/>
 
@@ -31,21 +33,21 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid SemanticProperties.Description="{Binding Recipe.RecipeName}"
+                    <Grid SemanticProperties.Description="{Binding Recipe.RecipeName, x:DataType=recipes:Hit}"
                           HandlerChanged="OnImageHandlerChanged" 
                           HeightRequest="220"
                           RowDefinitions="*" 
                           ColumnDefinitions="*">
 
                         <Grid>
-                            <Image Source="{Binding Recipe.ImageUrl}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" AutomationProperties.IsInAccessibleTree="False"/>
+                            <Image Source="{Binding Recipe.ImageUrl, x:DataType=recipes:Hit}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" AutomationProperties.IsInAccessibleTree="False"/>
                             <Label x:Name="recipeName"
                                    Padding="5"
                                    HorizontalOptions="Fill" 
                                    VerticalOptions="End"
                                    VerticalTextAlignment="Start"
                                    HorizontalTextAlignment="Center"
-                                   Text="{Binding Recipe.RecipeName}"
+                                   Text="{Binding Recipe.RecipeName, x:DataType=recipes:Hit}"
                                    Style="{StaticResource RecipeNameStyle}"
                                    LineBreakMode="WordWrap" 
                                    MaxLines="2"
