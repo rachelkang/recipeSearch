@@ -5,8 +5,7 @@ using Recipes.Models;
 
 namespace Recipes.ViewModels
 {
-    [QueryProperty(nameof(ItemId), nameof(ItemId))]
-    public class RecipeDetailViewModel : BaseViewModel
+    public class RecipeDetailViewModel : BaseViewModel, IQueryAttributable
     {
         public Command EditRecipeCommand { get; }
 
@@ -46,6 +45,18 @@ namespace Recipes.ViewModels
             RecipeBodyVisible = true;
             RecipeUrlVisible = true;
             RecipeReviewVisible = false;
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if (query.TryGetValue(nameof(ItemId), out object itemId))
+            {
+                ItemId = System.Net.WebUtility.UrlDecode((string)itemId);
+            }
+            else
+            {
+                ItemId = string.Empty;
+            }
         }
 
 		public string ItemId

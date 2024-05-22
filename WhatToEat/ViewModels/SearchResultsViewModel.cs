@@ -1,10 +1,8 @@
-﻿using Recipes.Views;
+using Recipes.Views;
 
 namespace Recipes.ViewModels
 {
-    [QueryProperty(nameof(SearchQuery), nameof(SearchQuery))]
-    [QueryProperty(nameof(SearchFilter), nameof(SearchFilter))]
-    public class SearchResultsViewModel : BaseViewModel
+    public class SearchResultsViewModel : BaseViewModel, IQueryAttributable
     {
         RestService _restService;
 
@@ -29,6 +27,27 @@ namespace Recipes.ViewModels
             SearchCommand = new Command(async () => await OnSearch());
 
 		}
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if (query.TryGetValue(nameof(SearchQuery), out object searchQuery))
+            {
+                SearchQuery = System.Net.WebUtility.UrlDecode((string)searchQuery);
+            }
+            else
+            {
+                SearchQuery = string.Empty;
+            }
+
+            if (query.TryGetValue(nameof(SearchFilter), out object searchFilter))
+            {
+                SearchFilter = System.Net.WebUtility.UrlDecode((string)searchFilter);
+            }
+            else
+            {
+                SearchFilter = string.Empty;
+            }
+        }
 
         public RecipeData RecipeData
         {

@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Recipes.Views.StartingPage"
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:vm="clr-namespace:Recipes.ViewModels"
+             x:DataType="vm:StartingPageViewModel"
              Title="{Binding Title}">
     <ScrollView>
         <Grid Margin="5">
@@ -25,7 +27,7 @@
                     Text="{Binding SearchQuery}"
                     Margin="0,5,0,5"
                     SearchCommand="{Binding SearchCommand}"
-                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}, x:DataType=SearchBar}"/>
 
             <Grid Grid.Column="0" Grid.Row="2" Margin="20,5">
                 <Grid.ColumnDefinitions>

@@ -3,8 +3,7 @@ using Recipes.Models;
 
 namespace Recipes.ViewModels
 {
-    [QueryProperty(nameof(Id), nameof(Id))]
-    public class EditRecipeViewModel : BaseViewModel
+    public class EditRecipeViewModel : BaseViewModel, IQueryAttributable
     {
         string _id;
         string _recipeName;
@@ -24,6 +23,18 @@ namespace Recipes.ViewModels
                 (_, __) => UpdateCommand.ChangeCanExecute();
             PropertyChanged +=
                 (_, __) => DeleteCommand.ChangeCanExecute();
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if (query.TryGetValue(nameof(Id), out object id))
+            {
+                Id = System.Net.WebUtility.UrlDecode((string)id);
+            }
+            else
+            {
+                Id = string.Empty;
+            }
         }
 
         private bool ValidateUpdate()

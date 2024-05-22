@@ -27,7 +27,7 @@ namespace Recipes
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    recipeData = JsonSerializer.Deserialize<RecipeData>(content);
+                    recipeData = JsonSerializer.Deserialize(content, SourceGenerationContext.Default.RecipeData);
                 }
             }
             catch (Exception ex)
