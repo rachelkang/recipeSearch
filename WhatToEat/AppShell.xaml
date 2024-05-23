@@ -29,10 +29,10 @@
         </ResourceDictionary>
     </Shell.Resources>
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <Tab Title="Recipe Search">
+        <Tab Title="Recipe Search" Icon="search.png">
             <ShellContent Title="Recipe Search" Icon="search.png" Route="StartingPage" ContentTemplate="{DataTemplate local:StartingPage}" />
         </Tab>
-        <Tab Title="My Recipes">
+        <Tab Title="My Recipes" Icon="cookbook.png">
             <ShellContent Title="My Recipes" Icon="cookbook.png" Route="MyRecipesPage" ContentTemplate="{DataTemplate local:MyRecipesPage}" />
         </Tab>
     </FlyoutItem>
