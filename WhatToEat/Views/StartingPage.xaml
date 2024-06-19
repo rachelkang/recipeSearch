@@ -45,7 +45,7 @@
                         <Button Text="Lunch" ImageSource="lunch.png" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=lunch" Style="{StaticResource RecipeCategoryButtonStyle}" />
                         <Button Text="Dinner" ImageSource="dinner.png" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=dinner" Style="{StaticResource RecipeCategoryButtonStyle}" />
                         <Button Text="Snack" ImageSource="snack.png" Command="{Binding FilteredSearchCommand}" CommandParameter="mealType=snack" Style="{StaticResource RecipeCategoryButtonStyle}" />
-                        <Button Text="Dessert" ImageSource="dessert.png" Command="{Binding FilteredSearchCommand}" CommandParameter="dishType=dessert" Style="{StaticResource RecipeCategoryButtonStyle}"/>
+                        <Button Text="Dessert" ImageSource="dessert.png" Command="{Binding FilteredSearchCommand}" CommandParameter="dishType=desserts" Style="{StaticResource RecipeCategoryButtonStyle}"/>
                         <Button Text="Drinks" ImageSource="drinks.png" Command="{Binding FilteredSearchCommand}" CommandParameter="dishType=drinks" Style="{StaticResource RecipeCategoryButtonStyle}" />
                     </StackLayout>
                 </ScrollView>
