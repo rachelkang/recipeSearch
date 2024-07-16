@@ -1,4 +1,5 @@
 ﻿using Recipes.Models;
+using Recipes.Services;
 
 namespace Recipes.ViewModels
 {
@@ -97,7 +98,7 @@ namespace Recipes.ViewModels
 
             await DataStore.AddItemAsync(NewRecipe);
 
-            SemanticScreenReader.Announce(RecipeName + " recipe added.");
+            await AnnouncementHelper.Announce(RecipeName + " recipe added.");
 
             // This will pop the current page off the navigation stack
             await Shell.Current.GoToAsync("..");

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<MajorFrameworkVersion>9.0</MajorFrameworkVersion>
+		<MajorFrameworkVersion>8.0</MajorFrameworkVersion>
 		<TargetFrameworks>net$(MajorFrameworkVersion)-android;net$(MajorFrameworkVersion)-ios;net$(MajorFrameworkVersion)-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net$(MajorFrameworkVersion)-windows10.0.19041.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>

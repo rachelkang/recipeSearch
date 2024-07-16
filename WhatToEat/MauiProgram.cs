@@ -1,4 +1,6 @@
-﻿namespace Recipes
+﻿using Recipes.Services;
+
+namespace Recipes
 {
     public class MauiProgram
     {
@@ -17,6 +19,7 @@
                     });
                 });
 
+            builder.Services.AddSingleton<IAsyncAnnouncement, SemanticScreenReaderAsyncImplementation>();
             return builder.Build();
         }
     }
