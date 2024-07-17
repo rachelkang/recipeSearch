@@ -9,7 +9,9 @@ public partial class App : Microsoft.Maui.Controls.Application
     {
 			InitializeComponent();
         DependencyService.Register<MockDataStore>();
+#if IOS
         DependencyService.Register<IAsyncAnnouncement, SemanticScreenReaderAsyncImplementation>();
+#endif
 			MainPage = new AppShell();
 		}
 }

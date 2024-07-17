@@ -19,7 +19,9 @@ namespace Recipes
                     });
                 });
 
+#if IOS
             builder.Services.AddSingleton<IAsyncAnnouncement, SemanticScreenReaderAsyncImplementation>();
+#endif
             return builder.Build();
         }
     }
