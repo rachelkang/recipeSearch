@@ -28,16 +28,12 @@ public class SemanticScreenReaderAsyncImplementation : IAsyncAnnouncement
         
         NSNotificationCenter.DefaultCenter.RemoveObserver(Token);
         Token = null;
+        announcementCompletionSource = null;
     }
 
     private void AnnouncementDidFinish(NSNotification notification)
     {
-        var wasSuccessful = notification.UserInfo["UIAccessibilityAnnouncementKeyWasSuccessful"] as NSNumber;
-
-        if (wasSuccessful != null && announcementCompletionSource != null)
-        {
-            announcementCompletionSource.TrySetResult(wasSuccessful.BoolValue);
-        }
+        announcementCompletionSource.TrySetResult(true);
     }
 
     public void Announce(string text)
