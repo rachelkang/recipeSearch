@@ -13,6 +13,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(RecipeDetailPage), typeof(RecipeDetailPage));
         Routing.RegisterRoute(nameof(NewRecipePage), typeof(NewRecipePage));
         Routing.RegisterRoute(nameof(EditRecipePage), typeof(EditRecipePage));
+        Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
     }
 
     public static RecipeData Data { get; set; }
