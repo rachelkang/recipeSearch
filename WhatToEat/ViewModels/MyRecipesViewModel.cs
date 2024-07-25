@@ -2,6 +2,9 @@
 using System.Diagnostics;
 using Recipes.Models;
 using Recipes.Views;
+#if WINDOWS
+using System.Windows.Input;
+#endif
 
 namespace Recipes.ViewModels
 {
@@ -9,7 +12,7 @@ namespace Recipes.ViewModels
     {
         public Item _selectedItem;
 
-		public ObservableCollection<Item> Items { get; }
+        public ObservableCollection<Item> Items { get; }
         public Command LoadItemsCommand { get; }
         public Command NewRecipeCommand { get; }
         public Command<Item> ItemTapped { get; }
@@ -22,7 +25,7 @@ namespace Recipes.ViewModels
 
             ItemTapped = new Command<Item>(OnItemSelected);
             NewRecipeCommand = new Command(OnNewRecipe);
-		}
+        }
 
         async Task ExecuteLoadItemsCommand()
         {
@@ -45,7 +48,7 @@ namespace Recipes.ViewModels
             {
                 IsBusy = false;
             }
-		}
+        }
 
         public void OnAppearing()
         {
@@ -70,7 +73,7 @@ namespace Recipes.ViewModels
             await Shell.Current.GoToAsync(nameof(NewRecipePage));
         }
 
-        async void OnItemSelected(Item item)
+        internal async void OnItemSelected(Item item)
         {
             if (item == null)
                 return;

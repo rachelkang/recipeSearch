@@ -1,4 +1,9 @@
 ﻿using Recipes.ViewModels;
+#if WINDOWS
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Input;
+using System.Windows.Input;
+#endif
 
 namespace Recipes.Views
 {
@@ -13,9 +18,46 @@ namespace Recipes.Views
 		{
 			InitializeComponent();
 			BindingContext = _viewModel = new MyRecipesViewModel();
-		}
+#if WINDOWS
+            vMyRecipesListView.Loaded += OnCarouselLoaded;
+            vMyRecipesListView.Unloaded += OnCarouselUnloaded;
+#endif
+        }
 
-		protected override void OnAppearing()
+#if WINDOWS
+        void OnCarouselLoaded(object sender, EventArgs e)
+        {
+            if (vMyRecipesListView?.Handler?.PlatformView is UIElement element)
+            {
+                element.PreviewKeyDown += OnCarouselKeyDown;
+            }
+
+
+        }
+
+        void OnCarouselUnloaded(object sender, EventArgs e)
+        {
+            if (vMyRecipesListView?.Handler?.PlatformView is UIElement element)
+            {
+                element.PreviewKeyDown -= OnCarouselKeyDown;
+            }
+        }
+
+        void OnCarouselKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter || e.Key == Windows.System.VirtualKey.Space)
+            {
+                var currentItem = vMyRecipesListView.CurrentItem;
+                if (currentItem is not null)
+                {
+                    _viewModel.ItemTapped.Execute(currentItem);
+                }
+                e.Handled = true;
+            }
+        }
+#endif
+
+        protected override void OnAppearing()
 		{
 			base.OnAppearing();
 			_viewModel.OnAppearing();
