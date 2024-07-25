@@ -27,10 +27,10 @@
                 <StackLayout  BindableLayout.ItemsSource="{Binding IngredientCheckList}" Padding="15,0" IsVisible="{Binding IngredientsVisible}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Orientation="Horizontal">
+                            <Grid ColumnDefinitions="*,7*">
                                 <CheckBox SemanticProperties.Description="{Binding IngredientItem, x:DataType=models:Ingredient}" Color="{AppThemeBinding Dark=White, Light={StaticResource Primary}}" IsChecked="{Binding IngredientChecked}" HeightRequest="50" WidthRequest="50"/>
-                                <Label AutomationProperties.IsInAccessibleTree="False" Text="{Binding IngredientItem, x:DataType=models:Ingredient}"  VerticalOptions="Center"/>
-                            </StackLayout>
+                                <Label AutomationProperties.IsInAccessibleTree="False" Text="{Binding IngredientItem, x:DataType=models:Ingredient}"  VerticalOptions="Center" LineBreakMode="WordWrap" Grid.Column="1"/>
+                            </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
