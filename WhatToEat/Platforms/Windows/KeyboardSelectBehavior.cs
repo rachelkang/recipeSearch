@@ -16,10 +16,10 @@ public partial class KeyboardSelectBehavior : PlatformBehavior<VisualElement, UI
     {
         base.OnAttachedTo(element, platformView);
 
-        if (element is CarouselView carouselView && platformView is UIElement plat)
+        if (element is CarouselView carouselView)
         {
             _keyEventHandler = (s, args) => OnCarouselKeyDown(carouselView, args);
-            plat.PreviewKeyDown += _keyEventHandler;
+            platformView.PreviewKeyDown += _keyEventHandler;
         }
     }
 
@@ -27,9 +27,9 @@ public partial class KeyboardSelectBehavior : PlatformBehavior<VisualElement, UI
     {
         base.OnDetachedFrom(element, platformView);
 
-        if (element is CarouselView carouselView && platformView is UIElement plat)
+        if (element is CarouselView carouselView)
         {
-            plat.PreviewKeyDown -= _keyEventHandler;
+            platformView.PreviewKeyDown -= _keyEventHandler;
         }
     }
 

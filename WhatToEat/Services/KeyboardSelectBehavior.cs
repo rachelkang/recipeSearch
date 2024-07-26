@@ -13,25 +13,4 @@ public partial class KeyboardSelectBehavior
         get => (ICommand)GetValue(CommandProperty);
         set => SetValue(CommandProperty, value);
     }
-
-    //protected override void OnAttachedTo(VisualElement element)
-    //{
-    //    element.Loaded += OnLoaded;
-    //    element.Unloaded += OnUnloaded;
-    //    base.OnAttachedTo(element);
-    //}
-
-    //protected override void OnDetachingFrom(VisualElement element)
-    //{
-    //    element.Loaded -= OnLoaded;
-    //    element.Unloaded -= OnUnloaded;
-    //    base.OnDetachingFrom(element);
-    //}
-
-    //partial void OnLoaded(object sender, EventArgs e)
-    //{
-    //}
-    //partial void OnUnloaded(object sender, EventArgs e)
-    //{
-    //}
 }
