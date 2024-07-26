@@ -15,47 +15,10 @@ namespace Recipes.Views
         private double height = 0;
 
         public MyRecipesPage()
-		{
-			InitializeComponent();
-			BindingContext = _viewModel = new MyRecipesViewModel();
-#if WINDOWS
-            vMyRecipesListView.Loaded += OnCarouselLoaded;
-            vMyRecipesListView.Unloaded += OnCarouselUnloaded;
-#endif
-        }
-
-#if WINDOWS
-        void OnCarouselLoaded(object sender, EventArgs e)
         {
-            if (vMyRecipesListView?.Handler?.PlatformView is UIElement element)
-            {
-                element.PreviewKeyDown += OnCarouselKeyDown;
-            }
-
-
+            InitializeComponent();
+            BindingContext = _viewModel = new MyRecipesViewModel();
         }
-
-        void OnCarouselUnloaded(object sender, EventArgs e)
-        {
-            if (vMyRecipesListView?.Handler?.PlatformView is UIElement element)
-            {
-                element.PreviewKeyDown -= OnCarouselKeyDown;
-            }
-        }
-
-        void OnCarouselKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == Windows.System.VirtualKey.Enter || e.Key == Windows.System.VirtualKey.Space)
-            {
-                var currentItem = vMyRecipesListView.CurrentItem;
-                if (currentItem is not null)
-                {
-                    _viewModel.ItemTapped.Execute(currentItem);
-                }
-                e.Handled = true;
-            }
-        }
-#endif
 
         protected override void OnAppearing()
 		{
