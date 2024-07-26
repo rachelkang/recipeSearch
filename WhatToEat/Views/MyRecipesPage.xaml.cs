@@ -1,9 +1,4 @@
 ﻿using Recipes.ViewModels;
-#if WINDOWS
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Input;
-using System.Windows.Input;
-#endif
 
 namespace Recipes.Views
 {
@@ -15,12 +10,12 @@ namespace Recipes.Views
         private double height = 0;
 
         public MyRecipesPage()
-        {
-            InitializeComponent();
-            BindingContext = _viewModel = new MyRecipesViewModel();
-        }
+		{
+			InitializeComponent();
+			BindingContext = _viewModel = new MyRecipesViewModel();
+		}
 
-        protected override void OnAppearing()
+		protected override void OnAppearing()
 		{
 			base.OnAppearing();
 			_viewModel.OnAppearing();
