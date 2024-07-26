@@ -1,4 +1,5 @@
-﻿using Recipes.ViewModels;
+﻿using Recipes.Services;
+using Recipes.ViewModels;
 
 namespace Recipes.Views
 {
@@ -18,7 +19,7 @@ namespace Recipes.Views
 
         async void OpenUrl(object sender, EventArgs e)
         {
-            SemanticScreenReader.Announce("Exiting app. Entering browser to view full recipe.");
+            await AnnouncementHelper.Announce("Exiting app. Entering browser to view full recipe.");
             await Launcher.OpenAsync(_viewModel.Hit.Recipe.RecipeUrl);
         }
 
@@ -32,8 +33,7 @@ namespace Recipes.Views
 
         async void AddItem_Clicked(object sender, System.EventArgs e)
         {
-			await Task.Delay(100);
-			SemanticScreenReader.Announce(alertMessage);
+            await AnnouncementHelper.Announce(alertMessage);
 
             // TODO MAUI
             //var messageOptions = new MessageOptions

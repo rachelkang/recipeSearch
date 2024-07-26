@@ -1,4 +1,5 @@
-﻿using Recipes.ViewModels;
+﻿using Recipes.Services;
+using Recipes.ViewModels;
 
 namespace Recipes.Views
 {
@@ -20,7 +21,7 @@ namespace Recipes.Views
 
         async void OpenUrl(object sender, EventArgs e)
         {
-            SemanticScreenReader.Announce("Exiting app. Entering browser to view full recipe.");
+            await AnnouncementHelper.Announce("Exiting app. Entering browser to view full recipe.");
             await Launcher.OpenAsync(_viewModel.RecipeUrl);
         }
 

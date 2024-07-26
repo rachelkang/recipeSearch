@@ -1,4 +1,6 @@
-﻿namespace Recipes
+﻿using Recipes.Services;
+
+namespace Recipes
 {
     public class MauiProgram
     {
@@ -16,7 +18,6 @@
 #endif
                     });
                 });
-
             return builder.Build();
         }
     }

@@ -1,3 +1,4 @@
+﻿using Recipes.Services;
 using Recipes.Views;
 
 namespace Recipes.ViewModels
@@ -25,7 +26,6 @@ namespace Recipes.ViewModels
 
             ItemTapped = new Command<Hit>(OnItemSelected);
             SearchCommand = new Command(async () => await OnSearch());
-
 		}
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -110,6 +110,8 @@ namespace Recipes.ViewModels
                     NoResultsLabel = $"Sorry! We couldn't find any recipes for {SearchQuery}. Try searching for a different recipe!";
                     NoResultsLabelVisible = true;
                     SearchResultsVisible = false;
+
+                    await AnnouncementHelper.Announce(NoResultsLabel);
                 }
                 else
                 {
@@ -123,6 +125,8 @@ namespace Recipes.ViewModels
 
                     RecipeData = recipeData;
                     AppShell.Data = RecipeData;
+
+                    await AnnouncementHelper.Announce("Result found.");
                 }
             }
         }

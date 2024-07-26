@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Recipes.Models;
+using Recipes.Services;
 
 namespace Recipes.ViewModels
 {
@@ -134,7 +135,7 @@ namespace Recipes.ViewModels
         {
             await DataStore.DeleteItemAsync(_id);
 
-            SemanticScreenReader.Announce(RecipeName + " recipe deleted.");
+            await AnnouncementHelper.Announce(RecipeName + " recipe deleted.");
 
             await Shell.Current.GoToAsync("../..");
         }
@@ -160,7 +161,7 @@ namespace Recipes.ViewModels
 
             await DataStore.UpdateItemAsync(NewRecipe);
 
-            SemanticScreenReader.Announce(RecipeName + " recipe updated.");
+            await AnnouncementHelper.Announce(RecipeName + " recipe updated.");
 
             await Shell.Current.GoToAsync("..");
         }

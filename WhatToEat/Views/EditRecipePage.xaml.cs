@@ -1,4 +1,5 @@
-﻿using Recipes.ViewModels;
+﻿using Recipes.Services;
+using Recipes.ViewModels;
 
 namespace Recipes.Views
 {
@@ -19,8 +20,7 @@ namespace Recipes.Views
             else
 				increasedOrDecreased = "Rating decreased to ";
 
-			await Task.Delay(100);
-			SemanticScreenReader.Announce(increasedOrDecreased + SemanticProperties.GetDescription(ratingLabel));
+            await AnnouncementHelper.Announce(increasedOrDecreased + SemanticProperties.GetDescription(ratingLabel));
 		}
     }
 }
