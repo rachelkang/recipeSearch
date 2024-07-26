@@ -6,6 +6,7 @@
              xmlns:vm="clr-namespace:Recipes.ViewModels"
              xmlns:models="clr-namespace:Recipes.Models"
              xmlns:local="clr-namespace:Recipes"
+             xmlns:services="clr-namespace:Recipes.Services"
              Title="{Binding Title, x:DataType=vm:MyRecipesViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -26,6 +27,9 @@
             ItemsSource="{Binding Items, x:DataType=vm:MyRecipesViewModel}"
             Loop="False"
             x:DataType="models:Item">
+            <CarouselView.Behaviors>
+                <services:KeyboardSelectBehavior Command="{Binding Source={x:Reference vMyRecipesListView}, Path=BindingContext.ItemTapped}" />
+            </CarouselView.Behaviors>
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <Grid RowDefinitions="*" 

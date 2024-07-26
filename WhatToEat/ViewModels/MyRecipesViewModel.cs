@@ -70,7 +70,7 @@ namespace Recipes.ViewModels
             await Shell.Current.GoToAsync(nameof(NewRecipePage));
         }
 
-        async void OnItemSelected(Item item)
+        internal async void OnItemSelected(Item item)
         {
             if (item == null)
                 return;
