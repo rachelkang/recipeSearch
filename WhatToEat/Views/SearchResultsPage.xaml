@@ -39,8 +39,10 @@
                           RowDefinitions="*" 
                           ColumnDefinitions="*">
 
-                        <Grid>
-                            <Image Source="{Binding Recipe.ImageUrl, x:DataType=recipes:Hit}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" AutomationProperties.IsInAccessibleTree="False"/>
+                        <Button SemanticProperties.Description="{Binding Recipe.RecipeName, x:DataType=recipes:Hit}" />
+
+                        <Grid AutomationProperties.ExcludedWithChildren="True">
+                            <Image Source="{Binding Recipe.ImageUrl, x:DataType=recipes:Hit}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill"/>
                             <Label x:Name="recipeName"
                                    Padding="5"
                                    HorizontalOptions="Fill" 
@@ -52,12 +54,8 @@
                                    LineBreakMode="WordWrap" 
                                    MaxLines="2"
                                    HeightRequest="80"
-                                   FontSize="16"
-                                   AutomationProperties.IsInAccessibleTree="False"/>
+                                   FontSize="16"/>
                         </Grid>
-
-                        <Button SemanticProperties.Description="{Binding Recipe.RecipeName, x:DataType=recipes:Hit}" />
-
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
