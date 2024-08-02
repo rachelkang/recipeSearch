@@ -33,7 +33,7 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid SemanticProperties.Description="{Binding Recipe.RecipeName, x:DataType=recipes:Hit}"
+                    <Grid
                           HandlerChanged="OnImageHandlerChanged" 
                           HeightRequest="220"
                           RowDefinitions="*" 
@@ -52,8 +52,11 @@
                                    LineBreakMode="WordWrap" 
                                    MaxLines="2"
                                    HeightRequest="80"
-                                   FontSize="16"/>
+                                   FontSize="16"
+                                   AutomationProperties.IsInAccessibleTree="False"/>
                         </Grid>
+
+                        <Button SemanticProperties.Description="{Binding Recipe.RecipeName, x:DataType=recipes:Hit}" />
 
                     </Grid>
                 </DataTemplate>
