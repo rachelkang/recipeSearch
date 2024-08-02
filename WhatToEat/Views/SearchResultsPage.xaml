@@ -33,13 +33,11 @@
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid
+                    <Grid SemanticProperties.Description="{Binding Recipe.RecipeName, x:DataType=recipes:Hit}"
                           HandlerChanged="OnImageHandlerChanged" 
                           HeightRequest="220"
                           RowDefinitions="*" 
                           ColumnDefinitions="*">
-
-                        <Button SemanticProperties.Description="{Binding Recipe.RecipeName, x:DataType=recipes:Hit}" />
 
                         <Grid AutomationProperties.ExcludedWithChildren="True">
                             <Image Source="{Binding Recipe.ImageUrl, x:DataType=recipes:Hit}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill"/>
@@ -56,6 +54,11 @@
                                    HeightRequest="80"
                                    FontSize="16"/>
                         </Grid>
+
+                        <!-- This TapGestureRecognizer ensures that the grid is treated as a button for accessibility purposes on iOS -->
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer/>
+                        </Grid.GestureRecognizers>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
