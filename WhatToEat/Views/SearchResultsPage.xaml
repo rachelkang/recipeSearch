@@ -39,9 +39,9 @@
                           RowDefinitions="*" 
                           ColumnDefinitions="*">
 
-                        <Grid>
-                            <Image Source="{Binding Recipe.ImageUrl, x:DataType=recipes:Hit}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill" AutomationProperties.IsInAccessibleTree="False"/>
-                            <Label x:Name="recipeName"
+                        <Grid AutomationProperties.ExcludedWithChildren="True" RowDefinitions="*, auto">
+                            <Image Grid.Row="0" Source="{Binding Recipe.ImageUrl, x:DataType=recipes:Hit}" Aspect="AspectFill" VerticalOptions="Fill" HorizontalOptions="Fill"/>
+                            <Label Grid.Row="1" x:Name="recipeName"
                                    Padding="5"
                                    HorizontalOptions="Fill" 
                                    VerticalOptions="End"
@@ -55,6 +55,10 @@
                                    FontSize="16"/>
                         </Grid>
 
+                        <!-- This TapGestureRecognizer ensures that the grid is treated as a button for accessibility purposes on iOS -->
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer/>
+                        </Grid.GestureRecognizers>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
