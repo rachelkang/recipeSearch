@@ -14,11 +14,14 @@ public partial class App : Microsoft.Maui.Controls.Application
 		var serviceCollection = new ServiceCollection();
 		ConfigureServices(serviceCollection);
 		ServiceProvider = serviceCollection.BuildServiceProvider();
-
-		MainPage = new AppShell();
 	}
 
-	void ConfigureServices(IServiceCollection services)
+    protected override Window CreateWindow(IActivationState activationState)
+    {
+        return new Window(new AppShell());
+    }
+
+    void ConfigureServices(IServiceCollection services)
 	{
 		services.AddSingleton<IDataStore<Item>, MockDataStore>();
 #if IOS

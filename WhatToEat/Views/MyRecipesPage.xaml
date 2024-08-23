@@ -25,8 +25,7 @@
 			HorizontalOptions="Fill"
 			VerticalOptions="Fill"
             ItemsSource="{Binding Items, x:DataType=vm:MyRecipesViewModel}"
-            Loop="False"
-            x:DataType="models:Item">
+            Loop="False">
             <CarouselView.Behaviors>
                 <services:KeyboardSelectBehavior Command="{Binding Source={x:Reference vMyRecipesListView}, Path=BindingContext.ItemTapped}" />
             </CarouselView.Behaviors>
