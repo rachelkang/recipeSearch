@@ -27,7 +27,7 @@
             ItemsSource="{Binding Items, x:DataType=vm:MyRecipesViewModel}"
             Loop="False">
             <CarouselView.Behaviors>
-                <services:KeyboardSelectBehavior Command="{Binding Source={x:Reference vMyRecipesListView}, Path=BindingContext.ItemTapped}" />
+                <services:KeyboardSelectBehavior Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MyRecipesViewModel}}, Path=ItemTapped}" />
             </CarouselView.Behaviors>
             <CarouselView.ItemTemplate>
                 <DataTemplate>
@@ -37,7 +37,8 @@
                           WidthRequest="340"
                           HorizontalOptions="Fill"
                           VerticalOptions="Fill"
-                          SemanticProperties.Description="{Binding RecipeName}">
+                          SemanticProperties.Description="{Binding RecipeName}"
+                          x:DataType="models:Item">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="MyRecipesPage_Tapped" NumberOfTapsRequired="1"  />
                         </Grid.GestureRecognizers>
