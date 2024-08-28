@@ -27,7 +27,7 @@
             ItemsSource="{Binding Items, x:DataType=vm:MyRecipesViewModel}"
             Loop="False">
             <CarouselView.Behaviors>
-                <services:KeyboardSelectBehavior Command="{Binding Source={RelativeSource AncestorType={x:Type vm:MyRecipesViewModel}}, Path=ItemTapped}" />
+                <services:KeyboardSelectBehavior Command="{Binding Source={x:Reference vMyRecipesListView}, Path=BindingContext.ItemTapped}" />
             </CarouselView.Behaviors>
             <CarouselView.ItemTemplate>
                 <DataTemplate>
