@@ -12,7 +12,7 @@
 		<ApplicationTitle>Rachel's Recipes</ApplicationTitle>
 		<ApplicationId>com.microsoft.Recipes</ApplicationId>
 		<!-- Versions -->
-		<ApplicationVersion>2</ApplicationVersion>
+		<ApplicationVersion>3</ApplicationVersion>
 		<DisableImplicitNamespaceImports>true</DisableImplicitNamespaceImports>
 
 		<!-- Required for running on iPhone device -->
