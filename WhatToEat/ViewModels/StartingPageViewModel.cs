@@ -4,7 +4,7 @@ namespace Recipes.ViewModels
 {
     public class StartingPageViewModel : BaseViewModel
     {
-        RestService _restService;
+        MockRestService _restService;
 
         string _searchQuery;
 
@@ -15,7 +15,7 @@ namespace Recipes.ViewModels
         public StartingPageViewModel()
         {
             Title = "Recipes";
-            _restService = new RestService();
+            _restService = new MockRestService();
 
             SearchCommand = new Command(async () => await OnSearch());
             FilteredSearchCommand = new Command<string>(async (filter) => await OnSearch(filter));
