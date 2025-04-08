@@ -6,7 +6,7 @@ namespace Recipes.ViewModels
     [QueryProperty(nameof(SearchFilter), nameof(SearchFilter))]
     public class SearchResultsViewModel : BaseViewModel
     {
-        RestService _restService;
+        MockRestService _restService;
 
         RecipeData _recipeData;
         string _searchQuery;
@@ -21,7 +21,7 @@ namespace Recipes.ViewModels
         public SearchResultsViewModel()
         {
             Title = "Search all recipes";
-            _restService = new RestService();
+            _restService = new MockRestService();
             NoResultsLabelVisible = false;
             SearchResultsVisible = true;
 
